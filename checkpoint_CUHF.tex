@@ -2,6 +2,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{braket}
+\usepackage[english]{babel}
+\setlength{\parindent}{0pt}
 \title{Checkpoint CUHF}
 \author{ruvdrsti}
 \date{March 2021}
@@ -22,8 +24,12 @@
  \begin{equation}\label{eq: ROHF fock}
      R_{cc} = A_{cc}F^\alpha_{cc} + B_{cc}F^\beta_{cc}
  \end{equation}
- Since fixed values for the A and B factors exist, the Fock operator and consequently its eigenvalues can vary depending on these values. However, the wave function and total energy 
- remain the same. This make the interpretation of the eigenvalues difficult. They no longer follow Koopmans' theorem.
+Since fixed values for the A and B factors exist, the Fock operator and consequently its eigenvalues can vary depending on these values. However, the wave function and total energy 
+remain the same. This make the interpretation of the eigenvalues difficult. The problem here is that the results start to behave oddly when tested against Koopmans theorem. Since the
+Fock operator depends on the values of A and B, and so will the eigenvalues. Depending on what type of shell we are looking at, we can find values for the ionization energy (which in 
+Koopmans theorem is the eigenvalue of the Fock operator) that might differ from the theorem. Only for specific configurations of the electrons we see that Koopmans theorem holds. A 
+notable configuration is the half full open shell, which has to be high spin. However, in general, the relation between eigenvalue and ionization energy implied by Koopmans theorem
+does not hold. (another notable example here is a closed shell electron, however, this can be corrected)
 \subsection{Unrestricted Hartee-Fock}
 \label{subsec:UHF}
 \begin{itemize}
@@ -32,7 +38,18 @@
 \end{itemize}
 When orbitals are allowed to vary, we will see overlap terms in the expectation value of the $S^2$ operator. This results in the loss of a quantum number, since the wave function 
 will no longer be an eigenfunction of said operator. We can imagine that this will be detrimental when studying systems that contain a lot of paired electrons, since for 
-every $\alpha$-$\beta$ pair, an overlap term will show up.
+every $\alpha$-$\beta$ pair, an overlap term will show up. Losing a quantum number is sub-optimal, because a quantum number is linked to a symmetry in the system. Normally the quantum
+number will also be the eigenvalue of some operator, meaning that the wave function is an eigenvalue of said operator. However, if the quantum number disappears, the function is no
+longer an eigenfunction of the operator. Now the operator stopped commuting with the Hamiltonian and thus it is impossible to measure the energy (from the Hamiltonian) and the quantum
+number (from the operator) at the same time. We bassically lose information about the wave function.
+
+\subsection{What now?}
+\label{subsec:outlook}
+It seems we need to make a choice. If we want top steer clear of spin contamination, (so keep the wave function as an eigenfucntion of $\hat{S}^2$) we need to turn to ROHF. But then
+we might lose some information for configurations where Koopmans theorem is no longer valid. If we want non-ambiguous eigenvalues for our Fock operators, we have to use UHF, but this
+means we lose information at the hands of spin contamination. In an ideal world, there would be a system in which we kept all information.
+
+
 
 \section{Spin Contamination}
 \label{sec:spincon}
