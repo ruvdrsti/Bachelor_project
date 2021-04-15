@@ -1,2 +1,7 @@
 *.code-workspace
 *.json
+*.aux
+*.bbl
+*.blg
+*.log
+*.gz
