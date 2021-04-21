@@ -28,12 +28,13 @@ class CUHFMolecule(Molecule):
         return sp.eigh(F, b=self.displayOverlap())
 
 
-    def getDensityMatrix(self, spin):
+    def getDensityMatrix(self, spin, mixedGuess=True):
         """
         generates the densitiy matrices on the MO level, D_alpha, D_beta
         
         input:
         spin: a string, either "alpha" or "beta"
+        mixedGuess: False if you do not want to use a mixed guess
         """
         assert spin == "alpha" or spin == "beta", f"{spin}: no valid spin"
         if spin == "alpha":
@@ -43,7 +44,7 @@ class CUHFMolecule(Molecule):
             occ = self.beta
             guess = self.guessMatrix_b
         C = self.getEigenStuff(spin)[1]
-        if np.all(guess == self.displayHamiltonian()):
+        if np.all(guess == self.displayHamiltonian()) and self.beta and mixedGuess:
             if spin == "beta":
                 k = 1
                 HOMO_LUMO = C[:, occ-1:occ+1].copy()
@@ -60,47 +61,48 @@ class CUHFMolecule(Molecule):
         return D
 
 
-    def displayFockMatrix(self, spin):
+    def displayFockMatrix(self, spin, mixedGuess=True):
         """
         Will display the Fock matrix
         
         input:
         spin: a string, either "alpha" or "beta"
         """
-        coulomb_a = np.einsum("nopq,pq->no", self.displayElectronRepulsion(), self.getDensityMatrix("alpha"), optimize=True)
-        coulomb_b = np.einsum("nopq,pq->no", self.displayElectronRepulsion(), self.getDensityMatrix("beta"), optimize=True)
-        exchange = np.einsum("npoq,pq->no", self.displayElectronRepulsion(), self.getDensityMatrix(spin), optimize=True)
+        coulomb_a = np.einsum("nopq,pq->no", self.displayElectronRepulsion(), self.getDensityMatrix("alpha", mixedGuess=mixedGuess), optimize=True)
+        coulomb_b = np.einsum("nopq,pq->no", self.displayElectronRepulsion(), self.getDensityMatrix("beta", mixedGuess=mixedGuess), optimize=True)
+        exchange = np.einsum("npoq,pq->no", self.displayElectronRepulsion(), self.getDensityMatrix(spin, mixedGuess=mixedGuess), optimize=True)
         F = self.displayHamiltonian() + coulomb_a + coulomb_b - exchange
         return F
 
 
-    def getElectronicEnergy(self):
+    def getElectronicEnergy(self, mixedGuess=True):
         """
         calculates the energy with the current fock matrix
         """
         sumMatrix_alpha = self.displayHamiltonian() + self.guessMatrix_a
-        E_alpha = 0.5*np.einsum("pq,pq->", sumMatrix_alpha, self.getDensityMatrix("alpha"), optimize=True)
+        E_alpha = 0.5*np.einsum("pq,pq->", sumMatrix_alpha, self.getDensityMatrix("alpha", mixedGuess=mixedGuess), optimize=True)
         sumMatrix_beta = self.displayHamiltonian() + self.guessMatrix_b
-        E_beta = 0.5*np.einsum("pq,pq->", sumMatrix_beta, self.getDensityMatrix("beta"), optimize=True)
+        E_beta = 0.5*np.einsum("pq,pq->", sumMatrix_beta, self.getDensityMatrix("beta", mixedGuess=mixedGuess), optimize=True)
         return E_alpha + E_beta 
 
 
-    def getTotalEnergy(self):
+    def getTotalEnergy(self, mixedGuess=True):
         """
         Calculates the total energy
         """
-        return self.getElectronicEnergy() + self.displayNucRep()
+        return self.getElectronicEnergy(mixedGuess=mixedGuess) + self.displayNucRep()
 
 
 
-    def iterator(self, criterion='density', iteration=5000, mute=False):
+    def iterator(self, criterion='density', iteration=5000, mute=False, mixedGuess=True):
         """
         Function that performs the Hartree-Fock iterative calculations for the given molecule.
         
         input:
         criterion: "energy" or "density", sets the criterion that we want to evaluate. Default "density"
-        iteration: maximum amount of iterations allowed. Default 500
-        
+        iteration: maximum amount of iterations allowed. Default 5000
+        mixedGuess: False if you do not want to use a mixed guess
+
         note:
         the molecule needs to have its guessmatrices set before entering
         """
@@ -109,8 +111,8 @@ class CUHFMolecule(Molecule):
         # setting up entry parameters for the while loop
         E_new = 0  
         E_old = 0
-        d_old_alpha = self.getDensityMatrix("alpha")
-        d_old_beta = self.getDensityMatrix("beta")
+        d_old_alpha = self.getDensityMatrix("alpha", mixedGuess=mixedGuess)
+        d_old_beta = self.getDensityMatrix("beta", mixedGuess=mixedGuess)
         convergence = False
 
         # step 2: start iterating
@@ -122,11 +124,11 @@ class CUHFMolecule(Molecule):
             E_total = self.getTotalEnergy()
 
             # generating block: generates new matrices UHF: account for alpha and beta
-            F_a, F_b = self.basischanger()
+            F_a, F_b = self.basischanger(mixedGuess=mixedGuess)
             self.setGuess(F_a, "alpha")
             self.setGuess(F_b, "beta") 
-            d_new_alpha = self.getDensityMatrix("alpha")
-            d_new_beta = self.getDensityMatrix("beta")
+            d_new_alpha = self.getDensityMatrix("alpha", mixedGuess=mixedGuess)
+            d_new_beta = self.getDensityMatrix("beta", mixedGuess=mixedGuess)
 
             # comparing block: will answer the "Are we there yet?" question
             rms_D_a = np.sqrt(np.einsum("pq->", (d_old_alpha - d_new_alpha)**2, optimize=True))
@@ -156,14 +158,14 @@ class CUHFMolecule(Molecule):
         self.converge = new_convergence
     
     
-    def basischanger(self):
+    def basischanger(self, mixedGuess=True):
         """
         changes to NO basis, applies CUHF constraint, then changes back
         """
         # transform p to MO basis, where mo basis = the eigenfunctions of the f_a operator
-        a = self.getDensityMatrix("alpha")
-        b = self.getDensityMatrix("beta")
-        f_a, f_b = self.displayFockMatrix("alpha"), self.displayFockMatrix("beta")
+        a = self.getDensityMatrix("alpha", mixedGuess=mixedGuess)
+        b = self.getDensityMatrix("beta", mixedGuess=mixedGuess)
+        f_a, f_b = self.displayFockMatrix("alpha", mixedGuess=mixedGuess), self.displayFockMatrix("beta",mixedGuess=mixedGuess)
         p = (a+b)/2
         c = sp.eigh(f_a, self.overlap)[1] # we only need the c matrix, not the eigenvalues themselves,
         

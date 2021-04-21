@@ -1,4 +1,4 @@
-# as found in the compChem package, version 0.5.9, update is planned for this weekend
+# as found in the compChem package, version 0.5.9
 import psi4
 import numpy as np
 import scipy.linalg as sp
