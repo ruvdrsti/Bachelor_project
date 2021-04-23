@@ -1,0 +1,235 @@
+% !TEX program = xelatex
+% !BIB TS-program = biber
+
+% **************************************************
+% Document Class Definition
+% **************************************************
+\documentclass[%
+    paper=A4,               % paper size --> A4 is default in Germany
+    twoside=true,           % onesite or twoside printing
+    openany,              % doublepage cleaning ends up right side
+    parskip=full,           % spacing value / method for paragraphs
+    chapterprefix=true,     % prefix for chapter marks
+    11pt,                   % font size
+    headings=normal,        % size of headings
+    bibliography=totoc,     % include bib in toc
+    listof=totoc,           % include listof entries in toc
+    titlepage=on,           % own page for each title page
+    captions=tableabove,    % display table captions above the float env
+    draft=false,            % value for draft version
+]{scrreprt}
+
+\newcommand{\reportTitle}{\textcolor{ugent_blue}{Constrained Unrestricted Hartree Fock and Single Excitation Configuration Interaction}} 
+\newcommand{\reportName}{\textbf{Ruben Van der Stichelen}}
+\newcommand{\reportSubject}{\emph{Programming project}}
+\newcommand{\reportDate}{}
+\newcommand{\reportVersion}{}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel} % babel system, adjust the language of the content
+\PassOptionsToPackage{% setup clean thesis style
+    figuresep=colon,%
+    sansserif=true,%
+    hangfigurecaption=false,%
+    hangsection=true,%
+    hangsubsection=true,%
+    colorize=full,%
+    colortheme=bluemagenta,%
+    bibsys=biber,%
+    bibfile=report,%
+    bibstyle=numeric-comp,%
+    wrapfooter=false,%
+}{cleanthesis}
+\usepackage{cleanthesis}
+
+\hypersetup{% setup the hyperref-package options
+    pdftitle={\reportTitle},    %   - title (PDF meta)
+    pdfsubject={\reportSubject},%   - subject (PDF meta)
+    pdfauthor={\reportName},    %   - author (PDF meta)
+    plainpages=false,           %   -
+    colorlinks=false,           %   - colorize links?
+    pdfborder={0 0 0},          %   -
+    breaklinks=true,            %   - allow line break inside links
+    bookmarksnumbered=true,     %
+    bookmarksopen=true          %
+}
+
+\definecolor{ugent_blue}{RGB}{30, 100, 200}
+\definecolor{sciences}{RGB}{45, 140, 168}
+
+\usepackage{algorithm}              % http://ctan.org/pkg/algorithms
+\usepackage{algpseudocode}          % http://ctan.org/pkg/algorithmicx
+\usepackage{amsmath}
+\usepackage{amsfonts}             % mathfrak
+\usepackage{amssymb}              % \mathbb
+\usepackage[mathscr]{euscript}    % \mathscr
+\usepackage{chemmacros}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{interval}
+\usepackage{mathtools}            % dcases, DeclareMathOperator, DeclairePairedDelimiter
+\usepackage{physics}               % physics typesetting, especially bra-ket notation
+\usepackage{siunitx}
+\usepackage{subcaption}
+\usepackage{tensor}
+\usepackage{xcolor}
+\usepackage{ifxetex}
+\usepackage{multicol}
+\usepackage{pdfpages}
+\usepackage{epigraph}
+\usepackage{bm}
+\usepackage[normalem]{ulem}
+\usepackage[version=3]{mhchem}
+\usepackage[linewidth=1pt]{mdframed}
+\usepackage{enumitem}
+
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+morekeywords={self},              % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={MyClass,__init__},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+\pythonstyle
+\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+\DeclareSymbolFont{euleroperators}{U}{eur}{m}{n}
+\SetSymbolFont{euleroperators}{bold}{U}{eur}{b}{n}
+
+\makeatletter
+\renewcommand{\operator@font}{\mathgroup\symeuleroperators}
+\makeatother
+
+% \usepackage[utf8]{inputenc} 
+
+
+\ifxetex
+  \usepackage{fontspec}
+	% \setmainfont[
+	% Path = ./,
+	% BoldFont = UGentPannoText-SemiBold.otf,
+	% ItalicFont = UGentPannoText-SemiLight.otf,
+	% BoldItalicFont  = UGentPannoText-Medium.otf]
+	% {UGentPannoText-Normal.otf}
+	\newfontfamily\PannoSemiLight{UGentPannoText-SemiLight.otf}
+	\newfontfamily\PannoMedium{UGentPannoText-Medium.otf}
+	\newfontfamily\PannoSemiBold{UGentPannoText-SemiBold.otf}
+	\newcommand{\PannoLarge}{\LARGE}
+    \newcommand{\PannoNormalsize}{\large}
+    \renewcommand{\helv}{\fontspec{UGentPannoText-Normal.otf}\fontsize{9}{11}\selectfont}
+    \renewcommand{\book}{\fontspec{UGentPannoText-Normal.otf}\fontsize{11}{13}\selectfont}
+    \renewcommand{\tgherosfont}{\fontspec{UGentPannoText-Normal.otf}}
+    \renewcommand{\thesischapterfont}{\color{ctcolorblack}\huge\fontspec{UGentPannoText-Normal.otf}}
+\else
+  % \usepackage[utf8]{inputenc}           % Om niet ascii karakters rechtstreeks te kunnen typen
+	\usepackage{lmodern}
+	\usepackage[T1]{fontenc}
+	\renewcommand{\familydefault}{\sfdefault}
+	\newcommand{\PannoSemiLight}{}
+	\newcommand{\PannoMedium}{}
+	\newcommand{\PannoSemiBold}{}
+	\newcommand{\PannoLarge}{\Large}
+	\newcommand{\PannoNormalsize}{\normalsize}
+\fi
+
+\graphicspath{{img/}}
+\linespread{1.2}
+\usepackage{chngcntr}
+\counterwithout{section}{chapter}
+\counterwithout{equation}{chapter}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+
+\title{\reportTitle}
+\author{\reportName\\GQCG}
+
+% **************************************************
+% Document CONTENT
+% **************************************************
+\begin{document}
+
+    \begin{titlepage}
+        \hspace{-1cm}\includegraphics[height=3cm]{faculty.png}
+        \begin{center}
+            \vspace{1cm}
+            \Huge{\reportTitle} \\
+            \vspace{1cm}
+            \Large{\reportName} \\
+            \vspace{2cm}
+            \includegraphics[height=2cm]{GQCG.png} \\
+            \vspace{0.5cm}
+            \large{Ghent University} \\ 
+            \large{\today}
+        \end{center}
+        \vspace{4cm}
+        \hspace{-1cm}\includegraphics[height=4cm]{UGent.png}
+    \end{titlepage}
+    % --------------------------
+    % rename document parts
+    % --------------------------
+    \renewcaptionname{english}{\figurename}{Figure}
+    \renewcaptionname{english}{\tablename}{Table}
+
+    \setcounter{tocdepth}{2}		% define depth of toc
+
+    % --------------------------
+    % Body matter / main matter
+    % --------------------------
+    \pagenumbering{arabic}			% arabic page numbering
+    \setcounter{page}{1}			% set page counter
+    \pagestyle{maincontentstyle} 	% fancy header and footer
+
+    % The following input statements correspond to the different chapters of these notes
+    \input{content/reportFinal/reportFinal.tex}
+    \clearpage
+
+    % --------------------------
+    % Back matter
+    % --------------------------
+
+    {%
+    \setstretch{1.1}
+    \renewcommand{\bibfont}{\normalfont\small}
+    \setlength{\biblabelsep}{0pt}
+    \setlength{\bibitemsep}{0.5\baselineskip plus 0.5\baselineskip}
+    \printbibliography[nottype=online]
+    \printbibliography[heading=subbibliography,title={Webpages},type=online,prefixnumbers={@}]
+    }
+    
+    % **************************************************
+    % End of Document CONTENT
+    % **************************************************
+    \end{document}
