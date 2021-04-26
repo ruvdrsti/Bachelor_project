@@ -1,3 +1,34 @@
 \section{Theory}
 
-What do I need to understand?
+\subsection{Configuration Interaction}
+
+The theory in this section is based on:
+\begin{itemize}
+    \item Szabo and Ostlund, \textit{Modern Quantum Chemistry, Introduction to Advanced Electronic Stucture Theory}
+    \item Sherril, \textit{Derivation of the Configuration Interaction Singles (CIS) Method for Various Single Determinant References and Extensions to Include Selected Double Substitutions (XCIS)}
+\end{itemize}
+
+\paragraph{Post Hartree Fock methods}
+The Hartree Fock approximation gives us an initial guess for the energy and the wavefunction. However, it can be improved upon. These methods are called post Hartree-Fock methods. The difference in energy between the two methods is called the correlation energy \eqref{eq:Ecorr}.
+\begin{equation}\label{eq:Ecorr}
+    E_{corr} = \mathcal{E}_0 - E_0
+\end{equation}
+Here $E_0$ is the Hartee-Fock energy and $\mathcal{E}_0$ it the post Hartree-Fock energy.
+
+\paragraph{Configuration Interaction}
+If $\Psi_0$ is a good approximation of the wave function $\Phi_0$, we know that we can make a better approximation using a linear combination of excited states \eqref{eq:lincomb}.
+\begin{equation}\label{eq:lincomb}
+    |\Phi_0\rangle = c_0|\Psi_0\rangle + \sum_{ar}|\Psi_a^r\rangle + ...
+\end{equation}
+In CIS we are only interested in the first order excitations. Now we want to calculate $\langle\Phi_0|\hat{H}|\Phi_0\rangle$ for which we will have to know some matrix elements, \eqref{eq:exp1}, \eqref{eq:exp2} and \eqref{eq:exp3}.
+\begin{equation}\label{eq:exp1}
+    \langle\Psi_0|\hat{H}|\Psi_0\rangle = E_{SCF}
+\end{equation}
+Trough Brillouin's theorem we know \eqref{eq:exp2}.
+\begin{equation}\label{eq:exp2}
+    \langle\Psi_0|\hat{H}|\Psi_a^r\rangle = 0
+\end{equation}
+And Sherril tells us \eqref{eq:exp3}.
+\begin{equation}\label{eq:exp3}
+    \langle\Psi_a^r|\hat{H}|\Psi_b^s\rangle = E_{SCF}\delta_{ij}\delta_{rs} + F_{rs}\delta_{ij} - F_{ij}\delta_{rs} + \langle rj||is\rangle
+\end{equation}

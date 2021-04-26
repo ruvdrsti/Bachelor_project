@@ -4,8 +4,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[twoside,twocolumn,9pt]{article}
-
 \usepackage{tgheros}
+\usepackage[utf8]{inputenc}
 \renewcommand{\familydefault}{\sfdefault}
 
 \usepackage{extsizes}
@@ -21,7 +21,7 @@
 \usepackage{float}
 \usepackage{fancyhdr}
 \usepackage{fnpos}
-\usepackage[english]{babel}
+\usepackage[english, german]{babel}
 \addto{\captionsenglish}{%
   \renewcommand{\refname}{Notes and references}
 }
@@ -182,50 +182,103 @@
 
 Central ideas: Why did I do the work? What were the central motivations and hypotheses?
 
-The first paragraph or two should be written out completely. Pay particular attention to the opening sentence. Ideally, it should state concisely the objective of the work, and indicate why this objective is important.
-In general, the Introduction should have these elements: 
+\paragraph*{}
+The Shrödinger equation allows us to express the energy of a wave function. However, since it is not exactly solvable for systems that 
+have more than one electron, e.i. all most all things of importance, we are forced to make approximations. In these approximations we will
+deviate from reality by applying certain constraints that will allow us to solve the system. However, doing so will decrease the amount
+of freedom a system has to evolve. One might ask the question wheter we are not artifficially creating something that behaves like it is 
+reality, but acctually is nothing more than a construct. However if we do not impose constraints, we lose a lot of control, meaning that 
+interpretation and data collection might jeopardized. 
+\paragraph*{}
+In this particular paper we will take a look at the symmetry in the Hamiltonian. We know that in molecules there can be a lot of symmetry.
+This symmetry also exists in that molecules Hamiltonian, and thus also in every eigenfunction. Now we can easily state that every 
+approximation we make of these eigenfunctions must contain that same symmetry. If we aspire to create somthing that is close to reality,
+but end up with something that does not have any real symmetry, we can do better. The important relation here is that the Hamiltonian 
+commutes with the $S^2$ operator, meaning that these operators share a complete set of eigenfunctions. Thus an eigenfunction of the Hamiltonian must also
+be an eigenfunction of $S^2$. This operator is responsible for the symmetry in a molecule.
+
 
 \begin{itemize}
     \item The objectives of the work. 
+    \paragraph*{}
+    We want to expand the framework of Constrained Unrestricted Hartree Fock theory by applying Single Excitation Configuration 
+    Interaction to the CUHF wave function.
     \item The justification for these objectives: Why is the work important? Cite the most important works \cite{whitesides2004a}.
     \item Background: Who else has done what? How? What have we done previously?
+    \paragraph*{}
+    \begin{enumerate}
+      \item Tsuchimochi and Scuseria \textit{Communication: ROHF theory made simple}: this describes CUHF theory
+      \item Plakhutin and Davidson \textit{Canonical form of the Hartree-Fock orbitals in open-shell systems}: describes what is wrong with CUHF
+    \end{enumerate}
     \item Guidance to the reader: What should the reader watch for in the paper? What are the interesting high points? What strategy did we use?
+    \paragraph*{}
+    In this paper we will discuss several modes in Hartree-Fock theory, focussed specifically on this symmetry. We will look at Restricted Closed
+Shell HF, Unrestricted HF, Constrained Unrestricted HF and in a minor capacity at Restricted Open Shell HF. We will compare the energies
+and wave functions and we will discuss using a symmetry argument why some energy might be higer than another. We will use 
+Single excitation Configuration Interaction (CIS) to help in this analysis, as it will allow us to see multiplet excitation energies, 
+which will indicate certain symmetries. If at all possible we will also attempt to visualise the orbitals obtained. 
     \item Summary/conclusion: What should the reader expect as conclusion? In advanced versions of the outline, you should also include all the sections that will go in the Experimental section (at the level of paragraph subheadings) and indicate what information will go in the Microfilm section.
+    \paragraph*{}
+    The CUHF wave function has the same symmetry we expect as the true wave function for restricted systems. It should give the same results as ROHF.
 \end{itemize}
 
 \section{Theory}
 
 Optional section where you explain any theoretical constructs. In preliminary outline phases, this can be reduced to a set of essential equations.
+\paragraph*{Concepts}
+\begin{enumerate}
+  \item RHF: The RHF wave function is not spin contaminated. This means that it is an eigenfunction of the $S^2$ operator, and it will follow the symmetry.
+  \item UHF: The UHF wave function is spin contaminated. This means that it will not follow the correct symmetry.
+  \item CUHF: The wave function is not spin contaminated.
+  \item ROHF: the wave function is not spin contaminated.
+  \item CIS
+\end{enumerate}
+\paragraph*{Equations to use}
+\begin{enumerate}
+  \item spin contamination general (1.6)
+  \item spin contamination in NO basis (2.9) => DD (detailed dervation)
+  \item expectation value over H for CIS (3.9) => DD
+\end{enumerate}
+\paragraph*{References}
+\begin{enumerate}
+  \item Andrews et al. \textit{Spin contamination in single-determinant wavefunctions}
+  \item Tsuchimochi and Scuseria \textit{Communication: ROHF theory made simple}: this describes CUHF theory
+  \item Sherrill \textit{Derivation of the Configuration Interaction Singles (CIS) Method for Various Single Determinant References and Extensions to Include Selected Double Substitutions (XCIS)}
+\end{enumerate}
 
 \section{Methodology}
 
 How were methods/descriptors implemented and characterized? Which systems are of interest for this hypothesis?
-
+\paragraph*{}
+The allyl radical will be used as a model system. This radical is highly symmetrical. For a restricted system, physicist's water will be used as a reference.
 \section{Results and discussion}
 
 Central ideas: What were the results? Organize the outline and the paper around easily assimilated data - tables, equations, figures, schemes - rather than around text. Organize in order of importance, not in chronological order.
 
-The results and discussion are usually combined. This section should be organized according to major topics. The separate parts should have subheadings in boldface to make this organization clear, and to help the reader scan through the final text to find the parts of interest. The following list includes examples of phrases that might plausibly serve as section headings:
 \begin{itemize}
-    \item Absolute Configuration of the Vicinal Diol Unit Hysteresis Correlates with Roughness of the Surface Dependence of the Rate Constant on Temperature
-    \item The Rate of Self-Exchange Decreases with the Polarity of the Solvent
+    \item The $H_2$ stretch in different HF modes.
+    \item The excited states in different HF modes
+    \item Spin contamination in the excited states
 \end{itemize}
-Try to make these section headings as specific and information-rich as possible. For example, the phrase ``The Rate of Self-Exchange Decreases with The Polarity of The Solvent" is obviously longer than ``Measurement of Rates", but much more useful to the reader.
 
 In general, try to cover the major common points:
 \begin{itemize}
     \item Method implementation
+    \paragraph*{}
+    For the code we used python with the help of the psi4 package.
     \item Method characterization
     \item System characterization
     \item Results
 \end{itemize}
-In the outline, do not write any significant amount of text, but get all the data in their proper place: Any text should simply indicate what will go in that section.
+\paragraph*{Figures}
 \begin{itemize}
-    \item Section Headings
-    \item Figures (with captions)
-    \item Schemes (with captions and footnotes) 
-    \item Equations
-    \item Tables (correctly formatted)
+    \item $H_2$ stretch in all modes => 1 figure per mode (spin contamination included)
+    \item Excitation energies in all modes 
+    \item orbitals?
+\end{itemize}
+\paragraph*{Schemes}
+\begin{itemize}
+  \item electron configurations for different modes (learn to draw them!!)
 \end{itemize}
 Remember to think of a paper as a collection of computational results, summarized as clearly and economically as possible in figures, tables, equations, and schemes. The text in the paper serves just to explain the data, and is secondary. The more information can be compressed into tables, equations, etc., the shorter and more readable the paper will be. If you do not yet have the relevant figures, use placeholders, such as in figure \ref{fig:my_label}.
 
@@ -241,7 +294,6 @@ Remember to think of a paper as a collection of computational results, summarize
 
 Central ideas: What does it all mean? What hypotheses were proved or disproved? What did I learn? Why does it make a difference?
 
-In the outline, summarize the conclusions of the paper as a list of short phrases or sentences. Do not repeat what is in the Results section, unless special emphasis is needed. The Conclusions section should be just that, and not a summary. It should add a new, higher level of analysis, and should indicate explicitly the significance of the work.
 
 %%%END OF MAIN TEXT%%%
 
