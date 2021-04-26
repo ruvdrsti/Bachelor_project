@@ -20,7 +20,7 @@ If $\Psi_0$ is a good approximation of the wave function $\Phi_0$, we know that 
 \begin{equation}\label{eq:lincomb}
     |\Phi_0\rangle = c_0|\Psi_0\rangle + \sum_{ar}|\Psi_a^r\rangle + ...
 \end{equation}
-In CIS we are only interested in the first order excitations. We can prove Now we want to calculate $\langle\Phi_0|\hat{H}|\Phi_0\rangle$ for which we will have to know some matrix elements, \eqref{eq:exp1}, \eqref{eq:exp2} and \eqref{eq:exp3}.
+In CIS we are only interested in the first order excitations. Now we want to calculate $\langle\Phi_0|\hat{H}|\Phi_0\rangle$ for which we will have to know some matrix elements, \eqref{eq:exp1}, \eqref{eq:exp2} and \eqref{eq:exp3}.
 \begin{equation}\label{eq:exp1}
     \langle\Psi_0|\hat{H}|\Psi_0\rangle = E_{SCF}
 \end{equation}
@@ -30,7 +30,7 @@ Trough Brillouin's theorem we know \eqref{eq:exp2}.
 \end{equation}
 And Sherril tells us \eqref{eq:exp3}.
 \begin{equation}\label{eq:exp3}
-    \langle\Psi_a^r|\hat{H}|\Psi_b^s\rangle = E_{SCF}\delta_{ij}\delta_{rs} + F_{rs}\delta_{ij} - F_{ij}\delta_{rs} + \langle rj||is\rangle
+    \langle\Psi_i^r|\hat{H}|\Psi_j^s\rangle = E_{SCF}\delta_{ij}\delta_{rs} + F_{rs}\delta_{ij} - F_{ij}\delta_{rs} + \langle rj||is\rangle
 \end{equation}
 At self consistent field conditions the Fock operator equals $F_{ij} = \epsilon_i\delta_{ij}$, so Equation \eqref{eq:exp3} can be simplified. If we now diagonilize this matrix we end up with the excitation energies and contributions of the single excited states as eigenfunctions. However, since electrons in alpha orbitals can be excited to beta orbitals, which is especcially important in UHF, we have to do some extra steps, using the Kronecker product \eqref{eq:kron}.
 \begin{equation}\label{eq:kron}
@@ -43,4 +43,57 @@ The $R'$ matrix now has double the dimensions of the original R matrix. This is 
         0 & C_b \\
     \end{bmatrix}
 \end{equation} 
-In this matrix $C_a$ corresponds to the coefficient matrix of the alpha orbitals and $C_b$ to the coeficient matrix of the beta orbitals. The diagonal blocks are all zero, since there is no contibution of the alpha orbitals to the beta orbitals and vice versa.
+In this matrix $C_a$ corresponds to the coefficient matrix of the alpha orbitals and $C_b$ to the coeficient matrix of the beta orbitals. The diagonal blocks are all zero, since there is no contibution of the alpha orbitals to the beta orbitals and vice versa. On a small sidenote we prove that the correlation energy is actually determined by the coefficients of the double excitations \eqref{eq:doubles}. However we can get the excitation energies as eigenvalues.
+\begin{equation}\label{eq:doubles}
+    E_{corr} = \sum_{i<j, r<s} C_{ij}^{rs}\langle \Psi_{0} |\hat{H}|\Psi_{ij}^{rs}\rangle
+\end{equation}
+
+\subsection{Spin Contamination}
+The theory in this section is based on:
+\begin{itemize}
+    \item Tsuchimochi and Scuseria, \textit{Communication: ROHF theory made simple}
+    \item Andrews et al., \textit{Spin contamination in single-determinant wavefunctions}
+\end{itemize}
+In general one can expect the expectation value of $\hat{S}^2$ to be defined like Equation \eqref{eq:spinexp}.
+\begin{equation}\label{eq:spinexp}
+    \langle S^2 \rangle = S_z^2 + S_z + q - \sum_{ij}^{pq} S_{ij}^2
+\end{equation}
+This equation holds for all systems with $q$ beta electrons and $p$ alpha electrons. When the overlap is diagonal, the last terms vanish and we are left with $S_z(S_z + 1)$. Spin contamination is defined as Equation \eqref{eq:spincont}.
+\begin{equation}\label{eq:spincont}
+    \delta_s = \langle S^2 \rangle - S_z(S_z + 1)
+\end{equation}
+As a consequence, UHF suffers a lot from spin contamination. The overlap is not in the slightest diagonal, since of course alpha and beta orbitals can be different. This also means that the wave function is not longer an eigenfunction of the $S^2$ operator. We lose a quantum number and with that some symmetry. We can rewrite spin contamination as Equation \eqref{eq:spincont2}.
+\begin{equation}\label{eq:spincont2}
+    \delta_s = N_\beta - Tr(\gamma_\alpha\gamma_\beta)
+\end{equation}
+This equation will be important in Constrained Unrestricted Hartree-Fock theory.
+
+\subsection{Constrained Unrestricted Hartree-Fock}
+The theory in this section will be based on:
+\begin{itemize}
+    \item Tsuchimochi and Scuseria, \textit{Communication: ROHF theory made simple}
+\end{itemize}
+To start here, we need to start from a blocked Fock matrix, like in Equation \eqref{eq:block}.
+\begin{equation}
+    F = \begin{bmatrix}\label{eq:block}
+        F_{cc} & F_{co} & F_{cv} \\
+        F_{oc} & F_{oo} & F_{ov} \\
+        F_{vc} & F_{vo} & F_{vv} \\
+    \end{bmatrix}
+\end{equation}
+We will now artificially set the spin contamination to zero. This means that we will enforce the constraint in Equation \eqref{eq:constraint}.
+\begin{equation}\label{eq:constraint}
+    E_{CUHF} = E_{UHF} + \sum_{ij}'\lambda_{ij}M_{ij}
+\end{equation}
+We only need to consider doubly occupied orbitals and virtual ones. The Fock operators after applying the constraint are given in Equations \eqref{eq:focka} and \eqref{eq:fockb}.
+\begin{equation}\label{eq:focka}
+    \widetilde{F}^\alpha = F^{cs} - \Delta^{CUHF}
+\end{equation}
+\begin{equation}
+    \widetilde{F}^\beta = F^{cs} + \Delta^{CUHF}
+\end{equation}
+$\Delta^{CUHF}$ is zero in the cv and vc blocks, everywhere else it is equal to Equation \eqref{eq:delta}.
+\begin{equation}\label{eq:delta}
+    \sum_{kl} \langle ik | lj \rangle = \Delta^{UHF}_{ij}
+\end{equation}
+We now have two Fock matrices, for which we can start an scf iteration.
