@@ -20,7 +20,7 @@ If $\Psi_0$ is a good approximation of the wave function $\Phi_0$, we know that 
 \begin{equation}\label{eq:lincomb}
     |\Phi_0\rangle = c_0|\Psi_0\rangle + \sum_{ar}|\Psi_a^r\rangle + ...
 \end{equation}
-In CIS we are only interested in the first order excitations. Now we want to calculate $\langle\Phi_0|\hat{H}|\Phi_0\rangle$ for which we will have to know some matrix elements, \eqref{eq:exp1}, \eqref{eq:exp2} and \eqref{eq:exp3}.
+In CIS we are only interested in the first order excitations. We can prove Now we want to calculate $\langle\Phi_0|\hat{H}|\Phi_0\rangle$ for which we will have to know some matrix elements, \eqref{eq:exp1}, \eqref{eq:exp2} and \eqref{eq:exp3}.
 \begin{equation}\label{eq:exp1}
     \langle\Psi_0|\hat{H}|\Psi_0\rangle = E_{SCF}
 \end{equation}
@@ -32,3 +32,15 @@ And Sherril tells us \eqref{eq:exp3}.
 \begin{equation}\label{eq:exp3}
     \langle\Psi_a^r|\hat{H}|\Psi_b^s\rangle = E_{SCF}\delta_{ij}\delta_{rs} + F_{rs}\delta_{ij} - F_{ij}\delta_{rs} + \langle rj||is\rangle
 \end{equation}
+At self consistent field conditions the Fock operator equals $F_{ij} = \epsilon_i\delta_{ij}$, so Equation \eqref{eq:exp3} can be simplified. If we now diagonilize this matrix we end up with the excitation energies and contributions of the single excited states as eigenfunctions. However, since electrons in alpha orbitals can be excited to beta orbitals, which is especcially important in UHF, we have to do some extra steps, using the Kronecker product \eqref{eq:kron}.
+\begin{equation}\label{eq:kron}
+    R' = I_2 \otimes (I_2 \otimes R)^T
+\end{equation}
+The $R'$ matrix now has double the dimensions of the original R matrix. This is necesarry for the two electron integrals, since they only contain half the orbitals. These integrals are in the original basis, but we need to account for all possible excitations, meaning that we have to account for alpha and beta orbitals at the same time. Since the two electron integrals are given in AO basis, they still need to be transformed to MO basis, since we want the Fock operators to be diagonal in Equation \eqref{eq:exp3}. To do this transformation we will need the coefficient matrix from Equation \eqref{eq:coefs}.
+\begin{equation}\label{eq:coefs}
+    C' = \begin{bmatrix}
+        C_a & 0 \\
+        0 & C_b \\
+    \end{bmatrix}
+\end{equation} 
+In this matrix $C_a$ corresponds to the coefficient matrix of the alpha orbitals and $C_b$ to the coeficient matrix of the beta orbitals. The diagonal blocks are all zero, since there is no contibution of the alpha orbitals to the beta orbitals and vice versa.
