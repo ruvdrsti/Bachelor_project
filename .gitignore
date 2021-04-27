@@ -28,3 +28,4 @@ master-blx.bib
 *-blx.bib
 *.DS_Store
 *-checkpoint.ipynb
+.ipynb_checkpoints/

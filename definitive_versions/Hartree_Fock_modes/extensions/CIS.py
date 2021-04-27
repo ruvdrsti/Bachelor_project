@@ -73,7 +73,7 @@ class CISMolecule():
             i, a = excitation
             for collumn, another_excitation in enumerate(excitations):
                 j, b = another_excitation   
-                H_cis[row, collumn] = (epsilon[a] - epsilon[i])*(i == j)*(a == b) + tei_mo[a, j, i, b]
+                H_cis[row, collumn] = (self.E_0 + epsilon[a] - epsilon[i])*(i == j)*(a == b) + tei_mo[a, j, i, b] 
         
 
         # get the E_0 value in the hamiltonian
@@ -106,7 +106,7 @@ class CISMolecule():
             energies = self.excitation_energies
         else:
             contrib = self.coefs[1:, 1:]**2
-            energies = self.excitation_energies[1:]
+            energies = self.excitation_energies[1:] - self.E_0
         counterdict = {} # added to check how many times a certain excitation occurs
         datafile.writelines(f"scf energy for {type(self.id)}: {self.E_0}\n")
         for state, energy in enumerate(energies):
