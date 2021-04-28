@@ -17,20 +17,20 @@ jobs:
       uses: gqcg-oss/latex-action@master
       with:
         root_file: outline.tex
-        working_directory: definitive_versions/theory/outline_BachelorProject/outline/
+        working_directory: theory/outline_BachelorProject/outline/
         latexmk_use_xelatex: true
 
     - name: Archive outline for develop
       uses: actions/upload-artifact@v2
       with:
         name: outline.pdf
-        path: definitive_versions/theory/outline_BachelorProject/outline/outline.pdf
+        path: theory/outline_BachelorProject/outline/outline.pdf
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/develop' }}
 
     - name: Archive outline for PR
       uses: actions/upload-artifact@v2
       with:
         name: outline.pdf
-        path: definitive_versions/theory/outline_BachelorProject/outline/outline.pdf
+        path: theory/outline_BachelorProject/outline/outline.pdf
         retention-days: 5
       if: ${{ github.event_name == 'pull_request'}}
