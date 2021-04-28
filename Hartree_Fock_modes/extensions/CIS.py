@@ -62,8 +62,8 @@ class CISMolecule():
         
         #getting the excitations
         excitations = []
-        for orbital in range(self.occupied - 1): # for every occupied orbital
-            for another_orbital in range(self.occupied + 1, self.available): # we can make an excitation to every virtual orbital
+        for orbital in range(self.occupied): # for every occupied orbital
+            for another_orbital in range(self.occupied, self.available): # we can make an excitation to every virtual orbital
                 excitations.append((orbital, another_orbital))
         self.excitations = excitations
         # getting the hamiltonian
