@@ -71,9 +71,8 @@ class RHFMolecule(Molecule):
         the molecule needs to have its guessmatrices set before entering
         """
         assert criterion == "energy" or criterion == "density", f" {criterion}: not a valid criterion"
-        # setting up entry parameters for the while loop
-        E_new = 0  
-        E_old = 0
+        # setting up entry parameters for the while loop 
+        E_old = self.E_0
         d_old = self.getDensityMatrix()
         convergence = False
 
@@ -86,7 +85,9 @@ class RHFMolecule(Molecule):
             E_total = self.getTotalEnergy()
 
             # generating block: generates new matrices UHF: account for alpha and beta
+            
             F_a = self.displayFockMatrix()
+            F_a[abs(F_a) < 1e-10] = 0
             self.setGuess(F_a, "alpha") # see doctring setGuess method
             d_new = self.getDensityMatrix()
 
@@ -96,14 +97,15 @@ class RHFMolecule(Molecule):
                 if rms_D < self.converge:
                     convergence = True
             else:
-                if abs(E_old - E_new) < self.converge:
+                if abs(E_old - E_total) < self.converge:
                     convergence = True
 
 
             # maintenance block: keeps everything going
             if not mute:
                 print(f"iteration: {itercount}, E_tot: {E_total: .8f}, E_elek: {E_new: .8f}, deltaE: {E_new - E_old: .8f}, rmsD: {rms_D: .8f}")
-            E_old = E_new
+                print(self.guessMatrix_a)
+            E_old = E_total
             d_old= d_new
             itercount += 1
         

@@ -34,6 +34,7 @@ class Molecule:
             self.alpha = change[0]
             self.beta = change[1]
         
+        self.E_0 = 0
         
         
         
