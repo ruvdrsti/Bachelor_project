@@ -202,12 +202,12 @@ be an eigenfunction of $S^2$. This operator is responsible for the symmetry in a
     \item The objectives of the work. 
     \paragraph*{}
     We want to expand the framework of Constrained Unrestricted Hartree Fock theory by applying Single Excitation Configuration 
-    Interaction to the CUHF wave function. Is CUHF a good reference function for 
+    Interaction to the CUHF wave function. Is CUHF a good reference function for CIS? 
     \item The justification for these objectives: Why is the work important? Cite the most important works \cite{whitesides2004a}.
     \begin{enumerate}
-      \item Possibility to use cuhf as CIS reference => expand to more excitations?
-      \item Plakhutin handled ionisation, does the same apply to excitation?
-      \item Symmetry is important => slides Scuseria for importance.
+      \item If CUHF is proven to be a good reference for CIS, we might be able to take it further (in more involved CI calculations).
+      \item Plakhutin and Davidson explained what ionisations are not allowed in CUHF. They do not go into detail on excitations though. We will explore this area in more detail.
+      \item We can not lose track of the symmetry. In a presentation by Scureria, he states that UHF has the right energy, yet the wrong wave function.
     \end{enumerate}
     \item Background: Who else has done what? How? What have we done previously?
     \paragraph*{}
@@ -215,6 +215,8 @@ be an eigenfunction of $S^2$. This operator is responsible for the symmetry in a
       \item Tsuchimochi and Scuseria \textit{Communication: ROHF theory made simple}: this describes CUHF theory
       \item Plakhutin and Davidson \textit{Canonical form of the Hartree-Fock orbitals in open-shell systems}: describes what is wrong with CUHF, comes with energy diagrams
       \item Tsuchimochi and Scuseria \textit{Constrained active space unrestricted mean-field methods for controlling spin-contamination}: a more detailed description of CUHF, with very interesting figures.
+      \paragraph*{}
+      Tsuchimochi and Scuseria are the creators of CUHF method. In their papers they explain the theory and apply it to some model systems. Plakhutin and Davidson describe different HF methods including CUHF and compare them to ROHF. They focus on Koopman's theorem and why it applies/does not apply to a certain method.
     \end{enumerate}
     \item Guidance to the reader: What should the reader watch for in the paper? What are the interesting high points? What strategy did we use?
     \paragraph*{}
@@ -225,7 +227,7 @@ Single excitation Configuration Interaction (CIS) to help in this analysis, as i
 which will indicate certain symmetries. If at all possible we will also attempt to visualise the orbitals obtained. 
     \item Summary/conclusion: What should the reader expect as conclusion? In advanced versions of the outline, you should also include all the sections that will go in the Experimental section (at the level of paragraph subheadings) and indicate what information will go in the Microfilm section.
     \paragraph*{}
-    The CUHF wave function has the same symmetry we expect as the true wave function for restricted systems. It should give the same results as ROHF.
+    The CUHF wave function has the same symmetry we expect as the true wave function for restricted systems. It should give the same results as ROHF. However, as Plakhutin and Davidson point out, we can expect CUHF to fail for certain excitations.
 \end{itemize}
 
 \section{Theory}
@@ -257,7 +259,7 @@ See notes on theory.
 
 How were methods/descriptors implemented and characterized? Which systems are of interest for this hypothesis?
 \paragraph*{}
-The $H_3$ radical will be used as a model system. This is a small molecule that allows for easy interpretation and oversight.
+The $H_3$ radical will be used as a model system. This is a small molecule that allows for easy interpretation and oversight. We will also use a limited basis, sto-3g, for these same reasons.
 \section{Results and discussion}
 
 Central ideas: What were the results? Organize the outline and the paper around easily assimilated data - tables, equations, figures, schemes - rather than around text. Organize in order of importance, not in chronological order.
@@ -268,7 +270,11 @@ Central ideas: What were the results? Organize the outline and the paper around 
     \item Spin contamination in the excited states
 \end{itemize}
 
-In general, try to cover the major common points:
+\subsection{$H_2$ Stretch}
+We calculated the energies using our implementaion of the different Hartree Fock modes for several interatomic distances. We can see on these figures that the spin contamination is only a problem in UHF.
+
+\subsection{CIS results}
+We need to plot the excitation energies of $H_3$, together with the ground state energy. This will be done for UHF, CUHF and ROHF, as soon as we can verify our data.
 \begin{itemize}
     \item Method implementation
     \paragraph*{}
