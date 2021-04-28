@@ -14,7 +14,6 @@ master-blx.bib
 *.blg
 *.fdb_latexmk
 *.fls
-*.log
 *.out
 *.run.xml
 *.synctex.gz
@@ -29,3 +28,5 @@ master-blx.bib
 *.DS_Store
 *-checkpoint.ipynb
 .ipynb_checkpoints/
+*.dat
+*.clean
