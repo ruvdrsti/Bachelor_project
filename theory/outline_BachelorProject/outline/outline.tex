@@ -271,8 +271,39 @@ Central ideas: What were the results? Organize the outline and the paper around 
 \end{itemize}
 
 \subsection{$H_2$ Stretch}
-We calculated the energies using our implementaion of the different Hartree Fock modes for several interatomic distances. We can see on these figures that the spin contamination is only a problem in UHF.
-
+We will demonstrate the effect of spin contamination using the stretch of the dihydrogen molecule.
+\begin{center}
+  \begin{figure}[h]
+      \includegraphics[width=\linewidth]{./../notes/figures/rhf.png}
+      \caption{The RHF energy against the distance in an $H_2$ stretch. The zero level was chosen as the energy of two separate hydrogen atoms.}
+      \label{fig:rhfstretch}
+  \end{figure}
+\end{center}
+In Figure \ref{fig:rhfstretch} we can see that the RHF solution is not physically valid. Indeed, we expect the energy to evolve towards the energy of two seperate hydrogen atoms, which clearly does not happen. However we see that the spin contamination is zero, so the wave function has the correct symmetry. The reason for this is simple. We artificially trap the electrons in the same orbital.
+\begin{center}
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{./../notes/figures/uhf.png}
+  \caption{The UHF energy against the distance in an $H_2$ stretch}
+  \label{fig:uhfstretch}
+\end{figure}
+\end{center}
+Figure \ref{fig:uhfstretch} shows a physically more correct result. We see that the system does evolve towards two hydrogen atoms. Howver, the spin contamination is rising, and after a certain point reaches the value one. This means that the wave function does no longer have the right symmetry, ergo it is no longer the right wave function.
+\begin{center}
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{./../notes/figures/cuhf_mix.png}
+  \caption{The CUHF energy against the distance in an $H_2$ stretch}
+  \label{fig:cuhfstretch}
+\end{figure}
+\end{center}
+The CUHF picture in Figure \ref{fig:cuhfstretch} is difficult to interpret. We see that the spin contamination remains zero. The energy seems to follow the RHF pattern (see also Figure \ref{fig:combo}) untill a certain point. Then it starts to exponantially decline. Physically this seems like a logical behaviour, as it is now again eveolving to two separate hydrogen atoms. 
+\begin{center}
+\begin{figure}[h]
+  \includegraphics[width=\linewidth]{./../notes/figures/combo.png}
+  \caption{The stretch energies plotted together}
+  \label{fig:combo}
+\end{figure}
+\end{center}
+For comparison we plotted all the stretches in one plot, Figure \ref{fig:combo}. Here we can see that they all describe short bond lengths correctly, but as the internuclear distance increases, there are deviations visible.
 \subsection{CIS results}
 We need to plot the excitation energies of $H_3$, together with the ground state energy. This will be done for UHF, CUHF and ROHF, as soon as we can verify our data.
 \begin{itemize}
@@ -285,7 +316,6 @@ We need to plot the excitation energies of $H_3$, together with the ground state
 \end{itemize}
 \paragraph*{Figures}
 \begin{itemize}
-    \item $H_2$ stretch in all modes => 1 figure per mode (spin contamination included)
     \item Excitation energies in all modes 
     \item orbitals?
 \end{itemize}
@@ -293,15 +323,8 @@ We need to plot the excitation energies of $H_3$, together with the ground state
 \begin{itemize}
   \item electron configurations for different modes (learn to draw them!!)
 \end{itemize}
-Remember to think of a paper as a collection of computational results, summarized as clearly and economically as possible in figures, tables, equations, and schemes. The text in the paper serves just to explain the data, and is secondary. The more information can be compressed into tables, equations, etc., the shorter and more readable the paper will be. If you do not yet have the relevant figures, use placeholders, such as in figure \ref{fig:my_label}.
 
-\begin{center}
-    \begin{figure}
-        \includegraphics[width=\linewidth]{example-image}
-        \caption{Interpretation of figures goes here. First focus on improving the readability of the figures, then on the captions.}
-        \label{fig:my_label}
-    \end{figure}
-\end{center}
+
 
 \section{Conclusions}
 
