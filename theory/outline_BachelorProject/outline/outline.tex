@@ -180,80 +180,130 @@
 
 \section{Introduction}
 
-Central ideas: Why did I do the work? What were the central motivations and hypotheses?
+\paragraph*{}
+When thinking about chemistry, one always thinks in terms of atoms, that are bonded together in molecules. In order to correctly predict the behaviour of 
+thes entities we will need to know what they look like. How are the atoms aranged in a molecule? Why are they arranged in this way? The answer to these
+questions lies in the Shrödinger equation, \eqref{eq:erwin}.
+\begin{equation}\label{eq:erwin}
+  \hat{H}\Psi = E\Psi
+\end{equation} 
+The Shrödinger equation allows us to express the energy of a wave function. However, it is not exactly solvable for systems that contain one or more electrons,
+i.e. all relevant systems. The reason for this is the repulsion that exists between two electrons. This term makes it impossible to solve the Shrödinger equation
+analytically for most systems. That is why we need to make approximations. In this paper we will make use of the Hartree-Fock method, which accounts for this
+interaction by means of a coulomb operator, \eqref{eq:coulomb}, which accounts for the electronic repulsion between electrons and an exchange operator,
+\eqref{eq:exchange}, which accounts for stabilisation between electrons with the same spin. 
+\begin{equation}\label{eq:coulomb}
+  \hat{J}_j\psi_i(1) = \int\psi_j(2)^*\boldsymbol{r}_{12}^{-1}\psi_j(2)d2 \psi_i(1)
+\end{equation}
+\begin{equation}\label{eq:exchange}
+  \hat{K}_j\psi_i(1) = \int\psi_j(2)^*\boldsymbol{r}_{12}^{-1}\psi_i(12d2 \psi_j(1)
+\end{equation}
+We can define an expectation value over the Hamiltonian and state that if we are in an energy minimum a small variation in the wave function will not induce a change
+in energy \eqref{eq:hamexp}.
+\begin{equation}\label{eq:hamexp}
+  \langle\psi + \delta\psi|\hat{H}|\psi + \delta\psi \rangle = E + \delta E + \delta E^* + \delta E^2
+\end{equation}
+In first order we say that if $\psi$ is an eigenfunction of $\hat{H}$, $\delta E$ will equal zero. We will not go into any further detail here.
+This approximation might take us a long way in the right direction, but does it take us all the way there? Here we need to introduce different methods within the
+Hartree-Fock theory. Restricted Closed shell Hartree-Fock (RHF) forces the electrons into the same orbitals, thus creating doubly occupied orbitals. Even though this 
+picture is a chemically logical one, since in chemistry we think about electrons in pairs, physically there is no obligation for the electrons to exist in these pairs.
+When we let go of the restriction, we enter the Unrestricted Hartree-Fock method (UHF). This  is no longer confined to closed shell species since it has no problem with 
+electrons that do not exist in pairs. However, we see that the wave function in this method does not contain the right symmetries. It paints a physical picture, yet the
+chemical intuition is tossed out of the window. This phenomenon is called spin-contamination.
+\paragraph*{}
+In this particular paper we will take a look at the symmetry in the Hamiltonian. We know that in molecules there can be a lot of symmetry. This symmetry also exists in that 
+molecules Hamiltonian, and thus also in every eigenfunction. Now we can easily state that every approximation we make of these eigenfunctions must contain that same symmetry. 
+If we aspire to create somthing that is close to reality, but end up with something that does not have any real symmetry, we can do better. The important relation here is that 
+the Hamiltonian commutes with the $\hat{S}^2$ operator, meaning that these operators share a complete set of eigenfunctions. Thus an eigenfunction of the Hamiltonian must also
+be an eigenfunction of $\hat{S}^2$. We can express this using a commutator \eqref{eq:commut}.
+\begin{equation}\label{eq:commut}
+  [\hat{H}, \hat{R}] = 0
+\end{equation}
+We pick the operator $\hat{R}$ as being a certain symmetry operator. Looking back at equation \eqref{eq:hamexp} and the constraint we applied, namely that $\delta E$ should 
+remain zero, one can wonder whether equation \eqref{eq:commut} also still holds. Is the slightly varied wave function still an eigenfunction of the symmetry operator as well.
+This leads us to Löwdins symmetry dilemma \cite{Lowdin1963}. When we enforce the symmetry and the energy constraint at the same time, the minimum energy we reach is not the
+global minimum. However when we drop the symmetry constraint and only enforce the energy, we will reach a lower energy, but will lose all the information with regard to the
+symmetry of the system.
 
 \paragraph*{}
-The Shrödinger equation allows us to express the energy of a wave function. However, since it is not exactly solvable for systems that 
-have more than one electron, e.i. all most all things of importance, we are forced to make approximations. In these approximations we will
-deviate from reality by applying certain constraints that will allow us to solve the system. However, doing so will decrease the amount
-of freedom a system has to evolve. One might ask the question wheter we are not artifficially creating something that behaves like it is 
-reality, but acctually is nothing more than a construct. However if we do not impose constraints, we lose a lot of control, meaning that 
-interpretation of data might be jeopardized. 
+We need some kind of theory to bring the best of both worlds together. One one side, we have the chemical intution in the restricted wave functions, on the other the physical
+truth in the unrestricted wave functions. Roothaans Restricted Opens Shell theory (ROHF)\cite{Roothaan1960} was an early attempt. However, more recently Tsuchimochi and Scuseria
+presented their Constrained Unrestricted Hartree Fock theory (CUHF)\cite{Scuseria2010}. A lot has been said already about this method\cite{Plakhutin2014, Scuseria2011}. In CUHF we
+se the spin-contamination to zero. In this work we will use the CUHF wave function as a reference for Single excitation Configuration Interaction (CIS). We will generate the single
+excitation energies for the CUHF wave function and compare them to the ROHF and UHF excitations of the same system. 
+
 \paragraph*{}
-In this particular paper we will take a look at the symmetry in the Hamiltonian. We know that in molecules there can be a lot of symmetry.
-This symmetry also exists in that molecules Hamiltonian, and thus also in every eigenfunction. Now we can easily state that every 
-approximation we make of these eigenfunctions must contain that same symmetry. If we aspire to create somthing that is close to reality,
-but end up with something that does not have any real symmetry, we can do better. The important relation here is that the Hamiltonian 
-commutes with the $S^2$ operator, meaning that these operators share a complete set of eigenfunctions. Thus an eigenfunction of the Hamiltonian must also
-be an eigenfunction of $S^2$. This operator is responsible for the symmetry in a molecule.
+In this paper we will begin by explaining the theory needed to understand the aformentioned concepts. We will then demonstrate the impact of spin-contamination using the hydrogen gas
+dicossiation problem in the different Hartree-Fock modes. After that we will compare the CIS results for UHF, CUHF and ROHF. From there we will be able to verify whether it makes
+sense to use CUHF as a reference next to ROHF and UHF. 
 
-
-\begin{itemize}
-    \item The objectives of the work. 
-    \paragraph*{}
-    We want to expand the framework of Constrained Unrestricted Hartree Fock theory by applying Single Excitation Configuration 
-    Interaction to the CUHF wave function. Is CUHF a good reference function for CIS? 
-    \item The justification for these objectives: Why is the work important? Cite the most important works \cite{whitesides2004a}.
-    \begin{enumerate}
-      \item If CUHF is proven to be a good reference for CIS, we might be able to take it further (in more involved CI calculations).
-      \item Plakhutin and Davidson explained what ionisations are not allowed in CUHF. They do not go into detail on excitations though. We will explore this area in more detail.
-      \item We can not lose track of the symmetry. In a presentation by Scureria, he states that UHF has the right energy, yet the wrong wave function.
-    \end{enumerate}
-    \item Background: Who else has done what? How? What have we done previously?
-    \paragraph*{}
-    \begin{enumerate}
-      \item Tsuchimochi and Scuseria \textit{Communication: ROHF theory made simple}: this describes CUHF theory
-      \item Plakhutin and Davidson \textit{Canonical form of the Hartree-Fock orbitals in open-shell systems}: describes what is wrong with CUHF, comes with energy diagrams
-      \item Tsuchimochi and Scuseria \textit{Constrained active space unrestricted mean-field methods for controlling spin-contamination}: a more detailed description of CUHF, with very interesting figures.
-      \paragraph*{}
-      Tsuchimochi and Scuseria are the creators of CUHF method. In their papers they explain the theory and apply it to some model systems. Plakhutin and Davidson describe different HF methods including CUHF and compare them to ROHF. They focus on Koopman's theorem and why it applies/does not apply to a certain method.
-    \end{enumerate}
-    \item Guidance to the reader: What should the reader watch for in the paper? What are the interesting high points? What strategy did we use?
-    \paragraph*{}
-    In this paper we will discuss several modes in Hartree-Fock theory, focussed specifically on this symmetry. We will look at Restricted Closed
-Shell HF, Unrestricted HF, Constrained Unrestricted HF and in a minor capacity at Restricted Open Shell HF. We will compare the energies
-and wave functions and we will discuss using a symmetry argument why some energy might be higer than another. We will use 
-Single excitation Configuration Interaction (CIS) to help in this analysis, as it will allow us to see multiplet excitation energies, 
-which will indicate certain symmetries. If at all possible we will also attempt to visualise the orbitals obtained. 
-    \item Summary/conclusion: What should the reader expect as conclusion? In advanced versions of the outline, you should also include all the sections that will go in the Experimental section (at the level of paragraph subheadings) and indicate what information will go in the Microfilm section.
-    \paragraph*{}
-    The CUHF wave function has the same symmetry we expect as the true wave function for restricted systems. It should give the same results as ROHF. However, as Plakhutin and Davidson point out, we can expect CUHF to fail for certain excitations.
-\end{itemize}
 
 \section{Theory}
 
-Optional section where you explain any theoretical constructs. In preliminary outline phases, this can be reduced to a set of essential equations.
-\paragraph*{Concepts}
-See notes on theory.
-\begin{enumerate}
-  \item RHF: The RHF wave function is not spin contaminated. This means that it is an eigenfunction of the $S^2$ operator, and it will follow the symmetry.
-  \item UHF: The UHF wave function is spin contaminated. This means that it will not follow the correct symmetry.
-  \item CUHF: The wave function is not spin contaminated.
-  \item ROHF: the wave function is not spin contaminated.
-  \item CIS
-\end{enumerate}
-\paragraph*{Equations to use}
-\begin{enumerate}
-  \item spin contamination general (1.6)
-  \item spin contamination in NO basis (2.9) => DD (detailed dervation)
-  \item expectation value over H for CIS (3.9) => DD
-\end{enumerate}
-\paragraph*{References}
-\begin{enumerate}
-  \item Andrews et al. \textit{Spin contamination in single-determinant wavefunctions}
-  \item Tsuchimochi and Scuseria \textit{Communication: ROHF theory made simple}: this describes CUHF theory
-  \item Sherrill \textit{Derivation of the Configuration Interaction Singles (CIS) Method for Various Single Determinant References and Extensions to Include Selected Double Substitutions (XCIS)}
-\end{enumerate}
+\subsection{Spin-Contamination}
+In general one can define the expectation value of $\hat{S}^2$ like equation \eqref{eq:spinexp}\cite{Andrews1991}.
+\begin{equation}\label{eq:spinexp}
+    \langle S^2 \rangle = S_z^2 + S_z + q - \sum_{ij}^{pq} S_{ij}^2
+\end{equation}
+This equation holds for all systems with $q$ beta electrons and $p$ alpha electrons. When the overlap is diagonal, the last terms vanish and we are left with $S_z(S_z + 1)$. 
+Spin-contamination is then defined as Equation \eqref{eq:spincont}.
+\begin{equation}\label{eq:spincont}
+    \delta_s = \langle S^2 \rangle - S_z(S_z + 1)
+\end{equation}
+As a consequence, UHF suffers a lot from spin contamination. When the alpha and beta orbitals are not the same, the overlap matrix $S$ will not be diagonal. One can not expect the 
+last two terms in equation \eqref{eq:spinexp} to vanish, which will result in $\delta_s$ not being equal to zero. This also means that the wave function is no longer an eigenfunction 
+of $\hat{S^2}$, as we have seen before. We lose a quantum number and with it the symmetry of the system. We can rewrite spin-contamination as Equation \eqref{eq:spincont2}\cite{Savin2010}.
+\begin{equation}\label{eq:spincont2}
+    \delta_s = N_\beta - Tr(\gamma^\alpha\gamma^\beta)
+\end{equation}
+In this equation, $\gamma^{\alpha}$ and $\gamma^\beta$ are the one particle density matrices. In the NO basis, these matrices are block diagonal \cite{Scuseria2010}, with blocks that
+can be seen in equations \eqref{eq:gammaa} and \eqref{eq:gammab}, where i corresponds to a certain closed shell orbital. The $gamma^\alpha$ also contains a block that is a 
+unity matrix with dimensions $n\times n$ where n is the amount of singly occupied orbitals. In $\gamma^\beta$ this block is a zero matrix of the same dimensions.
+\begin{subequations}
+  \begin{align}
+  \label{eq:gammaa}
+  \gamma^\alpha_i &= \begin{bmatrix}
+    n_i & m_i \\
+    m_i & 1- n_i
+  \end{bmatrix}&& \\
+  \label{eq:gammab}
+  \gamma^\beta_i &= \begin{bmatrix}
+    n_i & -m_i \\
+    -m_i & 1-n_i
+  \end{bmatrix}&&
+\end{align}
+\end{subequations}
+ In these equations $n_i$ is the occupation of orbital i and $m_i = \sqrt{n_i - n_i^2}$\cite{Scuseria2010} We can the define the spin density matrix $M = (\gamma^\alpha - \gamma^\beta)/2$. It is obvious then that equation \eqref{eq:mmatrix} then holds.
+ \begin{equation}\label{eq:mmatrix}
+   M_i = \begin{bmatrix}
+     0 & m_i \\
+     m_i & 0
+   \end{bmatrix}
+ \end{equation}
+Using this information we can rewrite equation \eqref{eq:spincont2} to equation \eqref{eq:spincont3}\cite{Scuseria2010}.
+\begin{equation}\label{eq:spincont3}
+  \delta_s = N_\beta - (N_\alpha + N_\beta)/2 + 2*Tr(M^2)
+\end{equation}
+In an additional step, we can use algebra to find equation \eqref{eq:spincontfinal}.
+\begin{equation}
+  \delta_s = 4\sum^{N_{cp}}_i m_i^2
+\end{equation}
+Now if we want to make the spin contamination zero, we have to eneforce double occupation or no occupation at all. The $N_{cp}$ are the closed shell orbitals. We see here that in 
+the closed shell itself, we can no longer have a difference between alpha and beta orbitals. This will be the constraint that gives us the CUHF method.
+
+\subsection{Constrained Unrestricted Hartree Fock}
+When talking about CUHF, there is more then one way to make sure that the spin-contamination remains zero. Scuseria and Tsuchimochi will enforce the constraint we mentioned in the 
+last section, where they allow only doubly occupied orbitals in the closed shell\cite{Scuseria2010}. It can be shown that the normal UHF energy can be constructed by adding a 
+correlation energy term to the closed shell energy. These terms can be seen in equations \eqref{eq:cseng} and \eqref{eq:correng}\cite{Savin2010}.
+\begin{subequations}
+  \begin{align}
+    \label{eq:cseng}
+    E_{cs} &= 2\sum_{ij}h_{ij}P_{ij} + \sum_{ijkl}(2\langle ij|kl\rangle - \langle ij|lk \rangle)P_{ik}P_{jl}&&\\
+    \label{eq:correng}
+    E_c &= -\sum_{ijkl}\langle ij|lk \rangle M_{ik}M_{jl}&&
+  \end{align}
+\end{subequations}
+Where the matrix $M$ is the spin density matrix (cfr. supra) and the $P$ matrix is the charge density matrix: $P = (\gamma^\alpha + \gamma^\beta)/2$. 
 
 \section{Methodology}
 
