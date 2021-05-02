@@ -3,7 +3,6 @@ import numpy as np
 from scipy.linalg import eigh
 numpy_memory = 4
 psi4.set_memory(int(5e8))
-from compChem.Hartree_Fock_modes import rhf
 class CISMolecule():
     def __init__(self, molecule):
         """
@@ -21,7 +20,12 @@ class CISMolecule():
     
 
     def getTwoElectronIntegrals(self, exchange=True):
-        """returns two electron integrals in MO basis"""
+        """
+        returns two electron integrals in MO basis
+        
+        input:
+        exchange: test parameter
+        """
         # getting the two electron integrals in correct basis => we need it in MO basis
         tei = self.id.elrep # given in chemists notation
 
@@ -42,7 +46,7 @@ class CISMolecule():
     def displayCISHamiltonian(self):
         """displays the CIS hamiltonian in MO basis"""
         # getting the orbital energies
-        if str(type(self.id)) == "<class 'rhf.RHFMolecule'>": 
+        if self.id.mode == "rhf": 
             epsilon_a, C_a = self.id.getEigenStuff()
             epsilon_b, C_b = self.id.getEigenStuff()
         else:
@@ -67,30 +71,27 @@ class CISMolecule():
                 excitations.append((orbital, another_orbital))
         self.excitations = excitations
         # getting the hamiltonian
-        dim = (self.occupied - 1)*(self.virtual - 1)
+        dim = (self.occupied )*(self.virtual)
         H_cis = np.zeros((dim, dim))
         for row, excitation in enumerate(excitations):
             i, a = excitation
             for collumn, another_excitation in enumerate(excitations):
                 j, b = another_excitation   
-                H_cis[row, collumn] = (self.E_0 + epsilon[a] - epsilon[i])*(i == j)*(a == b) + tei_mo[a, j, i, b] 
+                H_cis[row, collumn] = (epsilon[a] - epsilon[i])*(i == j)*(a == b) + tei_mo[a, j, i, b] 
         
-
-        # get the E_0 value in the hamiltonian
-        extra_row = np.zeros((H_cis.shape[1],))
-        H_cis = np.vstack((extra_row, H_cis))
-        extra_collumn = np.zeros((H_cis.shape[0], 1))
-        H_cis = np.hstack((extra_collumn, H_cis))
-        H_cis[0,0] = self.E_0
+        
         return H_cis
 
 
-    def CalculateExcitations(self, alternate=False):
+    def CalculateExcitations(self):
         """setting up some properties needed for later"""
         ham = self.displayCISHamiltonian()
-        if alternate:
-            ham = self.displayCISHamiltonian()[1:, 1:]
-        self.excitation_energies, self.coefs = eigh(ham)
+        
+        self.ham = ham 
+        excitation_energies, coefs = eigh(ham)
+       
+        self.coefs = coefs
+        self.excitation_energies = excitation_energies
 
 
     def GetExitations(self, filepath="NoNameGiven", alternate=False):
@@ -100,13 +101,9 @@ class CISMolecule():
         from pathlib import Path
         Path(f"{filepath}").touch()
         datafile = open(f"{filepath}", "w")
-        self.CalculateExcitations(alternate=alternate)
-        if alternate:
-            contrib = self.coefs**2
-            energies = self.excitation_energies
-        else:
-            contrib = self.coefs[1:, 1:]**2
-            energies = self.excitation_energies[1:] - self.E_0
+        self.CalculateExcitations()
+        contrib = self.coefs**2
+        energies = self.excitation_energies
         counterdict = {} # added to check how many times a certain excitation occurs
         datafile.writelines(f"scf energy for {type(self.id)}: {self.E_0}\n")
         for state, energy in enumerate(energies):
