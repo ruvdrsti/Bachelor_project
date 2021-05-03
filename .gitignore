@@ -30,3 +30,4 @@ master-blx.bib
 .ipynb_checkpoints/
 *.dat
 *.clean
+*.whl
