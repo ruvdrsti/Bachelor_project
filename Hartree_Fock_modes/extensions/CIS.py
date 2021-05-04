@@ -34,12 +34,11 @@ class CISMolecule():
         tei_big = np.kron(np.eye(2), tei_int.T)
 
         C = self.C
+        tei_ao = tei_big.transpose(0, 2, 1, 3) - tei_big.transpose(0, 2, 3, 1) # accounts for both coulomb and exchange, switch to physisists notation 
         if exchange:
-            tei_ao = tei_big.transpose(0, 2, 1, 3) - tei_big.transpose(0, 2, 3, 1) # accounts for both coulomb and exchange, switch to physisists notation
+            tei_mo = np.einsum("pQRS,pP->PQRS", np.einsum("pqRS,qQ->pQRS", np.einsum("pqrS,rR->pqRS", np.einsum("pqrs,sS->pqrS", tei_ao, C, optimize=True), C, optimize=True), C, optimize=True), C, optimize=True)
         else:
-            tei_ao = tei_big.transpose(0, 2, 1, 3)
-        tei_mo = np.einsum("pQRS,pP->PQRS", np.einsum("pqRS,qQ->pQRS", np.einsum("pqrS,rR->pqRS", np.einsum("pqrs,sS->pqrS", tei_ao, C, optimize=True), C, optimize=True), C, optimize=True), C, optimize=True)
-        
+            tei_mo = tei_ao
         return tei_mo
     
 
@@ -47,20 +46,17 @@ class CISMolecule():
         """displays the CIS hamiltonian in MO basis"""
         # getting the orbital energies
         if self.id.mode == "rhf": 
-            epsilon_a, C_a = self.id.getEigenStuff()
-            epsilon_b, C_b = self.id.getEigenStuff()
+            F_a = self.id.guessMatrix_a
+            F_b = F_a
         else:
-            epsilon_a, C_a = self.id.getEigenStuff("alpha")
-            epsilon_b, C_b = self.id.getEigenStuff("beta")
-        epsilon = np.append(epsilon_a, epsilon_b) # accounts for the fact that the energies might be different
-        sortedorder = np.argsort(epsilon)
-        epsilon = np.sort(epsilon)
+            F_a = self.id.guessMatrix_a
+            F_b = self.id.guessMatrix_b
+        F = np.block([[F_a, np.zeros(F_a.shape)], [np.zeros(F_b.shape), F_b]])
+        overlap = np.kron(np.eye(2), self.id.overlap)
+        epsilon, C = eigh(F, overlap)
         self.epsilon = epsilon
-        
-        # make the C matrix => it contains all the orbitals, both alpha and beta
-        C = np.block([[C_a, np.zeros(C_a.shape)], [np.zeros(C_b.shape), C_b]]) # accounts for the fact that the orbitals might be different (uhf, cuhf)
-        C = C[:, sortedorder] # sort the eigenfunctions
         self.C = C
+        F = np.einsum("pq, qr, rs->ps", C.T, F, C, optimize=True)
 
         tei_mo = self.getTwoElectronIntegrals()
         
@@ -77,9 +73,9 @@ class CISMolecule():
             i, a = excitation
             for collumn, another_excitation in enumerate(excitations):
                 j, b = another_excitation   
-                H_cis[row, collumn] = (epsilon[a] - epsilon[i])*(i == j)*(a == b) + tei_mo[a, j, i, b] 
+                H_cis[row, collumn] = self.id.getElectronicEnergy()*(i == j)*(a == b) + F[a, b]*(i==j) - F[i, j]*(a==b) + tei_mo[a, j, i, b] 
         
-        
+        H_cis = np.block([[self.id.getElectronicEnergy(), np.zeros((1,9))], [np.zeros((9,1)), H_cis]])
         return H_cis
 
 
@@ -104,16 +100,17 @@ class CISMolecule():
         self.CalculateExcitations()
         contrib = self.coefs**2
         energies = self.excitation_energies
-        counterdict = {} # added to check how many times a certain excitation occurs
-        datafile.writelines(f"scf energy for {type(self.id)}: {self.E_0}\n")
+        excitations = ["ground"] + self.excitations
+        datafile.writelines(f"scf energy for {self.id.mode}: {self.id.getElectronicEnergy()}\n")
         for state, energy in enumerate(energies):
             datafile.writelines(f" {state + 1} : {energy}\n")
             for excitation, contribution in enumerate(contrib[:, state]):
                 if contribution*100 > 1:
-                    datafile.writelines(f"\t{contribution:.3f} : {self.excitations[excitation]}\n")
-                    if self.excitations[excitation] not in counterdict:
-                        counterdict[self.excitations[excitation]] = 0
-                    counterdict[self.excitations[excitation]] += 1   
+                    try:
+                        datafile.writelines(f"\t{contribution:.3f}: {excitations[excitation]}\n")
+                    except IndexError:
+                        datafile.writelines(f"ground\n")
+  
         datafile.close()
     
     

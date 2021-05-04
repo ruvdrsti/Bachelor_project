@@ -15,6 +15,7 @@ class CUHFMolecule(Molecule):
     def __init__(self, geometry):
         super().__init__(geometry)
         self.itercounter = 0
+        self.mode="cuhf"
 
     def getEigenStuff(self, spin):
         """
@@ -44,19 +45,21 @@ class CUHFMolecule(Molecule):
         else:
             occ = self.beta
             guess = self.guessMatrix_b
-        C = self.getEigenStuff(spin)[1]
-        if np.all(guess == self.displayHamiltonian()) and self.beta and mixedGuess:
-            if spin == "alpha":   
-                k = 1
-                HOMO_LUMO = C[:, occ-1:occ+1].copy()
-                HOMO = HOMO_LUMO[:, 0].copy()
-                HOMO_LUMO[:, 0] += k*HOMO_LUMO[:, 1]
-                HOMO_LUMO[:, 1] += HOMO
-                HOMO_LUMO *= 1/np.sqrt(2)
-                
-                C[:, occ-1:occ+1] = HOMO_LUMO
-            
+        C_a  = self.getEigenStuff("alpha")[1]
+        C_b = self.getEigenStuff("beta")[1]
+        if np.all(guess == self.displayHamiltonian()) and mixedGuess:
+            HOMO = C_a[:, self.alpha - 1]
+            LUMO = C_b[:, self.beta]
+            newHOMO = 1/np.sqrt(2)*(HOMO + LUMO)
+            newLUMO = 1/np.sqrt(2)*(HOMO - LUMO)
+            C_a[:, self.alpha - 1] = newHOMO
+            C_b[:, self.beta] = newLUMO
         
+        if spin == "alpha":
+            C = C_a
+        else:
+            C = C_b
+            
         D = np.einsum("pq, qr->pr", C[:, :occ], C[:, :occ].T, optimize=True)
         return D
 
