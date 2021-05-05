@@ -3,7 +3,7 @@ name: Build and archive outline
 on:
   push:
     branches:
-      - develop
+      - main
   pull_request:
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
         working_directory: theory/outline_BachelorProject/outline/
         latexmk_use_xelatex: true
 
-    - name: Archive outline for develop
+    - name: Archive outline for main
       uses: actions/upload-artifact@v2
       with:
         name: outline.pdf
