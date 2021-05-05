@@ -53,6 +53,7 @@
 
 \usepackage{epstopdf}%This line makes .eps figures into .pdf - please comment out if not required.
 \usepackage{amsthm}
+\usepackage{siunitx}
 
 \definecolor{cream}{RGB}{222,217,201}
 
@@ -265,6 +266,7 @@ of the important equations. Next we will look at spin-contamination in an actual
 for CUHF, ROHF and UHF.
 \section{Theory}
 \subsection{Spin-Contamination}
+\label{subsec:spinconttheory}
 In general one can define the expectation value of $\hat{S}^2$ like equation \eqref{eq:spinexp}\cite{Andrews1991}.
 
 \begin{equation}\label{eq:spinexp}
@@ -273,13 +275,13 @@ In general one can define the expectation value of $\hat{S}^2$ like equation \eq
 
 This equation is written down for a system with $p$ alpha electrons $i$ and $q$ beta electrons $j$. The $S$ matrix contains the overlap between orbitals in the Molecular Orbital (MO)
 basis. $S_z$ is the eigenvalue of the $\hat{S}_z$ operator. When the overlap is diagonal in this MO basis, the last terms vanish and we are left with $S_z(S_z + 1)$.
-Spin-contamination is then defined as Equation \eqref{eq:spincont}.
+Spin-contamination is then defined as equation \eqref{eq:spincont}.
 
 \begin{equation}\label{eq:spincont}
   \delta_s = \langle S^2 \rangle - S_z(S_z + 1)
 \end{equation}
 
-In UHF the overlap is not diagonal, so the situation is somwhat different. When the alpha and beta orbitals are not the same, the overlap matrix $S$ will not be diagonal. One can not
+In UHF the overlap is not diagonal, so the situation is somewhat different. When the alpha and beta orbitals are not the same, the overlap matrix $S$ will not be diagonal. One can not
 expect the last two terms in equation \eqref{eq:spinexp} to vanish, which will result in $\delta_s$ not being equal to zero. This also means that the wave function is no longer an
 eigenfunction of $\hat{S^2}$, as we have seen before. We lose a quantum number and with it the symmetry of the system. We can rewrite spin-contamination as Equation
 \eqref{eq:spincont2}\cite{Savin2010}.
@@ -382,6 +384,7 @@ Roothaan starts his exposition on open shell systems with this equation, represe
 an open shell system $\psi_O$
 
 \subsection{Constrained Unrestricted Hartree Fock}
+\label{subsec:cuhftheory}
 When talking about CUHF, there is more then one way to make sure that the spin-contamination remains zero. Scuseria and Tsuchimochi will enforce the constraint in the way
 we mentioned in the last section, where they allow only doubly occupied orbitals in the closed shell\cite{Scuseria2010}. It can be shown that the normal UHF energy can be 
 constructed by adding a correlation energy term to the closed shell energy. These terms can be seen in equations \eqref{eq:cseng} and \eqref{eq:correng}\cite{Savin2010}.
@@ -483,6 +486,7 @@ beta orbitals\cite{Roothaan1960}. This makes it rather difficult to interpret re
 normal UHF approach. This means that we will end up with a slightly different picture from the ROHF picture, but the wave function and its energy remain the same\cite{Scuseria2010}. 
 
 \subsection{Configuration interaction}
+\label{subsec:cistheory}
 
 The Hartree Fock approximation gives us an initial guess for the energy and the wavefunction. However, it can be improved upon. These methods are called post Hartree-Fock methods.
 The difference in energy between the two methods is called the correlation energy \eqref{eq:Ecorr}.
@@ -605,6 +609,7 @@ sytems.
 To demonstrate the impact of spin contamination and the importance of finding methods to overcome it, we will discuss the hydrogen gas dissociation problem\cite{Szabo1996}. Hydrogen
 gas is a molecule that can be described perfectly by RHF. However, when we stretch the bond the system evolves to a state of separate hydrogen atoms. These can of course not be
 described by RHF and so we expect the RHF energy to be totaly unrealistic at large bond lengths. This can be observed in figure \ref{fig:rhfstretch}.
+
 \begin{center}
   \begin{figure}[h]
     \includegraphics[width=\linewidth]{./../notes/figures/rhf.png}
@@ -612,6 +617,7 @@ described by RHF and so we expect the RHF energy to be totaly unrealistic at lar
     \label{fig:rhfstretch}
   \end{figure}
 \end{center}
+
 We can see that the RHF energy does not behave as we would expect it to. Indeed, we expect the energy to evolve towards the energy of two seperate hydrogen atoms, which clearly does
 not happen. This is because the physical picture we are seeing is intrinsically invalid. The RFH algorithm forces the electrons into the same orbital, the bonding orbital between
 the two nuclei. However, when the bond length increases, we expect the electrons to each be in their own respective orbitals around a single nucleus. At a distance of infinity, they
@@ -622,6 +628,7 @@ it to. But since $H_2$ is a closed shell system we need to do a little manipulat
 Hamiltonian as an approach for two Fock matrices, we would still find the restricted sollution. To counteract this we will need to do a mixed guess. For this we change the initial
 guess for the beta electrons by mixing the Highest Occupied Molecular Orbital (HOMO) and the Lowest Unoccupied Molecular Orbital (LUMO) as a linear combination. This proces is also
 known as symmetry breaking. The result can be seen in \ref{fig:uhfstretch}.
+
 \begin{center}
   \begin{figure}[h]
     \includegraphics[width=\linewidth]{./../notes/figures/uhf.png}
@@ -629,11 +636,13 @@ known as symmetry breaking. The result can be seen in \ref{fig:uhfstretch}.
     \label{fig:uhfstretch}
   \end{figure}
 \end{center}
+
 This result is physically more acurate. We see that the system does evolve towards two separate hydrogen atoms. However, the spin contamination is rising, and after a certain point
 reaches the value one. This means that the wave function does no longer have the right symmetry. And as stated before, even if we cannot calculate the exact wave function we do know
 what symmetries it should have. Even though we might have a lower energy energy, the wave function is not as good as an approximation as it could be\cite{Scuseria2013}. \\
 This is a prime example of the aformentioned symmetry dilemma by Löwdin. If we want the lowest possible energy, we lose the symmetry. If we want to keep the symmetry, we will not
 have the lowest energy. Now what would happen if we applied CUHF to the dissociation problem? This result has been plotted in \ref{fig:cuhfstretch}.
+
 \begin{center}
   \begin{figure}[h]
     \includegraphics[width=\linewidth]{./../notes/figures/cuhf_mix.png}
@@ -641,11 +650,13 @@ have the lowest energy. Now what would happen if we applied CUHF to the dissocia
     \label{fig:cuhfstretch}
   \end{figure}
 \end{center}
+
 The CUHF picture is difficult to interpret. We see that the spin contamination remains zero. The energy seems to follow the RHF pattern (see also Figure \ref{fig:combo}) untill a
 certain point, then it starts to exponentially decline. Physically this seems like a logical behaviour, as it is now again evolving to two separate hydrogen atoms. We can also notice
 that the spin contamination is zero everywhere, so the symmetry of the sollution is also correct. For this plot a mixed guess was applied. In CUHF the mixed guess is done on the
 active space, wich consists the orbitals to which the constraints are not applied, i.e. the open shell\cite{Scuseria2011}. So when we would take the active space as all the electrons
 we reach the UHF sollution. When we take only unpaired electrons as the active space we see the ROHF sollution.
+
 \begin{center}
   \begin{figure}[h]
     \includegraphics[width=\linewidth]{./../notes/figures/combo.png}
@@ -653,15 +664,50 @@ we reach the UHF sollution. When we take only unpaired electrons as the active s
     \label{fig:combo}
   \end{figure}
 \end{center}
+
 For comparison we plotted all the stretches in one plot, Figure \ref{fig:combo}. Here we can see that they all describe short bond lengths correctly, but as the internuclear distance
 increases, there are deviations visible. As one would expect, the CUHF energy is able to describe short bond lengths as correctly as both RHF and UHF. While RHF deviates from the
 true physical value at long bon distances, we see that CUHF does follow the expected limits (going to zero at infinity) while keeping the symmetry intact. However we see that it still
 does not describe the actuall situation with a hundred percent accuracy.
+
+\subsection{$H_3$ stretch}
+\label{subsec:h3}
+We will now discuss our model system, the trihydrogen molecule. This system is a ring of three hydrogen atoms, forming an equilateral triangle.
+This system is an open shell system, as stated before, with two alpha electrons and one beta electron. It can not be described using RHF, since RHF needs closed shell systems to work properly.
+THe stretch was considered as follows. We will extend all the bonds by the same amount. So the molecule will remain an equilateral triangle at all times. For UHF we have plotted
+the result in figure \ref{fig:uhf_h3}.
+\begin{center}
+  \begin{figure}[h]
+    \includegraphics[width=\linewidth]{./../notes/figures/uhf_h3.png}
+    \caption{The stretch for $H_3$ using UHF. The zero level was selected as the energy for three separate hydrogen atoms.}
+    \label{fig:uhf_h3}
+  \end{figure}
+\end{center}
+We can see that the energy reaches the limiting case that we want, however the spin contamination is rising. Another interesting factor in figure \ref{fig:uhf_h3} is that the curve 
+is not smooth. There is a clear gap at about two \si{\angstrom}ngstrom, which can also be observed in the spin contamination. We assume that this is where the molecule disintegrates
+into its comonents, namely three seperate hydrogen atoms. After that, the energy reaches the level of three separate hydrogen atoms. We can also take a look at the CUHF result in
+figure \ref{fig:cuhf_h3}.
+\begin{center}
+  \begin{figure}[h]
+    \includegraphics[width=\linewidth]{./../notes/figures/cuhf_mix_h3.png}
+    \caption{THe stretch for $H_3$ using CUHF.}
+    \label{fig:cuhf_h3}
+  \end{figure}
+\end{center}
+We see that the graph stops after three \si{\angstrom}ngstrom. This was done intentionally since the algorithm stopped converging at this distance. This data was omitted since 
+uncoverged data might be interpreted wrong. We can see that across the plotted data, the spin contamination remains zero. The curve is also more smooth than the UHF curve. Where 
+the UHF curve might suggest adisintegration, the CUHF curve rises above the level of three separate hydrogens. When we consider the constraint we have introduced this is hardly
+surprising. We have said that there are certain orbitals that have to be doubly occupied, as layed out in subsections \ref{subsec:spinconttheory} and \ref{subsec:cuhftheory}.
+This is off course something we can not maintain at very long bondlenghts. Physically we could state that if we were to pull the hydrogen atoms appart far enough, they would go 
+their separate ways, since this would be the more energetically stable sollution, instead of trying to maintain the bonds across such large distances. It is then reasonable that
+the energy would rise as we continue to enforce this constraint.
+
 \subsection{CIS results}
 \label{subsec:cis}
 We will compare the CIS results for $H_3$ as generated by our implementation and the one used by psi4 and GQCP. GQCP will generate the data for CUHF and UHF and Psi4 will generate
 the data for ROHF. In $H_3$ we can consider nine excitations in total, so when we include the ground state, we should have ten states in total. We can take a closer look at
 \ref{fig:h3_cis}.
+
 \begin{center}
   \begin{figure}[h]
     \includegraphics[width=\linewidth]{./../notes/figures/h3_cis.png}
@@ -669,8 +715,10 @@ the data for ROHF. In $H_3$ we can consider nine excitations in total, so when w
     \label{fig:h3_cis}
   \end{figure}
 \end{center}
+
 When we look at the UHF energies, we can effectively count the ten values we expect. In CUHF we only count eight energies. It seems that we have some degeneracies in the CUHF
 wave function. We can take a look at the table \ref{tab:excits}.
+
 \begin{table}[h]
   \caption{The electronic excitation energies of $H_3$ in STO-3G basis. The energy is given in Hartree.}
   \label{tab:excits}
@@ -704,7 +752,8 @@ obey the constraint as well. However, something odd might be noticed here. The l
   \end{tabular}
 \end{table}
 This data was verified using the GQCG library. This appears very odd, since Brillouin's theorem clearly states that the ground state expectation value over the Hamiltonian
-does not mix with the first order excited states. Somehow Brillouins theorem seems not to hold in CUHF, and UHF as well for that matter. Now we need to compare it to ROHF theory.
+does not mix with the first order excited states. Somehow Brillouins theorem seems not to hold in CUHF, and UHF as well for that matter. This clearly is a contradiction of what we 
+said in the theory section. Since we used the theorem, it can not be invalid now. The code needs to be updated. Now we need to compare it to ROHF theory.
 The Psi4 reference data for ROHF generates two states, one of which is the ground state. The energies are given in table \ref{tab:ROHF}.
 \begin{table}[h]
   \caption{Electronic excitation energies of $H_3$ in ROHF according to psi4. The energy is given in Hartree.}
