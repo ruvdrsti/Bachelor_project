@@ -182,30 +182,30 @@
 \section{Introduction}
 
 \paragraph*{}
-When thinking about chemistry, one always thinks in terms of atoms, that are bonded together in molecules. In order to correctly predict the behaviour of
-thes entities we will need to know what they look like. How are the atoms aranged in a molecule? Why are they arranged in this way? The answer to these
+When thinking about chemistry, one always thinks in terms of atoms, that are bonded together in molecules. In order to correctly predict the behavior of
+these entities we will need to know what they look like. How are the atoms arranged in a molecule? Why are they arranged in this way? The answer to these
 questions lies in the Schrödinger equation, \eqref{eq:erwin}.
 
 \begin{equation}\label{eq:erwin}
   \hat{H}\Psi = E\Psi
 \end{equation}
 
-All the properties of a molecule are linked ot the wave function $\Psi$. The Schrödinger equation allows us to calculate this wave functions energy $E$ using an operator
-know as the Hamiltonian. In its full form it can be see in equation \eqref{eq:ham}\cite{Szabo1996}.
+All the properties of a molecule are linked to the wave function $\Psi$. The Schrödinger equation allows us to calculate this wave functions energy $E$ using an operator
+know as the Hamiltonian. In its full form it can be seen in equation \eqref{eq:ham}\cite{Szabo1996}.
 
 \begin{equation}\label{eq:ham}
   \hat{H} = -\sum_{i=1}^N\frac{1}{2}\nabla^2_i - \sum_{A=1}^M \frac{1}{2M_A}\nabla^2_A - \sum_{i=1}^N\sum_{A=1}\frac{Z_A}{r_{iA}} + \sum_{i=1}^N\sum_{j>i}^N\frac{1}{r_{ij}} +
   \sum_{A=1}^M\sum_{B>A}^M\frac{Z_A Z_B}{R_{AB}}
 \end{equation}
 
-The hamiltonian contains the kinetic energy of the $N$ electrons $i$ and the $M$ nuclei $A$. It also accounts for the electrostatic potential betwee the nuclei and the electrons.
+The Hamiltonian contains the kinetic energy of the $N$ electrons $i$ and the $M$ nuclei $A$. It also accounts for the electrostatic potential between the nuclei and the electrons.
 Also note that this Hamiltonian was written down using atomic units. However, the Schrödinger equation is not exactly solvable for systems that contain more than one electron, i.e.
-allmost all chemically interesting systems. The reason for this is the repulsion that exists between two electrons. This term makes it impossible to solve the Schrödinger equation
+almost all chemically interesting systems. The reason for this is the repulsion that exists between two electrons. This term makes it impossible to solve the Schrödinger equation
 analytically for most systems. We can indeed see that the term $r_{ij}$ requires the position of both electrons to be known at the same time. However, since to know the position of
-one electron one needs to know where the other electron is and vice versa, we can never come to an exact sollution. In more mathematical terms, we can not separate the variables
-in order to solve the differential equation that the Schrödinger equation is. That is why we need to make approximations. In this paper we will make use of the Hartree-Fock method,
+one electron one needs to know where the other electron is and vice versa, we can never come to an exact solution. In more mathematical terms, we cannot separate the variables
+in order to solve the differential equation that the Schrödinger equation is. That is why we need to make approximations. In this paper, we will make use of the Hartree-Fock method,
 which accounts for this electronic repulsion by means of a Coulomb operator, equation \eqref{eq:coulomb}, which accounts for the electronic repulsion between electrons and an exchange
-operator, equation \eqref{eq:exchange}, which accounts for stabilisation between electrons with the same spin.
+operator, equation \eqref{eq:exchange}, which accounts for stabilization between electrons with the same spin.
 
 \begin{equation}\label{eq:coulomb}
   \hat{J}_j\psi_i(1) = \int\psi_j(2)^*\boldsymbol{r}_{12}^{-1}\psi_j(2)d2 \psi_i(1)
@@ -226,7 +226,7 @@ in energy \eqref{eq:hamexp}.
 
 In first order we say that if the energy of the wave function $\psi$ is a minimum, we can vary it slightly. The expectation value over the Hamiltonian will not vary,
 so $\delta E = 0$. This statement even holds when the wave function $\psi$ is not an eigenfunction of $\hat{H}$. A necessary condition, since the wave functions as generated
-by teh Hartree-Fock method are not eigenfunctions of the Hamiltonian.
+by the Hartree-Fock method are not eigenfunctions of the Hamiltonian.
 This approximation might take us a long way in the right direction, but does it take us all the way there? Here we need to introduce different methods within the
 Hartree-Fock theory. Restricted Closed shell Hartree-Fock (RHF) forces the electrons into the same orbitals, thus creating doubly occupied orbitals. Even though this
 picture is a chemically logical one, since in chemistry we think about electrons in pairs, physically there is no obligation for the electrons to exist in these pairs.
@@ -235,7 +235,7 @@ electrons that do not exist in pairs. However, we see that the wave function in 
 the wave function some extra freedom, yet the chemical intuition is tossed out of the window.
 \paragraph*{}
 We know that in nature there is a lot of symmetry. Molecules themselves can also contain a lot of symmetry. This symmetry is reflected in its Hamiltonian and its wave function.
-If we aspire to create somthing that is close to reality, but end up with something that does not have any real symmetry, we can do better. The important relation here is that
+If we aspire to create something that is close to reality, but end up with something that does not have any real symmetry, we can do better. The important relation here is that
 the Hamiltonian commutes with the $\hat{S}^2$ operator, meaning that these operators share a complete set of eigenfunctions. The $\hat{S}^2$ operator is important since it is
 directly linked to quantum numbers $S$ and $M_S$\cite{Acke2019}. These quantum numbers are linked to the symmetry. The eigenfunctions of the Hamiltonian are always eigenfunctions
 of $\hat{S}^2$, which is displayed by the commutator in equation \eqref{eq:commut}.
@@ -244,26 +244,25 @@ of $\hat{S}^2$, which is displayed by the commutator in equation \eqref{eq:commu
   [\hat{H}, \hat{S}^2] = 0
 \end{equation}
 
-However, in our approxiamtion this commutator micht not hold. Indeed, since the wave functions are not eigenfunctions of the Hamiltonian equation \eqref{eq:commut} is not enforced.
+However, in our approximation this commutator might not hold. Indeed, since the wave functions are not eigenfunctions of the Hamiltonian equation \eqref{eq:commut} is not enforced.
 Looking back at equation \eqref{eq:hamexp} and the constraint we applied, namely that $\delta E$ should
 remain zero, one can wonder whether equation \eqref{eq:commut} also still holds. Is the slightly varied wave function still an eigenfunction of the symmetry operator as well?
-This leads us to Löwdins symmetry dilemma \cite{Lowdin1963}. When we enforce the symmetry and the energy constraint at the same time, the minimum energy we reach is not the
-global minimum. However when we drop the symmetry constraint and only enforce the energy, we will reach a lower energy, but will lose all the information with regard to the
-symmetry of the system. One might even state that equation \eqref{eq:commut} is no longer a hard rule, as it it for the true wave functions, but a goal, something we would like to
+This leads us to Löwdin's symmetry dilemma \cite{Lowdin1963}. When we enforce the symmetry and the energy constraint at the same time, the minimum energy we reach is not the
+global minimum. However, when we drop the symmetry constraint and only enforce the energy, we will reach a lower energy, but will lose all the information with regard to the
+symmetry of the system. One might even state that equation \eqref{eq:commut} is no longer a hard rule, as it is for the true wave functions, but a goal, something we would like to
 recover besides the energy.
 \paragraph*{}
-We need some kind of theory to bring the best of both worlds together. One one side, we have the chemical intution in the restricted wave functions, on the other the lower
-energy in the unrestricted wave functions. Roothaans Restricted Open Shell theory (ROHF)\cite{Roothaan1960} was an early attempt. As this approach is tedious and hard to implement,
-it is not very popular\cite{Scuseria2010, Bally2008}. However, more recently Tsuchimochi and Scuseria presented their Constrained Unrestricted Hartree Fock theory (CUHF)
+We need some kind of theory to bring the best of both worlds together. On one side, we have the chemical intuition in the restricted wave functions, on the other the lower
+energy in the unrestricted wave functions. Roothaan's Restricted Open Shell theory (ROHF)\cite{Roothaan1960} was an early attempt. As this approach is tedious and hard to implement,
+it is not very popular\cite{Scuseria2010, Bally2008}. However, more recently Tsuchimochi and Scuseria presented their Constrained Unrestricted Hartree-Fock theory (CUHF)
 \cite{Scuseria2010}. A lot has been said
-already about this method; Scuseria and Tsuchimochi themselves expanded on it in a follow up paper\cite{Scuseria2011}. Plakhutin discussed some defects in the theory with respect to
+already about this method; Scuseria and Tsuchimochi themselves expanded on it in a follow-up paper\cite{Scuseria2011}. Plakhutin discussed some defects in the theory with respect to
 Koopmans theorem and ionisations\cite{Plakhutin2014}. In CUHF we constrain the spin-contamination to zero. In this work we will use the CUHF wave function as a reference for
 Single Excitation Configuration Interaction (CIS). We will generate the single excitation energies for the CUHF wave function and compare them to the CIS excitations using
 ROHF and UHF references of the same system.
 \paragraph*{}
-In this work we will start by introducting spin-contamination and the theory behind it. We will also give an overview of CUHF theory. Then we will discuss CIS and derive some
-of the important equations. Next we will look at spin-contamination in an actuall system to stress the importance of finding ways around it. Then we will discuss the CIS results
-for CUHF, ROHF and UHF.
+In this work we will start by introducing spin-contamination and the theory behind it. We will also give an overview of CUHF theory. Then we will discuss CIS and derive some important 
+equations. Next we will look at spin-contamination in an actual system to stress the importance of finding ways around it. Then we will discuss the CIS results for CUHF, ROHF and UHF.
 \section{Theory}
 \subsection{Spin-Contamination}
 \label{subsec:spinconttheory}
@@ -274,7 +273,7 @@ In general one can define the expectation value of $\hat{S}^2$ like equation \eq
 \end{equation}
 
 This equation is written down for a system with $p$ alpha electrons $i$ and $q$ beta electrons $j$. The $S$ matrix contains the overlap between orbitals in the Molecular Orbital (MO)
-basis. $S_z$ is the eigenvalue of the $\hat{S}_z$ operator. When the overlap is diagonal in this MO basis, the last terms vanish and we are left with $S_z(S_z + 1)$.
+basis. $S_z$ is the eigenvalue of the $\hat{S}_z$ operator. When the overlap is diagonal in this MO basis, the last terms vanish, and we are left with $S_z(S_z + 1)$.
 Spin-contamination is then defined as equation \eqref{eq:spincont}.
 
 \begin{equation}\label{eq:spincont}
@@ -291,10 +290,10 @@ eigenfunction of $\hat{S^2}$, as we have seen before. We lose a quantum number a
 \end{equation}
 
 In this equation, $\gamma^{\alpha}$ and $\gamma^\beta$ are the one particle density matrices. In the Natural Orbital (NO) basis, these matrices are block diagonal
-\cite{Scuseria2010}, with blocks that can be seen in equations \eqref{eq:gammaa} and \eqref{eq:gammab}, where i corresponds to a certain closed shell orbital. When there are more
-alpha electrons then beta electrons,
+\cite{Scuseria2010}, with blocks that can be seen in equations \eqref{eq:gammaa} and \eqref{eq:gammab}, where $i$ corresponds to a certain closed shell orbital. When there are more
+alpha electrons than beta electrons,
 the $\gamma^\alpha$ also contains a block that is a unity matrix with dimensions $n\times n$ where $n$ is the amount of singly occupied orbitals. In $\gamma^\beta$ this block is a
-zero matrix of the same dimensions. For clarity we will always assume that the amount of alpha electrons is larger than the amount of beta electrons. The results hold for any system
+zero matrix of the same dimensions. For clarity, we will always assume that the amount of alpha electrons is larger than the amount of beta electrons. The results hold for any system
 where $N_a \geq N_b $ \cite{Scuseria2010}.
 
 \begin{subequations}
@@ -336,8 +335,8 @@ These matrices can now be written in their full form, as can be seen in equation
 \end{subequations}
 
 $I_n$ is noted as the unity matrix in $n$ dimensions, where $n$ is the number of unpaired electrons. We have $N_{cp}$ closed shell orbitals, each corresponding with a doubly occupied
-orbital. In our assumprion that there are more alpha electrons than beta electrons, $N_{cp}$ is also equal to the amount of beta electrons. 
-In these equations $n_i$ is the occupation of orbital i and $m_i = \sqrt{n_i - n_i^2}$\cite{Scuseria2010}. We can the define the spin density matrix 
+orbital. In our assumption that there are more alpha electrons than beta electrons, $N_{cp}$ is also equal to the amount of beta electrons. 
+In these equations $n_i$ is the occupation of orbital i and $m_i = \sqrt{n_i - n_i^2}$\cite{Scuseria2010}. We can then define the spin density matrix 
 $M = (\gamma^\alpha - \gamma^\beta)/2$. The matrix subtraction leaves us with blocks in the $M$ matrix that correspond to equation \eqref{eq:mmatrix}.
 
 \begin{equation}\label{eq:mmatrix}
@@ -372,20 +371,20 @@ In an additional step, we can use algebra to find equation \eqref{eq:spincontfin
   \delta_s = 4\sum^{N_{cp}}_i m_i^2
 \end{equation}
 
-Now if we want to make the spin contamination zero, we have to eneforce double occupation or no occupation at all. The $N_{cp}$ are the closed shell orbitals. We see here that in
+Now if we want to make the spin contamination zero, we have to enforce double occupation or no occupation at all. The $N_{cp}$ are the closed shell orbitals. We see here that in
 the closed shell itself, we can no longer have a difference between alpha and beta orbitals. This will be the constraint that gives us the CUHF method. We could make the observation
-that in Roothaan's original paper, the start was very simliar, as can be seen in equation \eqref{eq:rohfwf}\cite{Roothaan1960}.
+that in Roothaan's original paper, the start was very similar, as can be seen in equation \eqref{eq:rohfwf}\cite{Roothaan1960}.
 
 \begin{equation}\label{eq:rohfwf}
   \Phi = (\phi_C,\phi_O)
 \end{equation}
 
-Roothaan starts his exposition on open shell systems with this equation, representing ithe total wave function $\Phi$ as a combination of a closed shell system $\phi_C$ and 
+Roothaan starts his exposition on open shell systems with this equation, representing the total wave function $\Phi$ as a combination of a closed shell system $\phi_C$ and 
 an open shell system $\psi_O$
 
-\subsection{Constrained Unrestricted Hartree Fock}
+\subsection{Constrained Unrestricted Hartree-Fock}
 \label{subsec:cuhftheory}
-When talking about CUHF, there is more then one way to make sure that the spin-contamination remains zero. Scuseria and Tsuchimochi will enforce the constraint in the way
+When talking about CUHF, there is more than one way to make sure that the spin-contamination remains zero. Scuseria and Tsuchimochi will enforce the constraint in the way
 we mentioned in the last section, where they allow only doubly occupied orbitals in the closed shell\cite{Scuseria2010}. It can be shown that the normal UHF energy can be 
 constructed by adding a correlation energy term to the closed shell energy. These terms can be seen in equations \eqref{eq:cseng} and \eqref{eq:correng}\cite{Savin2010}.
 
@@ -435,11 +434,11 @@ stand for closed shell, open shell and virtual respectively.
   \end{bmatrix}
 \end{equation}
 
-We apply the contraint in the \textit{vc} and \textit{cv} blocks. We can do this by stating that $[\tilde{F}^\sigma, \gamma^\sigma] = 0$, where $\sigma$ can equal either $\alpha$
+We apply the constraint in the \textit{vc} and \textit{cv} blocks. We can do this by stating that $[\tilde{F}^\sigma, \gamma^\sigma] = 0$, where $\sigma$ can equal either $\alpha$
 or $\beta$. This basically means that the density matrices should share a complete set of eigenfunctions with the Fock matrices. This, in turn, means that the Fock matrices should be
-diagonal at self consistent field (SCF) conditions in the NO basis. By subtracting the two conditions and algebraically working out the result we find that at SCF conditions
+diagonal at self-consistent field (SCF) conditions in the NO basis. By subtracting the two conditions and algebraically working out the result we find that at SCF conditions
 $\Delta^{CUHF}_{cv}$ has to be equal to zero. This means that $\tilde{F}_{cv} = F_{cv}^{cs}$\cite{Scuseria2010}. For every other block, the CUHF Fock matrix equals the UHF Fock matrix,
-so the $\Delta^{CUHF}$ equals the $\Delta^{UHF}$. When we enforce this contraint during every iteration, we will decrease the spin contamination. This does entail that we will need
+so the $\Delta^{CUHF}$ equals the $\Delta^{UHF}$. When we enforce this constraint during every iteration, we will decrease the spin contamination. This does entail that we will need
 to transform the $\Delta^{UHF}$ to NO basis every time to enforce this constraint. This transformation will consist of two steps. First we need to transform the density matrix to
 an orthonormal basis, since AO basis is often not orthonormal. (Indeed, if it were, we would not expect any bonds to form.) We choose MO basis. The MO's are defined by the
 eigenvectors of the Fock operator, we will use the closed shell Fock operator. Given the Roothaan equation \eqref{eq:roothaan}.
@@ -454,22 +453,22 @@ With a simple transformation, we can see that the Fock operator will become diag
   C^T F C = \epsilon C^T S C
 \end{equation}
 
-This is true, since $C^T S C$ it the unity matrix if the C matrix holds the eigenvectors of the generalised eigen value problem. To transform to NO basis, we will also need the
-density matrix in the MO basis. This is not trivial, since the density matrix is ussualy defined by the coeficcient matrices C. To transform the density matrix $P$, we will need
+This is true, since $C^T S C$ it the unity matrix if the C matrix holds the eigenvectors of the generalized eigen value problem. To transform to NO basis, we will also need the
+density matrix in the MO basis. This is not trivial, since the density matrix is usually defined by the coefficient matrices C. To transform the density matrix $P$, we will need
 to do a slightly different transformation. This transformation is given in equation \eqref{eq:dtrans}\cite{Declercq2020}.
 
 \begin{equation}\label{eq:dtrans}
   P^{MO} = C^{-1}P^{AO}(C^{-1})^T
 \end{equation}
 
-We can then calculate the eigenvalues and subject the $\Delta^{UHF}$ to these transformations \eqref{eq:fulltrans}, we have easy acces to the \textit{cv} and \textit{vc} blocks.
+We can then calculate the eigenvalues and subject the $\Delta^{UHF}$ to these transformations \eqref{eq:fulltrans}, we have easy access to the \textit{cv} and \textit{vc} blocks.
 
 \begin{equation}\label{eq:fulltrans}
   \Delta_{NO}^{UHF} = V^{-1} C^T \Delta^{UHF}_{AO} C V^{-1}
 \end{equation}
 
-The $V$ matrix containts the coefficients of the eigenvectors of the $P$ matrix. Now we just switch the required blocks to zero, backtranform and add the now $\Delta$ to the closed
-shell Fock matrix. To summarize this procedure we can look a the form of the Fock matrices in equations \eqref{eq:cuhfa} and \eqref{eq:cuhfb}.
+The $V$ matrix contains the coefficients of the eigenvectors of the $P$ matrix. Now we just switch the required blocks to zero, back transform and add the now $\Delta$ to the closed
+shell Fock matrix. To summarize this procedure we can look at the form of the Fock matrices in equations \eqref{eq:cuhfa} and \eqref{eq:cuhfb}.
 
 \begin{subequations}
   \begin{align}
@@ -480,22 +479,22 @@ shell Fock matrix. To summarize this procedure we can look a the form of the Foc
   \end{align}
 \end{subequations}
 
-Where $\Delta^{CUHF}$ is either zero or $\Delta^{UHF}$ depending on wheter you are looking at the \textit{cv} blocks or at the other blocks. Here we can also clearly see the 
-difference with ROHF theory. In his original paper, Roothaan goes trough great lenghts to ensure that there is only one Fock matrix instead of separate ones for the alpha and 
+Where $\Delta^{CUHF}$ is either zero or $\Delta^{UHF}$ depending on whether you are looking at the \textit{cv} blocks or at the other blocks. Here we can also clearly see the 
+difference with ROHF theory. In his original paper, Roothaan goes through great lengths to ensure that there is only one Fock matrix instead of separate ones for the alpha and 
 beta orbitals\cite{Roothaan1960}. This makes it rather difficult to interpret results\cite{Scuseria2010}. However, Scuseria and Tsuchimochi keep the separate matrices, like in a 
 normal UHF approach. This means that we will end up with a slightly different picture from the ROHF picture, but the wave function and its energy remain the same\cite{Scuseria2010}. 
 
 \subsection{Configuration interaction}
 \label{subsec:cistheory}
 
-The Hartree Fock approximation gives us an initial guess for the energy and the wavefunction. However, it can be improved upon. These methods are called post Hartree-Fock methods.
+The Hartree-Fock approximation gives us an initial guess for the energy and the wave function. However, it can be improved upon. These methods are called post Hartree-Fock methods.
 The difference in energy between the two methods is called the correlation energy \eqref{eq:Ecorr}.
 
 \begin{equation}\label{eq:Ecorr}
   E_{corr} = \mathcal{E}_0 - E_0
 \end{equation}
 
-Here $E_0$ is the Hartee-Fock energy and $\mathcal{E}_0$ it the post Hartree-Fock energy. There are various approaches to post Hatree-Fock methods. We will be looking a little closer
+Here $E_0$ is the Hartree-Fock energy and $\mathcal{E}_0$ it the post Hartree-Fock energy. There are various approaches to post Hartree-Fock methods. We will be looking a little closer
 at configuration interaction. The concept is fairly straightforward. If $\Psi_0$ is a good approximation of the wave function $\Phi_0$, we know that we can make a better approximation
 using a linear combination of excited states \eqref{eq:lincomb}\cite{Szabo1996}. If all these states are called configurations, they will interact, hence the name configuration
 interaction, or CI for short.
@@ -505,7 +504,7 @@ interaction, or CI for short.
 \end{equation}
 
 With regard to this new wave function $\Phi_0$ we can observe some interesting phenomena. When we try to get the energy expectation value of this function, we can write it in matrix
-form, where each row and collumn correspond to a certain excited state. When we look at single excitations, so at stats $\Psi_r^a$ where the electron from orbital $r$ has been
+form, where each row and column correspond to a certain excited state. When we look at single excitations, so at stats $\Psi_r^a$ where the electron from orbital $r$ has been
 excited to orbital $a$, we can write equation \eqref{eq:overlapsingle}\cite{Szabo1996}.
 
 \begin{equation}\label{eq:overlapsingle}
@@ -522,7 +521,7 @@ prove equation \eqref{eq:doubles}\cite{Szabo1996}. The correlation energy is onl
   E_{corr} = \sum_{i<j, r<s} C_{ij}^{rs}\langle \Psi_{0} |\hat{H}|\Psi_{ij}^{rs}\rangle
 \end{equation}
 
-In CIS we are only interested in the first order excitations. This might seem odd, since we do not excpect a more stable wave function. However, it can give us information about the
+In CIS, we are only interested in the first order excitations. This might seem odd, since we do not expect a more stable wave function. However, it can give us information about the
 excited states and the excitation energies that come with them. Now we are interested in the expectation values over the Hamiltonian of all the exited states, so we need an expression
 for $\langle \Psi_r^a |\hat{H}| \Psi_s^b \rangle$. There are four different situations that we need to discuss here\cite{Sherrill1996}. The first scenario is an excitation where
 $a \neq b$ and $r \neq s$. The only term that will remain in that case is $\langle aj || ib \rangle$. Another case is when $r = s$ but $a \neq b$. Then the matrix element can be
@@ -538,7 +537,7 @@ Another case, where $r \neq s$ and $a = b$ we can write equation \eqref{eq:exp2}
   \langle \Psi_r^a|\hat{H}|\Psi^a_s \rangle = -h_{rs} - \sum_{k \in \{\Psi_0 + a\}} \langle ak || bk \rangle = -F_{rs} - \langle ra || sa \rangle
 \end{equation}
 
-Finally when both $a = b$ and $r = s$ we can find \eqref{eq:exp3}.
+Finally, when both $a = b$ and $r = s$ we can find \eqref{eq:exp3}.
 
 \begin{multline}\label{eq:exp3}
   \langle \Psi^a_r|\hat{H}|\Psi^a_r \rangle = \sum_{k \in \Psi_0}h_{kk} + \frac{1}{2}\sum_{k,l \in \Psi_0} \langle kl||kl \rangle - h_{rr} + h_{aa} \\ - \sum_{k \in \Psi_0} \langle
@@ -552,17 +551,17 @@ We can pull all these equations into one general equation \eqref{eq:matrixelemen
 \end{equation}
 
 We notice that $E_0$ is added along the diagonal. Since we know that the trace of a matrix is equal to the sum of its eigenvalues, we can subtract $E_0$ from the diagonal and just
-add it to every eigenvalue at the end. At self consistent field conditions the Fock operator equals $F_{ij} = \epsilon_i\delta_{ij}$, so Equation \eqref{eq:matrixelement} can be
+add it to every eigenvalue at the end. At self-consistent field conditions the Fock operator equals $F_{ij} = \epsilon_i\delta_{ij}$, so Equation \eqref{eq:matrixelement} can be
 simplified to equation \eqref{eq:simple}.
 
 \begin{equation}\label{eq:simple}
   \langle \Psi_r^a|\hat{H}|\Psi_s^b \rangle = (\epsilon_a - \epsilon_r)\delta_{rs}\delta_{ab} + \langle as || jb \rangle
 \end{equation}
 
-The $\epsilon$ values correspond to the orbital energies. If we now diagonilize this matrix we end up with the excitation energies and contributions of the single excited states as
-eigenfunctions. However, since electrons in alpha orbitals can be excited to beta orbitals, which is especcially important in UHF, we have to do some extra steps. Indeed, when
-calculatig the eigenfunctions of the Fock metrices we get separate coefficient matrices for alpha and beta orbitals. We will need all these orbitals together to get the complete
-CIS picture. We will have to effectively double te dimensions of the problem. This becomes a bit clearer by looking at equation \eqref{eq:matrixelement}. In this equation for example
+The $\epsilon$ values correspond to the orbital energies. If we now diagonalize this matrix we end up with the excitation energies and contributions of the single excited states as
+eigenfunctions. However, since electrons in alpha orbitals can be excited to beta orbitals, which is especially important in UHF, we have to do some extra steps. Indeed, when
+calculating the eigenfunctions of the Fock matrices we get separate coefficient matrices for alpha and beta orbitals. We will need all these orbitals together to get the complete
+CIS picture. We will have to effectively double the dimensions of the problem. This becomes a bit clearer by looking at equation \eqref{eq:matrixelement}. In this equation for example
 $a$ and $b$ do not have the same spin. However, the expression $F_{ab}$ implies that there is an overlap element in the Fock matrix between two orbitals that can have a different spin.
 We can see that the normal alpha and beta Fock matrices will not be enough. We will need a Fock matrix that accounts for both alpha and beta electrons, and has the respective orbitals
 as eigenfunctions. A block diagonal matrix like equation \eqref{eq:blockfock} is a logical choice. Its eigenvalues will be the combination of the sets of eigenvalues of the blocks, 
@@ -575,7 +574,7 @@ the same goes for its eigenvectors.
   \end{bmatrix}
 \end{equation} 
 
-When looking at equation \eqref{eq:matrixelement} we see that we also need the so called two electron integrals. This is in fact a four dimensional matrix that holds the 
+When looking at equation \eqref{eq:matrixelement} we see that we also need the so-called two electron integrals. This is in fact a four dimensional matrix that holds the 
 interelectronic repulsion in AO basis. We also need to double its dimensions in order to use it for CIS calculations. Since this is an $n\times n\times n \times n$ 
 matrix, we will need to use the Kronecker product \eqref{eq:kron}.
 
@@ -583,7 +582,7 @@ matrix, we will need to use the Kronecker product \eqref{eq:kron}.
   R' = I_2 \otimes (I_2 \otimes R)^T
 \end{equation}
 
-The $R'$ matrix now has double the dimensions of the original R matrix. R in this case is the two electron overlap matrix. This is necesarry for the two electron integrals, since 
+The $R'$ matrix now has double the dimensions of the original R matrix. R in this case is the two electron overlap matrix. This is necessary for the two electron integrals, since 
 they only contain half the orbitals. These integrals are in the original basis, but we need to account for all possible excitations, meaning that we have to account for alpha and 
 beta orbitals at the same time. Since the two electron integrals are given in AO basis, they still need to be transformed to MO basis, since we want the Fock operators to be 
 diagonal in Equation \eqref{eq:matrixelement}. To do this transformation we will need the coefficient matrix that holds the eigenfunction of the matrix in equation 
@@ -591,16 +590,16 @@ diagonal in Equation \eqref{eq:matrixelement}. To do this transformation we will
 
 \section{Methodology}
 \label{sec:method}
-The RHF, UHF and CUHF algorythms were implemented in the programming language python. We used the packages numpy, scipy and psi4. Numpy and scipy deliver tools for matrix manipulation
+The RHF, UHF and CUHF algorithms were implemented in the programming language python. We used the packages NumPy, SciPy and psi4. NumPy and SciPy deliver tools for matrix manipulation
 and other linear algebra calculations that we had to do. Psi4 is an open source quantum chemistry package allows us to calculate certain properties of the system given a molecular
 geometry. These properties include nuclear repulsion, kinetic energy of the electrons among others. It also allows us to generate reference data for the molecular energy in RHF, UHF
-and CUHF. It also features a method for calculating ROHF energies. They also present the possiblility to do configuration interaction for RHF and ROHF. The CIS reference data for
+and CUHF. It also features a method for calculating ROHF energies. They also present the possibility to do configuration interaction for RHF and ROHF. The CIS reference data for
 UHF and CUHF were generated using the GQCP library.
 \paragraph*{}
-For CIS $H_3$ will be used as a model system. Firstly because it it a simple system containing few electrons. This means that we do not need to track a lot of possible excitations, so
+For CIS $H_3$ will be used as a model system. Firstly because it is a simple system containing few electrons. This means that we do not need to track a lot of possible excitations, so
 the focus can shift towards the interpretation. For this same reason we will pick the STO-3G basis set. This set provides us with the minimal amount of basis functions needed to
 describe the system. This again makes interpretation the key point. We also note that $H_3$ is an open shell system, so that our results might be extrapolated to other open shell
-sytems.
+systems.
 \section{Results and discussion}
 \label{sec:results}
 
@@ -608,7 +607,7 @@ sytems.
 \label{subsec:h2}
 To demonstrate the impact of spin contamination and the importance of finding methods to overcome it, we will discuss the hydrogen gas dissociation problem\cite{Szabo1996}. Hydrogen
 gas is a molecule that can be described perfectly by RHF. However, when we stretch the bond the system evolves to a state of separate hydrogen atoms. These can of course not be
-described by RHF and so we expect the RHF energy to be totaly unrealistic at large bond lengths. This can be observed in figure \ref{fig:rhfstretch}.
+described by RHF, and so we expect the RHF energy to be totally unrealistic at large bond lengths. This can be observed in figure \ref{fig:rhfstretch}.
 
 \begin{center}
   \begin{figure}[h]
@@ -618,15 +617,15 @@ described by RHF and so we expect the RHF energy to be totaly unrealistic at lar
   \end{figure}
 \end{center}
 
-We can see that the RHF energy does not behave as we would expect it to. Indeed, we expect the energy to evolve towards the energy of two seperate hydrogen atoms, which clearly does
+We can see that the RHF energy does not behave as we would expect it to. Indeed, we expect the energy to evolve towards the energy of two separate hydrogen atoms, which clearly does
 not happen. This is because the physical picture we are seeing is intrinsically invalid. The RFH algorithm forces the electrons into the same orbital, the bonding orbital between
 the two nuclei. However, when the bond length increases, we expect the electrons to each be in their own respective orbitals around a single nucleus. At a distance of infinity, they
 should find themselves in a normal hydrogen s orbital. RHF is too limited and does not allow this. Worth noting is that the spin contamination remains zero all the way. This means
 that the wave function is an eigenfunction of the $\hat{S}^2$\cite{Scuseria2011}. \\
 We want to improve this image by using UHF.  When we drop the constraint that the alpha and beta orbitals must be identical we can indeed expect the energy to behave like we expect
 it to. But since $H_2$ is a closed shell system we need to do a little manipulation before starting the algorithm. When we would do a core guess, so start from the molecular
-Hamiltonian as an approach for two Fock matrices, we would still find the restricted sollution. To counteract this we will need to do a mixed guess. For this we change the initial
-guess for the beta electrons by mixing the Highest Occupied Molecular Orbital (HOMO) and the Lowest Unoccupied Molecular Orbital (LUMO) as a linear combination. This proces is also
+Hamiltonian as an approach for two Fock matrices, we would still find the restricted solution. To counteract this we will need to do a mixed guess. For this we change the initial
+guess for the beta electrons by mixing the Highest Occupied Molecular Orbital (HOMO) and the Lowest Unoccupied Molecular Orbital (LUMO) as a linear combination. This process is also
 known as symmetry breaking. The result can be seen in \ref{fig:uhfstretch}.
 
 \begin{center}
@@ -637,11 +636,11 @@ known as symmetry breaking. The result can be seen in \ref{fig:uhfstretch}.
   \end{figure}
 \end{center}
 
-This result is physically more acurate. We see that the system does evolve towards two separate hydrogen atoms. However, the spin contamination is rising, and after a certain point
+This result is physically more accurate. We see that the system does evolve towards two separate hydrogen atoms. However, the spin contamination is rising, and after a certain point
 reaches the value one. This means that the wave function does no longer have the right symmetry. And as stated before, even if we cannot calculate the exact wave function we do know
-what symmetries it should have. Even though we might have a lower energy energy, the wave function is not as good as an approximation as it could be\cite{Scuseria2013}. \\
-This is a prime example of the aformentioned symmetry dilemma by Löwdin. If we want the lowest possible energy, we lose the symmetry. If we want to keep the symmetry, we will not
-have the lowest energy. Now what would happen if we applied CUHF to the dissociation problem? This result has been plotted in \ref{fig:cuhfstretch}.
+what symmetries it should have. Even though we might have a lower energy, the wave function is not as good as an approximation as it could be\cite{Scuseria2013}. \\
+This is a prime example of the aforementioned symmetry dilemma by Löwdin. If we want the lowest possible energy, we lose the symmetry. If we want to keep the symmetry, we will not
+have the lowest energy. Now what would happen if we applied CUHF to the dissociation problem? This result has been plotted in figure \ref{fig:cuhfstretch}.
 
 \begin{center}
   \begin{figure}[h]
@@ -651,11 +650,11 @@ have the lowest energy. Now what would happen if we applied CUHF to the dissocia
   \end{figure}
 \end{center}
 
-The CUHF picture is difficult to interpret. We see that the spin contamination remains zero. The energy seems to follow the RHF pattern (see also Figure \ref{fig:combo}) untill a
-certain point, then it starts to exponentially decline. Physically this seems like a logical behaviour, as it is now again evolving to two separate hydrogen atoms. We can also notice
-that the spin contamination is zero everywhere, so the symmetry of the sollution is also correct. For this plot a mixed guess was applied. In CUHF the mixed guess is done on the
-active space, wich consists the orbitals to which the constraints are not applied, i.e. the open shell\cite{Scuseria2011}. So when we would take the active space as all the electrons
-we reach the UHF sollution. When we take only unpaired electrons as the active space we see the ROHF sollution.
+The CUHF picture is difficult to interpret. We see that the spin contamination remains zero. The energy seems to follow the RHF pattern (see also figure \ref{fig:combo}) until a
+certain point, then it starts to exponentially decline. Physically this seems like a logical behavior, as it is now again evolving to two separate hydrogen atoms. We can also notice
+that the spin contamination is zero everywhere, so the symmetry of the solution is also correct. For this plot a mixed guess was applied. In CUHF the mixed guess is done on the
+active space, which consists the orbitals to which the constraints are not applied, i.e. the open shell\cite{Scuseria2011}. So when we would take the active space as all the electrons
+we reach the UHF solution. When we take only unpaired electrons as the active space we see the ROHF solution.
 
 \begin{center}
   \begin{figure}[h]
@@ -665,16 +664,16 @@ we reach the UHF sollution. When we take only unpaired electrons as the active s
   \end{figure}
 \end{center}
 
-For comparison we plotted all the stretches in one plot, Figure \ref{fig:combo}. Here we can see that they all describe short bond lengths correctly, but as the internuclear distance
+For comparison, we plotted all the stretches in one plot, Figure \ref{fig:combo}. Here we can see that they all describe short bond lengths correctly, but as the internuclear distance
 increases, there are deviations visible. As one would expect, the CUHF energy is able to describe short bond lengths as correctly as both RHF and UHF. While RHF deviates from the
-true physical value at long bon distances, we see that CUHF does follow the expected limits (going to zero at infinity) while keeping the symmetry intact. However we see that it still
-does not describe the actuall situation with a hundred percent accuracy.
+true physical value at long bond distances, we see that CUHF does follow the expected limits (going to zero at infinity) while keeping the symmetry intact. However, we see that it still
+does not describe the actual situation with a hundred percent accuracy.
 
 \subsection{$H_3$ stretch}
 \label{subsec:h3}
 We will now discuss our model system, the trihydrogen molecule. This system is a ring of three hydrogen atoms, forming an equilateral triangle.
-This system is an open shell system, as stated before, with two alpha electrons and one beta electron. It can not be described using RHF, since RHF needs closed shell systems to work properly.
-THe stretch was considered as follows. We will extend all the bonds by the same amount. So the molecule will remain an equilateral triangle at all times. For UHF we have plotted
+This system is an open shell system, as stated before, with two alpha electrons and one beta electron. It can not be described using RHF, since RHF needs closed-shell systems to work properly.
+The stretch was considered as follows. We will extend all the bonds by the same amount. So the molecule will remain an equilateral triangle at all times. For UHF, we have plotted
 the result in figure \ref{fig:uhf_h3}.
 \begin{center}
   \begin{figure}[h]
@@ -684,8 +683,8 @@ the result in figure \ref{fig:uhf_h3}.
   \end{figure}
 \end{center}
 We can see that the energy reaches the limiting case that we want, however the spin contamination is rising. Another interesting factor in figure \ref{fig:uhf_h3} is that the curve 
-is not smooth. There is a clear gap at about two \si{\angstrom}ngstrom, which can also be observed in the spin contamination. We assume that this is where the molecule disintegrates
-into its comonents, namely three seperate hydrogen atoms. After that, the energy reaches the level of three separate hydrogen atoms. We can also take a look at the CUHF result in
+is not smooth. There is a clear gap at about two Angstroms, which can also be observed in the spin contamination. We assume that this is where the molecule disintegrates
+into its components, namely three separate hydrogen atoms. After that, the energy reaches the level of three separate hydrogen atoms. We can also take a look at the CUHF result in
 figure \ref{fig:cuhf_h3}.
 \begin{center}
   \begin{figure}[h]
@@ -694,12 +693,12 @@ figure \ref{fig:cuhf_h3}.
     \label{fig:cuhf_h3}
   \end{figure}
 \end{center}
-We see that the graph stops after three \si{\angstrom}ngstrom. This was done intentionally since the algorithm stopped converging at this distance. This data was omitted since 
-uncoverged data might be interpreted wrong. We can see that across the plotted data, the spin contamination remains zero. The curve is also more smooth than the UHF curve. Where 
-the UHF curve might suggest adisintegration, the CUHF curve rises above the level of three separate hydrogens. When we consider the constraint we have introduced this is hardly
-surprising. We have said that there are certain orbitals that have to be doubly occupied, as layed out in subsections \ref{subsec:spinconttheory} and \ref{subsec:cuhftheory}.
-This is off course something we can not maintain at very long bondlenghts. Physically we could state that if we were to pull the hydrogen atoms appart far enough, they would go 
-their separate ways, since this would be the more energetically stable sollution, instead of trying to maintain the bonds across such large distances. It is then reasonable that
+We see that the graph stops after three Angstroms. This was done intentionally since the algorithm stopped converging at this distance. This data was omitted since 
+uncovered data might be interpreted wrong. We can see that across the plotted data, the spin contamination remains zero. The curve is also smoother than the UHF curve. Where 
+the UHF curve might suggest a disintegration, the CUHF curve rises above the level of three separate hydrogens. When we consider the constraint we have introduced this is hardly
+surprising. We have said that there are certain orbitals that have to be doubly occupied, as laid out in subsections \ref{subsec:spinconttheory} and \ref{subsec:cuhftheory}.
+This is off course something we can not maintain at very long bondlenghts. Physically we could state that if we were to pull the hydrogen atoms apart far enough, they would go 
+their separate ways, since this would be the more energetically stable solution, instead of trying to maintain the bonds across such large distances. It is then reasonable that
 the energy would rise as we continue to enforce this constraint.
 
 \subsection{CIS results}
@@ -737,11 +736,11 @@ wave function. We can take a look at the table \ref{tab:excits}.
     10 & -2.137036 & -2.139049
   \end{tabular}
 \end{table}
-We do indeed notice that energies two and three are equal, as well as the energies eight and nine. Of course it is logical to find a UHF result where all the expectation values are
-different. If all orbitals are different, it is logical that an electron will not encounter the same energy barrier twice. However in CUHF we discover that there are some identical
+We do indeed notice that energies two and three are equal, as well as the energies eight and nine. Of course, it is logical to find a UHF result where all the expectation values are
+different. If all orbitals are different, it is logical that an electron will not encounter the same energy barrier twice. However, in CUHF we discover that there are some identical
 excitation energies. We know that the CUHF wave function should obey the constraint, and since all excited states are eigenfunctions of the same Fock operators, we expect them to
 obey the constraint as well. However, something odd might be noticed here. The lowest excitation does not equal the ground state. When we consult our data in table
-\ref{tab:ground states}, we notice that the lowest excitation is lower in energy then the ground state.
+\ref{tab:ground states}, we notice that the lowest excitation is lower in energy than the ground state.
 \begin{table}[h]
   \caption{Electronic ground state energies for $H_3$ in the STO-3G basis. The energy is given in Hartree.}
   \label{tab:ground states}
@@ -751,8 +750,8 @@ obey the constraint as well. However, something odd might be noticed here. The l
     ground state energy & -2.923512 & -2.915707
   \end{tabular}
 \end{table}
-This data was verified using the GQCG library. This appears very odd, since Brillouin's theorem clearly states that the ground state expectation value over the Hamiltonian
-does not mix with the first order excited states. Somehow Brillouins theorem seems not to hold in CUHF, and UHF as well for that matter. This clearly is a contradiction of what we 
+This data was verified using the GQCP library. This appears very odd, since Brillouin's theorem clearly states that the ground state expectation value over the Hamiltonian
+does not mix with the first order excited states. Somehow Brillouin's theorem seems not to hold in CUHF, and UHF as well for that matter. This clearly is a contradiction of what we 
 said in the theory section. Since we used the theorem, it can not be invalid now. The code needs to be updated. Now we need to compare it to ROHF theory.
 The Psi4 reference data for ROHF generates two states, one of which is the ground state. The energies are given in table \ref{tab:ROHF}.
 \begin{table}[h]
@@ -765,7 +764,7 @@ The Psi4 reference data for ROHF generates two states, one of which is the groun
     2 & -2.176621
   \end{tabular}
 \end{table}
-We can see that the ground state energy is the same as CUHF method. However the single excitation can also be seen returning in the CUHF excitations. It is one of the doublets.
+We can see that the ground state energy is the same as CUHF method. However, the single excitation can also be seen returning to the CUHF excitations. It is one of the doublets.
 Worth noting is that ROHF does not have a predefined set of operators. In this original work, Roothaan writes about coupling coefficients that vary between cases\cite{Roothaan1960}.
 Plakhutin lists a table of possible values for these coefficients\cite{Plakhutin2014}. Depending on the coefficients uses, we expect different orbital energies, so we can also
 expect different excitation energies.
@@ -773,9 +772,9 @@ expect different excitation energies.
 
 \section{Conclusions}
 In this report we have seen that spin contamination complicates the interpretation of the UHF wave function even though it reaches the lowest possible energies. We have looked at
-CUHF thoery as a way to deal with this spin contamination. We have used it as a reference for a CIS treatment, where we have seen that it does not obey Brillouins theorem.
-We have noticed that CUHF displays multiplets in its excitation energies, which points in the direction that a symmetry of the system that is left intact. A possibility for a
-next step is full CI using the CUHF wave function. When a true correlation energy is present, we could do a stretch of $H_2$ in order to see wheter we can get the symmetry and
+CUHF theory as a way to deal with this spin contamination. We have used it as a reference for a CIS treatment, where we have seen that it does not obey Brillouin's theorem.
+Furthermore, we have noticed that CUHF displays multiples in its excitation energies, which points in the direction that a symmetry of the system that is left intact. A possibility for a
+next step is full CI using the CUHF wave function. When a true correlation energy is present, we could do a stretch of $H_2$ in order to see whether we can get the symmetry and
 the energy right at the same time.
 
 
