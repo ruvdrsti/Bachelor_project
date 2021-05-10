@@ -147,7 +147,7 @@
                      & \noindent\LARGE{\textbf{Constrained Unrestricted Hartree Fock and Single Excitation Configuration Interaction$^\dag$}}        \\%Article title goes here instead of the text "This is the title"
       \vspace{0.3cm} & \vspace{0.3cm}                                                                                                                \\
 
-                     & \noindent\large{Ruben Van der Stichelen,$^{\ast}$\textit{$^{a}$} Full Name,\textit{$^{b\ddag}$} and Full Name\textit{$^{a}$}} \\%Author names go here instead of "Full name", etc.
+                     & \noindent\large{Ruben Van der Stichelen$^{\ast}$\textit{$^{a}$}}                                                              \\%Author names go here instead of "Full name", etc.
 
                      &                                                                                                                               \\
 
@@ -169,7 +169,6 @@
 % %%%FOOTNOTES%%%
 
 \footnotetext{\textit{$^{a}$~Ghent Quantum Chemistry Group, Krijgslaan 281 (S3), B-9000 Gent, België}}
-\footnotetext{\textit{$^{b}$~Corresponding author:} \texttt{firstname.lastname@ugent.be}}
 
 % %Please use \dag to cite the ESI in the main text of the article.
 % %If you article does not have ESI please remove the the \dag symbol from the title and the footnotetext below.
@@ -195,9 +194,9 @@ questions lies in the Schrödinger equation below.
   \hat{H}\Psi = E\Psi
 \end{equation}
 
-All the properties of a molecule are linked to the wave function $\Psi$, but it does not give us any information about how to extract them from it. This information must be gathered
-using operators. The Schrödinger equation allows us
-to calculate this wave functions energy $E$ using an operator know as the Hamiltonian. In its full form it can be seen in the equation below\cite{Szabo1996}.
+All the information with regard to a certain molecule are linked to the wave function $\Psi$, but it does not give us any information about how to extract them from it.
+This information must be gathered using quantum mechanical operators. The Schrödinger equation allows us
+to calculate this wave functions energy $E$ using an operator known as the Hamiltonian. In its full form it can be seen in the equation below\cite{Szabo1996}.
 
 \begin{equation}\label{eq:ham}
   \hat{H} = -\sum_{i=1}^N\frac{1}{2}\nabla^2_i - \sum_{A=1}^M \frac{1}{2M_A}\nabla^2_A - \sum_{i=1}^N\sum_{A=1}^M\frac{Z_A}{r_{iA}} + \sum_{i=1}^N\sum_{j>i}^N\frac{1}{r_{ij}} +
@@ -205,7 +204,7 @@ to calculate this wave functions energy $E$ using an operator know as the Hamilt
 \end{equation}
 
 The Hamiltonian contains the kinetic energy of the $N$ electrons $i$ and the $M$ nuclei $A$. It also accounts for the electrostatic potential between the nuclei and the electrons.
-Also note that this Hamiltonian was written down using atomic units. However, the Schrödinger equation is not exactly solvable for systems that contain more than one electron, i.e.
+Also note that this Hamiltonian was written down using atomic units. Unfortunately, the Schrödinger equation is not exactly solvable for systems that contain more than one electron, i.e.
 almost all chemically interesting systems. The reason for this is the repulsion that exists between two electrons. This term makes it impossible to solve the Schrödinger equation
 analytically for most systems. We can indeed see that the term $r_{ij}$ requires the position of both electrons to be known at the same time. However, since to know the position of
 one electron one needs to know where the other electron is and vice versa, we can never come to an exact solution. In more mathematical terms, we cannot separate the variables
@@ -221,10 +220,10 @@ spin\cite{Acke2019}.
   \hat{K}_j\psi_i(1) = \int\psi_j^*(2)\boldsymbol{r}_{12}^{-1}\psi_i(2)d2 \psi_j(1)
 \end{equation}
 
-We can see that when the Coulomb operator $J_j$ acts on a spatial orbital $\psi_i$ containing electron $1$ it calculates the electrostatic repulsion between electron $1$ and a
+We can see that when the Coulomb operator $J_j$ acts on a spatial orbital $\psi_i$ containing electron $1$, it calculates the electrostatic repulsion between electron $1$ and a
 second electron $2$ in another spatial orbital $\psi_j$. So instead of considering the distance between electrons, we consider the distance between all orbitals. This will leave us
 with an average value for the repulsion.
-We can define an expectation value over the Hamiltonian and state that if we are in an energy minimum a small variation in the wave function will not induce a change
+We can define an expectation value over the Hamiltonian and state that if we are in an energy minimum, a small variation in the wave function will not induce a change
 in energy.
 
 \begin{equation}\label{eq:hamexp}
@@ -242,16 +241,13 @@ electrons that do not exist in pairs. However, we see that the wave function in 
 the wave function some extra freedom, yet the chemical intuition is tossed out of the window.
 \paragraph*{}
 We know that in nature there is a lot of symmetry. Molecules themselves can also contain a lot of symmetry. This symmetry is reflected in its Hamiltonian and its wave function.
-If we aspire to create something that is close to reality, but end up with something that does not have any real symmetry, we can do better. The important relation here is that
-the Hamiltonian commutes with the $\hat{S}^2$ operator, meaning that these operators share a complete set of eigenfunctions. The $\hat{S}^2$ operator is important since it is
-directly linked to quantum numbers $S$ and $M_S$\cite{Acke2019}. These are linked to the symmetry in a molecule in the following way. We can externally define these quantum numbers,
-and we can immediately interpret them. For example the spin state with $S=1$ can have $M_S \in \{-1,0,1\}$. This is called a triplet state. Every eigenfunction of the Hamiltonian can
-be characterized in this manner.
 However, in our approximation this reasoning might not hold. We only impose a constraint on the energy. Looking back at equation \eqref{eq:hamexp} and the constraint we applied,
-namely that $\delta E$ should remain zero, we cannot state that the resulting approximative wave function is still an eigenfunction of $\hat{S}^2$.
-This leads us to Löwdin's symmetry dilemma \cite{Lowdin1963}. When we enforce the symmetry and the energy constraint at the same time, for example by forcing the electrons into the
-same orbitals, the minimum energy we reach is not the global minimum. However, when we drop the symmetry constraint and only enforce the energy, we will reach a lower energy,
-but will lose all the information with regard to the symmetry of the system.
+namely that $\delta E$ should remain zero, we cannot state that the resulting approximative wave function still abides by these symmetries. We can impose some additional constraints
+in order to get the right symmetries, but there is a cost involved. This leads us to Löwdin's symmetry dilemma \cite{Lowdin1963}. On one side we can enforce the symmetry. This will
+lead us to a wave function that is chemically intuitive, but the energy we reach will be relatively high. We can also expect to keep the quantum numbers, such as $S$, associated
+with the wave function. On the other hand we can drop the symmetry. This will lead us to a lower energy wave function, but we will lose information about the symmetry. The quantum
+numbers will be lost.
+
 \paragraph*{}
 We need some kind of theory to bring the best of both worlds together. On one side, we have the chemical intuition in the restricted wave functions, on the other the lower
 energy in the unrestricted wave functions. Roothaan's Restricted Open Shell theory (ROHF)\cite{Roothaan1960} was an early attempt. As this approach is tedious and hard to implement,
@@ -260,7 +256,7 @@ it is not very popular\cite{Scuseria2010, Bally2008}. However, more recently Tsu
 already about this method; Scuseria and Tsuchimochi themselves expanded on it in a follow-up paper\cite{Scuseria2011}. Plakhutin discussed some defects in the theory with respect to
 Koopmans theorem and ionisations\cite{Plakhutin2014}. In CUHF we constrain the spin-contamination to zero. In this work we will use the CUHF wave function as a reference for
 Single Excitation Configuration Interaction (CIS). We will generate the single excitation energies for the CUHF wave function and compare them to the CIS excitations using
-ROHF and UHF references of the same system.
+ROHF and UHF references of the same system. If this proves fruitful, we can expand to full CI, and we have a way to describe excited states of the CUHF wave function.
 \paragraph*{}
 In this work we will start by introducing spin-contamination and the theory behind it. We will also give an overview of CUHF theory. Then we will discuss CIS and derive some important
 equations. Next we will look at spin-contamination in an actual system to stress the importance of uncontaminated spin. Then we will discuss the CIS results for CUHF, ROHF and UHF.
@@ -508,18 +504,22 @@ mix it with the excited states. Each determinant represents a certain configurat
 This wave function $\Phi_0$ is a better approximation to the real wave function $\Gamma$ than $\Psi_0$. When we try to get the energy expectation value of this function, we can write
 it in matrix form, where each row and column correspond to a certain excited state. The full expression of this matrix is given below.
 
-\begin{equation}\label{eq:hamexp}
-  \rangle \hat{H} \rangle = \begin{bmatrix}
-    \langle \Psi_0 | \hat{H} | \Psi_0 \rangle         & \langle \Psi_0 | \hat{H} | \Psi_r^a \langle         & \cdots & \langle \Psi_0 | \hat{H} | \Psi_{rs}^{ab} \rangle  & \cdots \\
-    \langle \Psi_r^a | \hat{H} | \Psi_0 \rangle       & \langle \Psi_r^a | \hat{H} | \Psi_r^a \rangle       & \cdots & \langle \Psi_r^a |\hat{H} | \Psi_{rs}^{ab} \rangle & \cdots \\
-    \vdots                                            & \vdots                                              & \vdots & \vdots                                             & \vdots \\
-    \langle \Psi_{rs}^{ab} | \hat{H} | \Psi_0 \rangle & \langle \Psi_{rs}^{ab} | \hat{H} | \Psi_r^a \rangle & \cdots & \langle \Psi_{rs}^{ab} | \hat{H} | \Psi_{rs}^{ab}  & \cdots \\
-    \vdots                                            & \vdots                                              & \vdots & \vdots
+\begin{equation}\label{eq:hamexp1}
+  \boldmath{H} = \begin{bmatrix}
+    \langle \Psi_0 | \hat{H} | \Psi_0 \rangle         & \langle \Psi_0 | \hat{H} | \Psi_r^a \rangle         & \cdots & \langle \Psi_0 | \hat{H} | \Psi_{rs}^{ab} \rangle         & \cdots \\
+    \langle \Psi_r^a | \hat{H} | \Psi_0 \rangle       & \langle \Psi_r^a | \hat{H} | \Psi_r^a \rangle       & \cdots & \langle \Psi_r^a |\hat{H} | \Psi_{rs}^{ab} \rangle        & \cdots \\
+    \vdots                                            & \vdots                                              & \vdots & \vdots                                                    & \vdots \\
+    \langle \Psi_{rs}^{ab} | \hat{H} | \Psi_0 \rangle & \langle \Psi_{rs}^{ab} | \hat{H} | \Psi_r^a \rangle & \cdots & \langle \Psi_{rs}^{ab} | \hat{H} | \Psi_{rs}^{ab} \langle & \cdots \\
+    \vdots                                            & \vdots                                              & \vdots & \vdots & \vdots \\
+    \langle \Psi_{\{\chi_o\}}^{\{\chi_v\}} | \hat{H} | \Psi_0 \rangle & \cdots & \cdots & \cdots & \langle \Psi_{\{\chi_o\}}^{\{\chi_v\}} | \hat{H} | \Psi_{\{\chi_o\}}^{\{\chi_v\}} \rangle
   \end{bmatrix}
 \end{equation}
 
+For a system with $n$ occupied orbitals in the ground state, denoted with indices (r, s) and $m$ unoccupied orbitals, denoted with indices (a,b), the full CI matrix extends until
+every possible electron configuration has been accounted for. $\Psi_{\{\chi_o\}}^{\{\chi_v\}}$ is a state in which a set of $m$ electrons is excited. In the ground state, these 
+electrons occupy the set of orbitals {$\chi_o$}, and they are excited to the set of virtual orbitals {$\chi_v$}.
 We now have to determine what all the different matrix elements are. Since we are looking at CIS, we are only interested in the single excitations, so the matrix in equation
-\eqref{eq:hamexp} can be simplified quite a bit. Then we already know that the expectation value of the Hartree-Fock wave function is the energy we can get from our normal
+\eqref{eq:hamexp1} can be simplified quite a bit. Then we already know that the expectation value of the Hartree-Fock wave function is the energy we can get from our normal
 Hartree-Fock calculation, so we can write this equation.
 
 \begin{equation}\label{eq:E0}
@@ -550,7 +550,7 @@ eigenvalues are the eigenvalues of the individual blocks. We can thus conclude t
 constrains the eigenvalues of the other block, so they might well be lower than the ground state energy. One can imagine a situation where the geometry of the molecule has not been
 optimized, in which it might be favorable to be in an excited state rather than in the ground state.
 
-In CIS, we are only interested in the first order excitations. This might seem odd, since we do not expect a more stable wave function. However, it can give us information about the
+In CIS, we do not expect to lower the ground state energy. However, it can give us information about the
 excited states and the excitation energies that come with them. Now we are interested in the expectation values over the Hamiltonian of all the exited states, so we need an expression
 for $\langle \Psi_r^a |\hat{H}| \Psi_s^b \rangle$. There are four different situations that we need to discuss here\cite{Sherrill1996}. The first scenario is an excitation where
 $a \neq b$ and $r \neq s$. The only term that will remain in that case is $\langle aj || ib \rangle$. Another case is when $r = s$ but $a \neq b$. Then the matrix element can be
@@ -587,7 +587,7 @@ simplified to equation \eqref{eq:simple}.
   \langle \Psi_r^a|\hat{H}|\Psi_s^b \rangle = (\epsilon_a - \epsilon_r)\delta_{rs}\delta_{ab} + \langle as || jb \rangle
 \end{equation}
 
-The $\epsilon$ values correspond to the orbital energies. If we now diagonalize this matrix we end up with the excitation energies and contributions of the single excited states as
+The $\epsilon_i$ values correspond to the orbital energies. If we now diagonalize the CIS matrix we end up with the excitation energies and contributions of the single excited states as
 eigenfunctions. However, since electrons in alpha orbitals can be excited to beta orbitals, which is especially important in UHF, we have to do some extra steps. Indeed, when
 calculating the eigenfunctions of the Fock matrices we get separate coefficient matrices for alpha and beta orbitals. We will need all these orbitals together to get the complete
 CIS picture. We will have to effectively double the dimensions of the problem. This becomes a bit clearer by looking at equation \eqref{eq:matrixelement}. In this equation for example
@@ -605,7 +605,7 @@ the same goes for its eigenvectors.
 
 When looking at equation \eqref{eq:matrixelement} we see that we also need the so-called two electron integrals. This is in fact a four dimensional matrix that holds the
 interelectronic repulsion in AO basis. We also need to double its dimensions in order to use it for CIS calculations. Since this is an $n\times n\times n \times n$
-matrix, we will need to use the Kronecker product \eqref{eq:kron}.
+matrix, we will need to use the Kronecker product.
 
 \begin{equation}\label{eq:kron}
   R' = I_2 \otimes (I_2 \otimes R)^T
@@ -626,18 +626,22 @@ and CUHF. It also features a method for calculating ROHF energies. They also pre
 UHF and CUHF were generated using the GQCP\cite{GQCP} library. We have also visualized some orbitals using Psi4's \lstinline{cubeprop} function to generate a .cube file. This .cube
 file was then visualized using the IQmol software\cite{IQmol}.
 \paragraph*{}
-For CIS \ce{H3} will be used as a model system. Firstly because it is a simple system containing few electrons. This means that we do not need to track a lot of possible excitations, so
-the focus can shift towards the interpretation. For this same reason we will pick the STO-3G basis set. This set provides us with the minimal amount of basis functions needed to
+To demonstrate the impact of spin contamination and the importance of finding methods to overcome it, we will discuss the hydrogen gas dissociation problem\cite{Szabo1996}. Hydrogen
+gas is a molecule that has an RHF solution in its equilibrium geometry. However, when we stretch the bond the system evolves to a state of separate hydrogen atoms. These can of 
+course not be described by RHF, and so we expect the RHF energy to be totally unrealistic at large bond lengths.
+For CIS \ce{H3} will be used as a model system. Firstly because it is a simple system containing few electrons. This means that we do not need to track a lot of possible excitations, 
+so the focus can shift towards the interpretation. For this same reason we will pick the STO-3G basis set. This set provides us with the minimal amount of basis functions needed to
 describe the system. This again makes interpretation the key point. We also note that \ce{H3} is an open shell system, so that our results might be extrapolated to other open shell
-systems.
+systems. We will also do a stretch of \ce{H3} in the following way. Since the molecule is an equilateral triangle, we will stretch all the bonds equally. This means that at any given
+bond length, the molecule will remain an equilateral triangle. Then we will compare the CIS results for \ce{H3} as generated by our implementation and the one used by Psi4 and GQCP. 
+GQCP will generate the data for CUHF and UHF and Psi4 will generate the data for ROHF.
+
 \section{Results and discussion}
 \label{sec:results}
 
 \subsection{\ce{H2} Stretch}
 \label{subsec:h2}
-To demonstrate the impact of spin contamination and the importance of finding methods to overcome it, we will discuss the hydrogen gas dissociation problem\cite{Szabo1996}. Hydrogen
-gas is a molecule that can be described perfectly by RHF. However, when we stretch the bond the system evolves to a state of separate hydrogen atoms. These can of course not be
-described by RHF, and so we expect the RHF energy to be totally unrealistic at large bond lengths. This can be observed in figure \ref{fig:rhfstretch}.
+ In figure \ref{fig:rhfstretch} we have conducted a stretch of the \ce{H2} molecule using an RHF calculation.
 
 \begin{center}
   \begin{figure}[h]
@@ -680,8 +684,9 @@ have the lowest energy. Now what would happen if we applied CUHF to the dissocia
   \end{figure}
 \end{center}
 
-The CUHF picture is difficult to interpret. We see that the spin contamination remains zero. The energy seems to follow the RHF pattern (see also figure \ref{fig:combo}) until a
-certain point, then it starts to exponentially decline. Physically this seems like a logical behavior, as it is now again evolving to two separate hydrogen atoms. We can also notice
+The CUHF picture is difficult to interpret. We see that the spin contamination remains zero, as can be expected. The energy seems to follow the RHF pattern (see also figure 
+\ref{fig:combo}) until a certain point, then it starts to exponentially decrease. Physically this seems like a logical behavior, as it is now again evolving to two separate hydrogen 
+atoms. We can also notice
 that the spin contamination is zero everywhere, so the symmetry of the solution is also correct. For this plot a mixed guess was applied. In CUHF the mixed guess is done on the
 active space, which consists the orbitals to which the constraints are not applied, i.e. the open shell\cite{Scuseria2011}. So when we would take the active space as all the electrons
 we reach the UHF solution. When we take only unpaired electrons as the active space we see the ROHF solution.
@@ -702,9 +707,8 @@ does not describe the actual situation with a hundred percent accuracy.
 \subsection{\ce{H3} stretch}
 \label{subsec:h3}
 We will now discuss our model system, the trihydrogen molecule. This system is a ring of three hydrogen atoms, forming an equilateral triangle.
-This system is an open shell system, as stated before, with two alpha electrons and one beta electron. It can not be described using RHF, since RHF needs closed-shell systems to work properly.
-The stretch was considered as follows. We will extend all the bonds by the same amount. So the molecule will remain an equilateral triangle at all times. For UHF, we have plotted
-the result in figure \ref{fig:uhf_h3}.
+This system is an open shell system, as stated before, with two alpha electrons and one beta electron. It can not be described using RHF, since RHF needs closed-shell systems to work 
+properly. For UHF, we have plotted the result in figure \ref{fig:uhf_h3}.
 
 \begin{center}
   \begin{figure}[h]
@@ -726,7 +730,7 @@ figure \ref{fig:cuhf_h3}.
   \end{figure}
 \end{center}
 
- We can see that across the plotted data, the spin contamination remains zero. The curve is also smoother than the UHF curve. Where
+We can see that across the plotted data, the spin contamination remains zero. The curve is also smoother than the UHF curve. Where
 the UHF curve might suggest a disintegration, the CUHF curve rises above the level of three separate hydrogens. When we consider the constraint we have introduced this is hardly
 surprising. We have said that there are certain orbitals that have to be doubly occupied, as laid out in subsections \ref{subsec:spinconttheory} and \ref{subsec:cuhftheory}.
 This is of course something we can not maintain at very long bondlenghts. Physically we could state that if we were to pull the hydrogen atoms apart far enough, they would go
@@ -735,8 +739,7 @@ the energy would rise as we continue to enforce this constraint.
 
 \subsection{CIS results}
 \label{subsec:cis}
-We will compare the CIS results for \ce{H3} as generated by our implementation and the one used by Psi4 and GQCP. GQCP will generate the data for CUHF and UHF and Psi4 will generate
-the data for ROHF. In \ce{H3} we can consider nine excitations in total, so when we include the ground state, we should have ten states in total. We can take a closer look at
+ In \ce{H3} we can consider nine excitations in total, so when we include the ground state, we should have ten states in total. We can take a closer look at
 figure \ref{fig:h3_cis}.
 
 \begin{center}
@@ -784,16 +787,16 @@ We can also note another odd feature in both energies. The lowest excitation doe
 \end{table}
 This data was verified using the GQCP library. This result is unexpected, since one does not expect an excitation to be lower in energy than the ground state. We could verify that
 this excitation is a triplet excitation, or an excitation in which an alpha electron is excited to a beta orbital and vice versa. We could also determine the spin eigenvalue using
-the GQCP library as 0.5, which means that it still is a spin eigenstate. The state was however not a stable one. We can learn from this that for open shell species that have spin
-deficiencies CIS is not the method of choice if we want to include the triplet excitations. When the triplet excitations are left out of the calculation, we do find the expected
-result, in which the ground state is the lowest energy state. These results were displayed in table \ref{tab:excits_no_triplets}\\
+the GQCP library as 0.5, which means that it still is a spin eigenstate. Furthermore, we can learn from this that for open shell species that have spin
+deficiencies CIS is not the method of choice if we want to include the triplet excitations. When the triplet excitations are left out of the calculation, we find a result more
+in line with our expectations, in which the ground state is the lowest energy state. These results were displayed in table \ref{tab:excits_no_triplets}\\
 
 \begin{table}[h]
   \caption{The excitation energies when triplets are not considered. The energy is given in Hartree.}
   \label{tab:excits_no_triplets}
   \begin{tabular}{l|l|l}
-      & UHF       & CUHF \\
-      \hline
+      & UHF       & CUHF      \\
+    \hline
     1 & -2.923515 & -2.915707 \\
     2 & -2.840101 & -2.895707 \\
     3 & -2.428086 & -2.436524 \\
@@ -817,11 +820,11 @@ this is logical. When we think of the \ce{H3} molecule in STO-3G basis, there ar
     \end{tikzpicture}
   \end{center}
   \caption{Energy diagram of the ground state of \ce{H3}}
-  \label{fig:energydiag1}  
+  \label{fig:energydiag1}
 \end{figure}
 
-It is logical that in this picture it does not make a difference what spin the electron has towards the energy. So in fact we expect to see a degeneracy at the ground state energy
-level. Since this does involve an alpha to beta excitation we do not expect to see it when leaving those out. The other degeneracy was seen at the energy level of $-2.176620$ 
+We can see in this picture that it does not make a difference what spin the single electron has towards the energy. So in fact we expect to see a degeneracy at the ground state 
+energy level. Since this does involve an alpha to beta excitation we do not expect to see it when leaving those out. The other degeneracy was seen at the energy level of $-2.176620$
 Hartree. We can consult GQCP in order to find the exact excitation that is done. The configuration is given in figure \ref{fig:energydiag2}.
 
 \begin{figure}[h]
@@ -836,20 +839,20 @@ Hartree. We can consult GQCP in order to find the exact excitation that is done.
     \end{tikzpicture}
   \end{center}
   \caption{Energy diagram of the state at $-2.176620$ Hartree in CUHF}
-  \label{fig:energydiag2}  
+  \label{fig:energydiag2}
 \end{figure}
 
-Based on this picture we expect the same excitation if the alpha electron is excited. Now we need to verify that this is in fact the case. In a UHF method, we expect the alpha and
+Based on this picture, we expect the same excitation energy if the alpha electron from $\psi_1$ would be excited. Now we need to verify that this is in fact the case. In a UHF method, we expect the alpha and
 beta electrons to be in different orbitals. In the CUHF case we do not. We can visualize the orbitals, to verify that in the closed shell, the alpha and beta orbitals do are indeed
 in identical orbitals. This can be verified in figure \ref{fig:1_cuhf}.
 \begin{figure}[h]
   \includegraphics[width=\linewidth]{./../notes/figures/H3_1_a.png}
   \includegraphics[width=\linewidth]{./../notes/figures/H3_1_b.png}
-  \caption{Orbital 1 for both alpha and beta electrons}
+  \caption{$\psi_1$ for both alpha and beta electrons}
   \label{fig:1_cuhf}
 \end{figure}
 
-We will now compare the CIS data with CUHF reference to the CIS data with ROHF reference generated by Psi4. 
+We will now compare the CIS data with CUHF reference to the CIS data with ROHF reference generated by Psi4.
 The Psi4 reference data for ROHF generates two states, one of which is the ground state. The energies are given in table \ref{tab:ROHF}. Psi4 does not consider triplet excitations by
 default, but we are still left with fewer excitations than one would expect.
 \begin{table}[h]
@@ -862,7 +865,7 @@ default, but we are still left with fewer excitations than one would expect.
     2 & -2.176621
   \end{tabular}
 \end{table}
-We can see that the ground state energy is the same as CUHF method. However, the single excitation can also be seen returning to the CUHF excitations. Psi4 lists the excitation it 
+We can see that the ground state energy is the same as CUHF method. However, the single excitation can also be seen returning to the CUHF excitations. Psi4 lists the excitation it
 considered as an excitation of the beta electron into the open shell, so if we were to draw it up using an energy diagram, it would look like figure \ref{fig:energydiag3}.
 
 \begin{figure}[h]
@@ -877,7 +880,7 @@ considered as an excitation of the beta electron into the open shell, so if we w
     \end{tikzpicture}
   \end{center}
   \caption{Energy diagram of the state at $-2.176620$ Hartree in ROHF}
-  \label{fig:energydiag3}  
+  \label{fig:energydiag3}
 \end{figure}
 
 This seems somewhat strange, but if we get the orbital visualizations it is not that surprising. We will display the orbitals next to each other in figures \ref{fig:compareorbitals1}
@@ -905,7 +908,7 @@ trough \ref{fig:compareorbitals4}. \\
   \end{minipage}
 \end{figure}
 All these orbitals are part of the same irreducible representation. Normally we would expect \ce{H3} to be a $D_{3h}$ system. However, Psi4 has lowered the symmetry to a $C_{2v}$
-point group. The reason it does this is that it does not compute excitations between different irreducible representations. Given that all the orbitals for ROHF shown belong to 
+point group. The reason it does this is that it does not compute excitations between different irreducible representations. Given that all the orbitals for ROHF shown above belong to
 the $A_1$ representation of the $C_{2v}$ point group and that the last orbital follows the $B_2$ representation, we will not see any excitations. We can verify that this is the case
 by looking at figure \ref{fig:rohforbitalb2}.
 
@@ -915,7 +918,7 @@ by looking at figure \ref{fig:rohforbitalb2}.
   \label{fig:rohforbitalb2}
 \end{figure}
 
-Interestingly enough this orbital is the same as the one orbital of CUHF we have not seen, the second highest beta orbital. Indeed, when we take a look at figure 
+Interestingly enough this orbital is the same as the one orbital of CUHF we have not seen, the second highest beta orbital. This is shown in 
 \ref{fig:cuhforbitalb2}.
 
 \begin{figure}
@@ -931,10 +934,12 @@ expect different excitation energies. \\
 \section{Conclusions}
 In this report we have seen that spin contamination makes it difficult to interpret UHF wave functions because it disrupts the natural symmetry that exists in these wave functions.
 We have seen that the CUHF method gives us an alternative that can deal with this spin contamination. We then explored the possibility of using CIS on this reference. Here we
-noticed that both CUHF and UHF feature excited states that are lower in energy than the ground state, when allowing for alpha-to-beta and beta-to-alpha excitations. We then 
-concluded that CIS is not the ideal method for describing such systems if one wants to account for such excitations. We can use CIS if we do not consider such excitations. 
-An interesting next step would be to apply full CI to the CUHF wave function to see how the ground state energy might evolve if we do allow second order excitations. Also, the 
-study of other open shell systems could be done. \ce{H3} is a system with one unpaired electron. \ce{O2} has two unpaired electrons. It could be interesting to consider such a system.
+noticed that both CUHF and UHF feature excited states that are lower in energy than the ground state, when allowing for $\alpha$-to-$\beta$ and $\beta$-to-$\alpha$ excitations. 
+We then concluded that CIS is not the ideal method for describing such systems if one wants to account for such excitations. This was based upon the fact that we found an excited 
+state that was lower in energy than the gound state at equilibrium geometry. 
+An interesting next step would be to apply full CI to the CUHF wave function to see how the ground state energy might evolve if we do allow second order excitations. Also, the
+study of other open shell systems could be done. \ce{H3} is a system with one unpaired electron. \ce{O2} has two unpaired electrons. It could be interesting to consider such a system,
+since we cannot assume that the same results will hold for such systems.
 
 
 
