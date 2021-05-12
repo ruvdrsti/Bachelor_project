@@ -58,14 +58,6 @@
   {Szabo}},\ }\href@noop {} {\emph {\bibinfo {title} {Modern Quantum Chemistry
   Introduction to Advanced Electronic Structure Theory}}}\ (\bibinfo
   {publisher} {Dover},\ \bibinfo {year} {1996})\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Acke}\ and\ \citenamefont
-  {Bultinck}(2019)}]{Acke2019}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
-  {Acke}}\ and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
-  {Bultinck}},\ }\href@noop {} {\enquote {\bibinfo {title} {Electronic
-  structures},}\ }\bibinfo {howpublished} {syllabus} (\bibinfo {year}
-  {2019})\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Lykos}\ and\ \citenamefont
   {Pratt}(1963)}]{Lowdin1963}%
   \BibitemOpen
@@ -94,14 +86,6 @@
   {Bally}},\ }\href@noop {} {\enquote {\bibinfo {title} {Open shell
   calculations},}\ }\bibinfo {howpublished} {presentation} (\bibinfo {year}
   {2008})\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Tsuchimochi}\ and\ \citenamefont
-  {Scuseria}(2011)}]{Scuseria2011}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
-  {Tsuchimochi}}\ and\ \bibinfo {author} {\bibfnamefont {G.~E.}\ \bibnamefont
-  {Scuseria}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {J.
-  Chem. Phys}\ }\textbf {\bibinfo {volume} {134}} (\bibinfo {year}
-  {2011})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Plakhutin}\ and\ \citenamefont
   {Davidson}(2014)}]{Plakhutin2014}%
   \BibitemOpen
@@ -110,6 +94,14 @@
   {Davidson}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {J.
   Chem. Phys.}\ }\textbf {\bibinfo {volume} {140}} (\bibinfo {year}
   {2014})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Tsuchimochi}\ and\ \citenamefont
+  {Scuseria}(2011)}]{Scuseria2011}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {T.}~\bibnamefont
+  {Tsuchimochi}}\ and\ \bibinfo {author} {\bibfnamefont {G.~E.}\ \bibnamefont
+  {Scuseria}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {J.
+  Chem. Phys}\ }\textbf {\bibinfo {volume} {134}} (\bibinfo {year}
+  {2011})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Andrews}\ \emph {et~al.}(1991)\citenamefont
   {Andrews}, \citenamefont {Jayatilaka}, \citenamefont {Bone}, \citenamefont
   {C.},\ and\ \citenamefont {Amos}}]{Andrews1991}%
@@ -191,4 +183,12 @@
   {Scuseria}},\ }\href@noop {} {\enquote {\bibinfo {title} {Symmetry breaking
   \& restoration},}\ }\bibinfo {howpublished} {presentation} (\bibinfo {year}
   {2013})\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Acke}\ and\ \citenamefont
+  {Bultinck}(2019)}]{Acke2019}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont
+  {Acke}}\ and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Bultinck}},\ }\href@noop {} {\enquote {\bibinfo {title} {Electronic
+  structures},}\ }\bibinfo {howpublished} {syllabus} (\bibinfo {year}
+  {2019})\BibitemShut {NoStop}%
 \end{thebibliography}%
