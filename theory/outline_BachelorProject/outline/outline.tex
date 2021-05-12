@@ -310,7 +310,7 @@ These matrices can now be written in their full form, as can be seen in equation
     \label{eq:gammaafull}
     \gamma^\alpha = \begin{bmatrix}
       \gamma^\alpha_1 & \cdots & 0                      & 0      & 0      \\
-      \vdots          & \vdots & \vdots                 & \vdots & \vdots \\
+      \vdots          & \ddots & \vdots                 & \vdots & \vdots \\
       0               & \cdots & \gamma^\alpha_{N_{cp}} & 0      & 0      \\
       0               & \cdots & 0                      & I_n    & 0      \\
       0               & \cdots & 0                      & 0      & 0
@@ -318,7 +318,7 @@ These matrices can now be written in their full form, as can be seen in equation
     \label{eq:gammabfull}
     \gamma^\beta = \begin{bmatrix}
       \gamma^\beta_1 & \cdots & 0                     & 0      & 0      \\
-      \vdots         & \vdots & \vdots                & \vdots & \vdots \\
+      \vdots         & \ddots & \vdots                & \vdots & \vdots \\
       0              & \cdots & \gamma^\beta_{N_{cp}} & 0      & 0      \\
       0              & \cdots & 0                     & 0      & 0      \\
       0              & \cdots & 0                     & 0      & 0
@@ -503,9 +503,9 @@ it in matrix form, where each row and column correspond to a certain excited sta
   \boldsymbol{H} = \begin{bmatrix}
     \langle \Phi_0 | \hat{H} | \Phi_0 \rangle         & \langle \Phi_0 | \hat{H} | \Phi_r^a \rangle         & \cdots & \langle \Phi_0 | \hat{H} | \Phi_{rs}^{ab} \rangle         & \cdots \\
     \langle \Phi_r^a | \hat{H} | \Phi_0 \rangle       & \langle \Phi_r^a | \hat{H} | \Phi_r^a \rangle       & \cdots & \langle \Phi_r^a |\hat{H} | \Phi_{rs}^{ab} \rangle        & \cdots \\
-    \vdots                                            & \vdots                                              & \vdots & \vdots                                                    & \vdots \\
+    \vdots                                            & \vdots                                              & \ddots & \vdots                                                    & \vdots \\
     \langle \Phi_{rs}^{ab} | \hat{H} | \Phi_0 \rangle & \langle \Phi_{rs}^{ab} | \hat{H} | \Phi_r^a \rangle & \cdots & \langle \Phi_{rs}^{ab} | \hat{H} | \Phi_{rs}^{ab} \rangle & \cdots \\
-    \vdots                                            & \vdots                                              & \vdots & \vdots & \vdots \\
+    \vdots                                            & \vdots                                              & \ddots & \vdots & \vdots \\
     \langle \Phi_{\{\chi_o\}}^{\{\chi_v\}} | \hat{H} | \Phi_0 \rangle & \cdots & \cdots & \cdots & \langle \Phi_{\{\chi_o\}}^{\{\chi_v\}} | \hat{H} | \Phi_{\{\chi_o\}}^{\{\chi_v\}} \rangle
   \end{bmatrix}
 \end{equation}
