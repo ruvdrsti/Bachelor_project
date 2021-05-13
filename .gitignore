@@ -9,7 +9,6 @@ datafiles/
 build/
 master-blx.bib
 *.aux
-*.bbl
 *.bcf
 *.blg
 *.fdb_latexmk

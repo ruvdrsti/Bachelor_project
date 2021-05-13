@@ -18,10 +18,13 @@
     captions=tableabove,    % display table captions above the float env
     draft=false,            % value for draft version
 ]{scrreprt}
-
-\newcommand{\reportTitle}{\textcolor{ugent_blue}{Report restricted Hartree Fock}} 
-\newcommand{\reportName}{\textbf{Ruben Van der Stichelen}}
-\newcommand{\reportSubject}{\emph{Programming project}}
+\usepackage[version=3]{mhchem}
+\newcommand{\reportTitle}{\textcolor{ugent_blue}{\ce{H3} as an Example for Open Shell Systems: CIS with UHF and CUHF references}} 
+\newcommand{\reportName}{\textbf{Ruben Van der Stichelen
+Promotor: Prof. Dr. Patrick Bultinck 
+Co-promotor: Dr. Guillaume Acke 
+Supervisor: Drs. Daria Tolstykh }}
+\newcommand{\reportSubject}{\emph{}}
 \newcommand{\reportDate}{}
 \newcommand{\reportVersion}{}
 
@@ -79,9 +82,15 @@
 \usepackage{epigraph}
 \usepackage{bm}
 \usepackage[normalem]{ulem}
-\usepackage[version=3]{mhchem}
+
 \usepackage[linewidth=1pt]{mdframed}
 \usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{siunitx}
+
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tikz}
 
 
 % Default fixed font does not support bold face
@@ -184,7 +193,7 @@ showstringspaces=false
     \begin{titlepage}
         \hspace{-1cm}\includegraphics[height=3cm]{faculty.png}
         \begin{center}
-            \vspace{2cm}
+            \vspace{1cm}
             \Huge{\reportTitle} \\
             \vspace{1cm}
             \Large{\reportName} \\
@@ -213,7 +222,7 @@ showstringspaces=false
     \pagestyle{maincontentstyle} 	% fancy header and footer
 
     % The following input statements correspond to the different chapters of these notes
-    \input{content/reportRHF/report_RHF.tex}
+    \input{./content/reportFinal/outline.tex}
     \clearpage
 
     % --------------------------
