@@ -9,7 +9,7 @@ In computational chemistry, the time-independent Schrödinger equation plays a c
 
 All the information with regard to a certain molecule are linked to the wave function $\Psi$.
 This information must be gathered using quantum mechanical operators. In the Schrödinger equation we
-calculate this wave functions energy $E$ using an operator known as the Hamiltonian. In its full form it can be seen in the equation below\cite{Szabo1996}.
+calculate this wave functions energy $E$ using an operator known as the Hamiltonian. In its full form it can be seen in the equation below \cite{Szabo1996}.
 
 \begin{equation}\label{eq:ham}
   \hat{H} = -\sum_{i=1}^N\frac{1}{2}\nabla^2_i - \sum_{A=1}^M \frac{1}{2M_A}\nabla^2_A - \sum_{i=1}^N\sum_{A=1}^M\frac{Z_A}{r_{iA}} + \sum_{i=1}^N\sum_{j>i}^N\frac{1}{r_{ij}} +
@@ -21,7 +21,7 @@ Also note that this Hamiltonian was written down using atomic units. Unfortunate
 almost all chemically interesting systems. The reason for this is the repulsion that exists between two electrons. This term makes it impossible to solve the Schrödinger equation
 analytically for most systems. That is why we need to make approximations. In this paper, we will make use of the Hartree-Fock method
 combined with Single Excitation Configuration Interaction. In the Hartree Fock method, we use a single Slater determinant wave function that is an eigenfunction of the Fock
-operator\cite{Szabo1996}.
+operator \cite{Szabo1996}.
 
 \begin{equation}
   \hat{f} = \hat{h}(1) +  \sum_j^N \hat{J}_j - \hat{K}_j
@@ -50,22 +50,22 @@ A molecule can have a lot of symmetry elements, simple examples could be rotatio
 function.
 Looking back at equation \eqref{eq:hamexp} and
 the constraint we applied, namely that $\delta E$ should remain zero, we cannot state that our approximative Hartree-Fock wave function still abides by these symmetries.
-We can impose some additional constraints in order to get the right symmetries, but there is a cost involved. This leads us to Löwdin's symmetry dilemma \cite{Lowdin1963}.
+We can impose some additional constraints in order to get the right symmetries, but there is a cost involved. This leads us to Löwdin's symmetry dilemma  \cite{Lowdin1963}.
 On one side we can enforce the symmetry. This will lead us to a wave function that is chemically intuitive, but the energy we reach will be relatively high. We can also expect to
 keep the quantum numbers, such as $S$, associated with the wave function. On the other hand we can drop the symmetry. This will lead us to a lower energy wave function, but we will
 lose information about the spin quantum numbers.
 
 \paragraph*{}
 We need some kind of theory to bring the best of both worlds together. On one side, we have the chemical intuition in the restricted wave functions, on the other the lower
-energy in the unrestricted wave functions. Roothaan's Restricted Open Shell theory (ROHF)\cite{Roothaan1960} was an early attempt. As this approach is tedious and hard to implement,
-it is not very popular\cite{Scuseria2010, Bally2008}. One of the drawbacks in ROHF method is that the Fock operator is not unambiguously defined\cite{Scuseria2010, Plakhutin2014}.
-UHF is rather easy to implement \cite{Scuseria2010, Bally2008}, but as we stated above, there is a cost to this method.
+energy in the unrestricted wave functions. Roothaan's Restricted Open Shell theory (ROHF) \cite{Roothaan1960} was an early attempt. As this approach is tedious and hard to implement,
+it is not very popular \cite{Scuseria2010, Bally2008}. One of the drawbacks in ROHF method is that the Fock operator is not unambiguously defined \cite{Scuseria2010, Plakhutin2014}.
+UHF is rather easy to implement  \cite{Scuseria2010, Bally2008}, but as we stated above, there is a cost to this method.
 However, more recently Tsuchimochi and Scuseria presented their Constrained Unrestricted Hartree-Fock theory (CUHF)
-\cite{Scuseria2010}. In CUHF we apply a constraint to the system that sets the spin contamination to zero (cfr. infra). This is because spin contaminated wave functions are no
-good starting point for post Hartree-Fock methods\cite{Scuseria2010}. A lot has been said
-already about this method; Scuseria and Tsuchimochi themselves expanded on it in a follow-up paper\cite{Scuseria2011}. Plakhutin and Davidson discussed some defects in the theory
+ \cite{Scuseria2010}. In CUHF we apply a constraint to the system that sets the spin contamination to zero (cfr. infra). This is because spin contaminated wave functions are no
+good starting point for post Hartree-Fock methods \cite{Scuseria2010}. A lot has been said
+already about this method; Scuseria and Tsuchimochi themselves expanded on it in a follow-up paper \cite{Scuseria2011}. Plakhutin and Davidson discussed some defects in the theory
 with respect to
-Koopmans theorem and ionisations\cite{Plakhutin2014}. In this work we will use the CUHF wave function as a reference for
+Koopmans theorem and ionisations \cite{Plakhutin2014}. In this work we will use the CUHF wave function as a reference for
 Single Excitation Configuration Interaction (CIS). We will generate the single excitation energies for the CUHF wave function and compare them to the CIS excitation energies using
 ROHF and UHF references of the same system.
 \paragraph*{}
@@ -74,7 +74,7 @@ equations. Next we will look at spin-contamination in an actual system to stress
 \section{Theory}
 \subsection{Spin-Contamination}
 \label{subsec:spinconttheory}
-In general one can define the expectation value of $\hat{S}^2$ like equation \eqref{eq:spinexp}\cite{Andrews1991}.
+In general one can define the expectation value of $\hat{S}^2$ like equation \eqref{eq:spinexp} \cite{Andrews1991}.
 
 \begin{equation}\label{eq:spinexp}
   \langle \hat{S}^2 \rangle = S_z^2 + S_z + q - \sum_{ij}^{pq} S_{ij}^2
@@ -92,18 +92,18 @@ Spin-contamination is then defined as equation \eqref{eq:spincont}.
 In UHF the overlap is not diagonal, so the overlap matrix between the $\alpha$ and $\beta$ orbitals will not be diagonal. One can not
 expect the last two terms in equation \eqref{eq:spinexp} to vanish, which will result in $\delta_s$ not being equal to zero. This also means that the wave function is no longer an
 eigenfunction of $\hat{S^2}$, as we have stated before. We lose a quantum number and with it the symmetry of the system. We can rewrite spin-contamination as equation
-\eqref{eq:spincont2}\cite{Savin2010}.
+\eqref{eq:spincont2} \cite{Savin2010}.
 
 \begin{equation}\label{eq:spincont2}
   \delta_s = N_\beta - Tr(\mathbf{\gamma}^\alpha\mathbf{\gamma}^\beta)
 \end{equation}
 
 In this equation, $\mathbf{\gamma}^{\alpha}$ and $\mathbf{\gamma}^\beta$ are the one particle density matrices. In the Natural Orbital (NO) basis, these matrices are block diagonal
-\cite{Scuseria2010}, with blocks that can be seen in equations \eqref{eq:gammaa} and \eqref{eq:gammab}, where $i$ corresponds to a certain closed shell orbital. When there are more
+ \cite{Scuseria2010}, with blocks that can be seen in equations \eqref{eq:gammaa} and \eqref{eq:gammab}, where $i$ corresponds to a certain closed shell orbital. When there are more
 $\alpha$ electrons than $\beta$ electrons,
 the $\mathbf{\gamma}^\alpha$ also contains a block that is a unity matrix with dimensions $n\times n$ where $n$ is the amount of singly occupied orbitals. In $\mathbf{\gamma}^\beta$ this block is a
 zero matrix of the same dimensions. For clarity, we will always assume that the amount of $\alpha$ electrons is larger than the amount of $\beta$ electrons. The results hold for any system
-where $N_a \geq N_b $ \cite{Scuseria2010}.
+where $N_a \geq N_b $  \cite{Scuseria2010}.
 
 \begin{subequations}
   \begin{align}
@@ -145,7 +145,7 @@ These matrices can now be written in their full form, as can be seen in equation
 
 $I_n$ is noted as the unity matrix in $n$ dimensions, where $n$ is the number of unpaired electrons. We have $N_{cp}$ closed shell orbitals, each corresponding with a doubly occupied
 orbital. In our assumption that there are more $\alpha$ electrons than $\beta$ electrons, $N_{cp}$ is also equal to the amount of $\beta$ electrons.
-In these equations $n_i$ is the occupation of orbital i and $m_i = \sqrt{n_i - n_i^2}$\cite{Scuseria2010}. We can then define the spin density matrix
+In these equations $n_i$ is the occupation of orbital i and $m_i = \sqrt{n_i - n_i^2}$ \cite{Scuseria2010}. We can then define the spin density matrix
 $\mathbf{M} = (\mathbf{\gamma}^\alpha - \mathbf{\gamma}^\beta)/2$. The matrix subtraction leaves us with blocks in the $\mathbf{M}$ matrix that correspond to equation \eqref{eq:mmatrix}.
 
 \begin{equation}\label{eq:mmatrix}
@@ -156,7 +156,7 @@ $\mathbf{M} = (\mathbf{\gamma}^\alpha - \mathbf{\gamma}^\beta)/2$. The matrix su
 \end{equation}
 
 Of course, the open shell block will now consist of $\frac{1}{2}I_n$. Using this information we can rewrite equation \eqref{eq:spincont2} to equation
-\eqref{eq:spincont3}\cite{Scuseria2010}.
+\eqref{eq:spincont3} \cite{Scuseria2010}.
 
 \begin{equation}\label{eq:spincont3}
   \delta_s = N_\beta - (N_\alpha + N_\beta)/2 + 2*Tr(M^2)
@@ -182,7 +182,7 @@ In an additional step, we can use algebra to find equation \eqref{eq:spincontfin
 
 Now if we want to make the spin contamination zero, we have to enforce double occupation or no occupation at all. We see here that in
 the closed shell itself, we can no longer have a difference between $\alpha$ and $\beta$ orbitals. This will be the constraint that gives us the CUHF method. We could make the observation
-that in Roothaan's original paper, the start was very similar, as can be seen in equation \eqref{eq:rohfwf}\cite{Roothaan1960}.
+that in Roothaan's original paper, the start was very similar, as can be seen in equation \eqref{eq:rohfwf} \cite{Roothaan1960}.
 
 \begin{equation}\label{eq:rohfwf}
   \Phi = (\phi_C,\phi_O)
@@ -194,8 +194,8 @@ an open shell system $\phi_O$
 \subsection{Constrained Unrestricted Hartree-Fock}
 \label{subsec:cuhftheory}
 When talking about CUHF, there is more than one way to make sure that the spin-contamination remains zero. Scuseria and Tsuchimochi will enforce the constraint in the way
-we mentioned in the last section, where they allow only doubly occupied orbitals in the closed shell\cite{Scuseria2010}. It can be shown that the normal UHF energy can be
-constructed by adding a correlation energy term to the closed shell energy. These terms can be seen in equations \eqref{eq:cseng} and \eqref{eq:correng}\cite{Savin2010}.
+we mentioned in the last section, where they allow only doubly occupied orbitals in the closed shell \cite{Scuseria2010}. It can be shown that the normal UHF energy can be
+constructed by adding a correlation energy term to the closed shell energy. These terms can be seen in equations \eqref{eq:cseng} and \eqref{eq:correng} \cite{Savin2010}.
 
 \begin{subequations}
   \begin{align}
@@ -219,7 +219,7 @@ derivative with respect to the density matrices we find equations \eqref{eq:der1
 \end{subequations}
 
 So in fact, the UHF Fock operators can be written as a sum of this $\Delta^{UHF}$ and the closed shell Fock operator, as displayed in equations \eqref{eq:uhfa} and \eqref{eq:uhfb}
-\cite{Scuseria2010}.
+ \cite{Scuseria2010}.
 
 \begin{subequations}
   \begin{align}
@@ -246,7 +246,7 @@ stand for closed shell, open shell and virtual respectively.
 We apply the constraint in the \textit{vc} and \textit{cv} blocks. We can do this by stating that $[\tilde{F}^\sigma, \gamma^\sigma] = 0$, where $\sigma$ can equal either $\alpha$
 or $\beta$. This basically means that the density matrices should share a complete set of eigenfunctions with the Fock matrices. This, in turn, means that the Fock matrices should be
 diagonal at self-consistent field (SCF) conditions in the NO basis. By subtracting the two conditions and algebraically working out the result we find that at SCF conditions
-$\Delta^{CUHF}_{cv}$ has to be equal to zero. This means that $\tilde{F}_{cv} = F_{cv}^{cs}$\cite{Scuseria2010}. For every other block, the CUHF Fock matrix equals the UHF Fock matrix,
+$\Delta^{CUHF}_{cv}$ has to be equal to zero. This means that $\tilde{F}_{cv} = F_{cv}^{cs}$ \cite{Scuseria2010}. For every other block, the CUHF Fock matrix equals the UHF Fock matrix,
 so the $\Delta^{CUHF}$ equals the $\Delta^{UHF}$. When we enforce this constraint during every iteration, we will decrease the spin contamination. This does entail that we will need
 to transform the $\Delta^{UHF}$ to NO basis every time to enforce this constraint. This transformation will consist of two steps. First we need to transform the density matrix to
 an orthonormal basis, since AO basis is often not orthonormal. (Indeed, if it were, we would not expect any bonds to form.) We choose MO basis. The MO's are defined by the
@@ -264,7 +264,7 @@ With a simple transformation, we can see that the Fock operator will become diag
 
 This is true, since $C^T S C$ it the unity matrix if the C matrix holds the eigenvectors of the generalized eigen value problem. To transform to NO basis, we will also need the
 density matrix in the MO basis. This is not trivial, since the density matrix is usually defined by the coefficient matrices C. To transform the density matrix $P$, we will need
-to do a slightly different transformation. This transformation is given in equation \eqref{eq:dtrans}\cite{Declercq2020}.
+to do a slightly different transformation. This transformation is given in equation \eqref{eq:dtrans} \cite{Declercq2020}.
 
 \begin{equation}\label{eq:dtrans}
   P^{MO} = C^{-1}P^{AO}(C^{-1})^T
@@ -290,8 +290,8 @@ shell Fock matrix. To summarize this procedure we can look at the form of the Fo
 
 Where $\Delta^{CUHF}$ is either zero or $\Delta^{UHF}$ depending on whether you are looking at the \textit{cv} blocks or at the other blocks. Here we can also clearly see the
 difference with ROHF theory. In his original paper, Roothaan goes through great lengths to ensure that there is only one Fock matrix instead of separate ones for the $\alpha$ and
-$\beta$ orbitals\cite{Roothaan1960}. This makes it rather difficult to interpret results\cite{Scuseria2010}. However, Scuseria and Tsuchimochi keep the separate matrices, like in a
-normal UHF approach. This means that we will end up with a slightly different picture from the ROHF picture, but the wave function and its energy remain the same\cite{Scuseria2010}.
+$\beta$ orbitals \cite{Roothaan1960}. This makes it rather difficult to interpret results \cite{Scuseria2010}. However, Scuseria and Tsuchimochi keep the separate matrices, like in a
+normal UHF approach. This means that we will end up with a slightly different picture from the ROHF picture, but the wave function and its energy remain the same \cite{Scuseria2010}.
 
 \subsection{Configuration interaction}
 \label{subsec:cistheory}
@@ -306,7 +306,7 @@ methods. The difference in energy between the normal Hartree-Fock method and the
 Here $E_0$ is the Hartree-Fock energy and $\mathcal{E}_0$ it the post Hartree-Fock energy. There are various approaches to post Hartree-Fock methods. We will discuss the
 Configuration Interaction method(CI).
 If $\Phi_0$ is the result of normal Hartree-Fock procedure, it is an approximation of the true wave function $\Gamma$. We know that we can make a better approximation
-using a linear combination of excited states that start from $\Phi_0$\cite{Szabo1996}. If $\Phi_0$ is the Slater determinant that corresponds to the ground state of the system, we
+using a linear combination of excited states that start from $\Phi_0$ \cite{Szabo1996}. If $\Phi_0$ is the Slater determinant that corresponds to the ground state of the system, we
 mix it with the excited states. Each determinant represents a certain configuration of the electrons. These configurations interact, as can be seen in the equation below.
 
 \begin{equation}\label{eq:lincomb}
@@ -337,7 +337,7 @@ Hartree-Fock calculation, so we can write this equation.
 \end{equation}
 
 When we look at single excitations, so at states $\Psi_r^a$ where the electron from orbital $r$ has been excited to orbital $a$, we can write equation
-\eqref{eq:overlapsingle}\cite{Szabo1996} for the overlap between the ground state wave function and the excited states.
+\eqref{eq:overlapsingle} \cite{Szabo1996} for the overlap between the ground state wave function and the excited states.
 
 \begin{equation}\label{eq:overlapsingle}
   \langle\Phi_0 |\hat{H}|\Phi_r^a\rangle = \langle a|h|r \rangle + \sum_b \langle ab||rb \rangle = \langle \chi_a |\hat{f}| \chi_r \rangle = F_{ra}
@@ -346,7 +346,7 @@ When we look at single excitations, so at states $\Psi_r^a$ where the electron f
 Here $\langle ab||rb \rangle$ is shorthand notation for $\langle ab | rb \rangle - \langle ab | br \rangle$. The letter $a$ represents the orbital $\chi_a$.
 Now of course, by definition, at SCF conditions the off-diagonal elements of the Fock matrix are zero. This leads to Brillouin's theorem. It states that there is no overlap
 between single excited states and the ground state wave function when taking the expectation value over the Hamiltonian. This means that the ground state energy cannot be improved
-upon by doing a CIS calculation. Indeed, one can prove equation \eqref{eq:doubles}\cite{Szabo1996}. The correlation energy is only defined by the overlap between second order
+upon by doing a CIS calculation. Indeed, one can prove equation \eqref{eq:doubles} \cite{Szabo1996}. The correlation energy is only defined by the overlap between second order
 excited states.
 
 \begin{equation}\label{eq:doubles}
@@ -362,7 +362,7 @@ optimized, in which it might be favorable to be in an excited state rather than 
 
 In CIS, we do not expect to lower the ground state energy. However, it can give us information about the
 excited states and the excitation energies that come with them. Now we are interested in the expectation values over the Hamiltonian of all the exited states, so we need an expression
-for $\langle \Phi_r^a |\hat{H}| \Phi_s^b \rangle$. There are four different situations that we need to discuss here\cite{Sherrill1996}. The first scenario is an excitation where
+for $\langle \Phi_r^a |\hat{H}| \Phi_s^b \rangle$. There are four different situations that we need to discuss here \cite{Sherrill1996}. The first scenario is an excitation where
 $a \neq b$ and $r \neq s$. The only term that will remain in that case is $\langle aj || ib \rangle$. Another case is when $r = s$ but $a \neq b$. Then the matrix element can be
 expressed using equation \eqref{eq:exp1}.
 
@@ -440,13 +440,13 @@ The RHF, UHF and CUHF algorithms were self-implemented. The following iterative 
 
 The CIS algorithm was implemented using equation \eqref{eq:simple} to create the Hamiltonian matrix elements. Then a block was added containing only the expectation value of the
 reference. The matrix was then diagonalized.
-We used the packages NumPy\cite{Numpy}, SciPy\cite{Scipy} and Psi4\cite{Psi4}. NumPy and SciPy deliver tools for matrix manipulation
+We used the packages NumPy \cite{Numpy}, SciPy \cite{Scipy} and Psi4 \cite{Psi4}. NumPy and SciPy deliver tools for matrix manipulation
 and other linear algebra calculations that we had to do. Psi4 is an open source quantum chemistry package allows us to calculate certain properties of the system given a molecular
 geometry. These properties include nuclear repulsion, kinetic energy of the electrons among others. It also allows us to generate reference data for the molecular energy in RHF, UHF
 and CUHF. It also features a method for calculating ROHF energies. They also present the possibility to do configuration interaction for RHF and ROHF. The CIS reference data for
-UHF and CUHF were generated using the GQCP\cite{GQCP} library. We have also visualized some orbitals using Psi4's \lstinline{cubeprop} function to generate a .cube file. This .cube
-file was then visualized using the IQmol software\cite{IQmol}. \\
-To demonstrate the impact of spin contamination and the importance of finding methods to overcome it, we will discuss the hydrogen gas dissociation problem\cite{Szabo1996}. Hydrogen
+UHF and CUHF were generated using the GQCP \cite{GQCP} library. We have also visualized some orbitals using Psi4's \lstinline{cubeprop} function to generate a .cube file. This .cube
+file was then visualized using the IQmol software \cite{IQmol}. \\
+To demonstrate the impact of spin contamination and the importance of finding methods to overcome it, we will discuss the hydrogen gas dissociation problem \cite{Szabo1996}. Hydrogen
 gas is a molecule that has an RHF solution in its equilibrium geometry. However, when we stretch the bond the system evolves to a state of separate hydrogen atoms. 
 For CIS \ce{H3} will be used as a model system. Firstly because it is a simple system containing few electrons. This means that we do not need to track a lot of possible excitations,
 so the focus can shift towards the interpretation. For this same reason we will pick the STO-3G basis set. This set provides us with the minimal amount of basis functions needed to
@@ -473,7 +473,7 @@ We can see that the RHF energy does not behave as we would expect it to. Indeed,
 not happen. This is because the physical picture we are seeing is intrinsically invalid. The RFH algorithm forces the electrons into the same orbital, the bonding orbital between
 the two nuclei. However, when the bond length increases, we expect the electrons to each be in their own respective orbitals around a single nucleus. At a distance of infinity, they
 should find themselves in a normal hydrogen s orbital. The RHF description is too limited and does not allow this. Worth noting is that the spin contamination remains zero all the 
-way. This means that the wave function is an eigenfunction of the $\hat{S}^2$\cite{Scuseria2011}. \\
+way. This means that the wave function is an eigenfunction of the $\hat{S}^2$ \cite{Scuseria2011}. \\
 We want to improve this image by using UHF.  When we drop the constraint that the $\alpha$ and $\beta$ orbitals must be identical we can indeed expect the energy to be equal to two separate hydrogen atoms.
 But since \ce{H2} is a closed shell system we need to do a little manipulation before starting the algorithm. When we would do a core guess, so start from the molecular
 Hamiltonian as an approach for two Fock matrices, we would still find the restricted solution. To counteract this we will need to start from a mixed guess. For this we change the initial
@@ -489,7 +489,7 @@ known as orbital mixing. The result can be seen in figure \ref{fig:uhfstretch}.
 \end{center}
 This result is physically more accurate. We see that the system does evolve towards two separate hydrogen atoms. However, the spin contamination is rising, and after a certain point
 reaches the value one. This means that the wave function does no longer have the right symmetry. And as stated before, even if we cannot calculate the exact wave function we do know
-what symmetries it should have. Even though we might have a lower energy, the wave function is not as good as an approximation as it could be\cite{Scuseria2013}. \\
+what symmetries it should have. Even though we might have a lower energy, the wave function is not as good as an approximation as it could be \cite{Scuseria2013}. \\
 This is a prime example of the aforementioned symmetry dilemma by Löwdin. If we want the lowest possible energy, we lose the symmetry. If we want to keep the symmetry, we will not
 have the lowest energy. Now what would happen if we applied CUHF to the dissociation problem? This result has been plotted in figure \ref{fig:cuhfstretch}.
 \begin{center}
@@ -504,7 +504,7 @@ The CUHF picture is difficult to interpret. We see that the spin contamination r
 \ref{fig:combo}) until a certain point, then it starts to exponentially decrease. Physically this seems like a logical behavior, as it is now again evolving to two separate hydrogen
 atoms. We can also notice
 that the spin contamination is zero everywhere, so the symmetry of the solution is also correct. For this plot a mixed guess was applied. In CUHF the mixed guess is done on the
-active space, which consists the orbitals to which the constraints are not applied, i.e. the open shell\cite{Scuseria2011}. So when we would take the active space as all the electrons
+active space, which consists the orbitals to which the constraints are not applied, i.e. the open shell \cite{Scuseria2011}. So when we would take the active space as all the electrons
 we reach the UHF solution. When we take only unpaired electrons as the active space expect to see the ROHF solution.
 \begin{center}
   \begin{figure}[H]
@@ -617,8 +617,9 @@ in line with our expectations, in which the ground state is the lowest energy st
     5 & -2.137039 & -2.139049
   \end{tabular}
 \end{table}
-We can also notice that the degeneracies have also disappeared, meaning that one of the excited states in both degeneracies was a triplet excitation. From the chemical point of view
-this is logical. When we think of the \ce{H3} molecule in STO-3G basis, there are three orbital pairs to consider. Let us take a look at the orbital diagram in figure \ref{fig:energydiag1}.
+We can also notice that the degeneracies have also disappeared, meaning that one of the excited states in both degeneracies was a triplet excitation. We can explain this by looking 
+at the specific excitations that contribute to these excited states. When we think of the \ce{H3} molecule in STO-3G basis, there are three orbital pairs to consider. Let us take a 
+look at the orbital diagram in figure \ref{fig:energydiag1}.
 \begin{figure}[H]
   \begin{center}
     \begin{tikzpicture}
@@ -667,7 +668,7 @@ They are displayed in figure \ref{fig:1_cuhf}.
     \includegraphics[width=\linewidth]{./img/H3_1_b.png}
   \end{minipage}
   
-  \caption{$\psi_1$ for both $\alpha$ (left) and $\beta$ electrons (right)}
+  \caption{$\phi_1$ for both $\alpha$ (left) and $\beta$ electrons (right)}
   \label{fig:1_cuhf}
 \end{figure}
 We detect some asymmetry in the orbitals. Normally we would expect \ce{H3} to be a $D_{3h}$ system. However, Psi4 has lowered the symmetry to a $C_{2v}$
@@ -706,22 +707,22 @@ trough \ref{fig:compareorbitals4}. \\
 \begin{figure}[H]
   \begin{minipage}[b]{0.5\linewidth}
     \includegraphics[width=\linewidth]{./img/H3_1_b.png}
-    \caption{The lowest $\beta$ orbital in CUHF}
+    \caption{The lowest $\beta$ MO in CUHF}
     \label{fig:compareorbitals1}
   \end{minipage}
   \begin{minipage}[b]{0.5\linewidth}
     \includegraphics[width=\linewidth]{./img/H3_3_b_cuhf.png}
-    \caption{The highest $\beta$ orbital in CUHF}
+    \caption{The highest $\beta$ MO in CUHF}
     \label{fig:compareorbitals2}
   \end{minipage}
   \begin{minipage}[b]{0.5\linewidth}
     \includegraphics[width=\linewidth]{./img/H3_1_b_rohf.png}
-    \caption{The lowest $\beta$ orbital in ROHF}
+    \caption{The lowest $\beta$ MO in ROHF}
     \label{fig:compareorbitals3}
   \end{minipage}
   \begin{minipage}[b]{0.5\linewidth}
     \includegraphics[width=\linewidth]{./img/H3_2_b_rohf.png}
-    \caption{The second highest $\beta$ orbital in ROHF}
+    \caption{The second highest $\beta$ MO in ROHF}
     \label{fig:compareorbitals4}
   \end{minipage}
 \end{figure}
@@ -731,7 +732,7 @@ by looking at figure \ref{fig:rohforbitalb2}.
 \begin{figure}[H]
  \centering
   \includegraphics[width=0.5\linewidth]{./img/H3_3_b_rohf.png}
-  \caption{The highest $\beta$ orbital in \ce{H3} using ROHF. It follows the $B_2$ representation}
+  \caption{The highest $\beta$ MO in \ce{H3} using ROHF. It follows the $B_2$ representation}
   \label{fig:rohforbitalb2}
 \end{figure}
 Interestingly enough this orbital is the same as the one orbital of CUHF we have not seen, the second highest $\beta$ orbital. This is shown in
@@ -739,16 +740,16 @@ figure \ref{fig:cuhforbitalb2}.
 \begin{figure}
     \centering
   \includegraphics[width=0.5\linewidth]{./img/H3_2_b_cuhf.png}
-  \caption{The second highest $\beta$ orbital in \ce{H3} using CUHF.}
+  \caption{The second highest $\beta$ MO in \ce{H3} using CUHF.}
   \label{fig:cuhforbitalb2}
 \end{figure}
-Worth noting is that ROHF does not have a predefined set of operators. In this original work, Roothaan writes about coupling coefficients that vary between cases\cite{Roothaan1960}.
-Plakhutin and Davidson list a table of possible values for these coefficients\cite{Plakhutin2014}. Depending on the coefficients used, we expect different orbital energies, so we can also
+Worth noting is that ROHF does not have a predefined set of operators. In this original work, Roothaan writes about coupling coefficients that vary between cases \cite{Roothaan1960}.
+Plakhutin and Davidson list a table of possible values for these coefficients \cite{Plakhutin2014}. Depending on the coefficients used, we expect different orbital energies, so we can also
 expect different excitation energies. \\
 To conclude this section, we will look at the expectation values of the $\hat{S}^2$ operator of the excited states whose energies are listed in table \ref{tab:excits_no_triplets}.
-Plakhutin and Davidson mentioned that some excited states in CUHF are no longer eigenfunctions of $\hat{S}^2$\cite{Plakhutin2014}. The main examples that are mentioned are the
+Plakhutin and Davidson mentioned that some excited states in CUHF are no longer eigenfunctions of $\hat{S}^2$ \cite{Plakhutin2014}. The main examples that are mentioned are the
 excitations of the open shell $\alpha$ electron to the $\alpha$ virtual orbital, and the excitation of the closed shell $\beta$ electron to the open shell $\beta$ orbital. In the
-\ref{subsec:spinconttheory} section, we saw that spin contamination could be defined like equation \eqref{eq:spincont}. For $\hat{S}_z$ we expect the value $0.5$\cite{Acke2019}, so in a
+\ref{subsec:spinconttheory} section, we saw that spin contamination could be defined like equation \eqref{eq:spincont}. For $\hat{S}_z$ we expect the value $0.5$ \cite{Acke2019}, so in a
 spin uncontaminated system, the expectation value over $\hat{S}^2$ should be $0.75$. However, in table \ref{tab:spincon} we can clearly see that this is not always the case.
 
 \begin{table}[H]
@@ -765,7 +766,7 @@ spin uncontaminated system, the expectation value over $\hat{S}^2$ should be $0.
   \end{tabular}
 \end{table}
 While the ground state may be uncontaminated, we see that the excited states are not. Even in CUHF, the excited state wave functions remain spin contaminated. As is clear from table
-\ref{tab:spincon}, the constraint applied does not hold for the excited states.
+\ref{tab:spincon}, the constraint applied on the orbitals does not hold for the excited states.
 \section{Conclusions}
 In UHF the total spin symmetry of the Hamiltonian is broken, which results in spin contamination. 
 We have seen that the CUHF method gives us an alternative that can deal with this spin contamination. We then explored the possibility of using CIS on this reference. Here we
