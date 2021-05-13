@@ -22,7 +22,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: report.pdf
-        path: report.pdf
+        path: ./theory/papers/report.pdf
       if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     - name: Archive outline for PR
       uses: actions/upload-artifact@v2
