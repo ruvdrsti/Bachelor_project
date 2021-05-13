@@ -156,22 +156,115 @@
   {E.}~\bibnamefont {Wieser}},\ }\href@noop {} {\enquote {\bibinfo {title}
   {Numpy},}\ }\bibinfo {howpublished} {website} (\bibinfo {year}
   {2005})\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {N.N}(2001)}]{Scipy}%
+\bibitem [{\citenamefont {Virtanen}\ \emph {et~al.}(2020)\citenamefont
+  {Virtanen}, \citenamefont {Gommers}, \citenamefont {Oliphant}, \citenamefont
+  {Haberland}, \citenamefont {Reddy}, \citenamefont {Cournapeau}, \citenamefont
+  {Burovski}, \citenamefont {Peterson}, \citenamefont {Weckesser},
+  \citenamefont {Bright}, \citenamefont {van~der Walt}, \citenamefont {Brett},
+  \citenamefont {Wilson}, \citenamefont {Millman}, \citenamefont {Mayorov},
+  \citenamefont {Nelson}, \citenamefont {Jones}, \citenamefont {Kern},
+  \citenamefont {Larson}, \citenamefont {Carey}, \citenamefont {Polat},
+  \citenamefont {Feng}, \citenamefont {Moore}, \citenamefont {VanderPlas},
+  \citenamefont {Laxalde}, \citenamefont {Perktold}, \citenamefont {Cimrman},
+  \citenamefont {Henriksen}, \citenamefont {an~C.~R.~Harris}, \citenamefont
+  {Archibald}, \citenamefont {Ribeiro}, \citenamefont {Pedregosa},\ and\
+  \citenamefont {van Mulbregt}}]{Scipy}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibnamefont {N.N}},\ }\href@noop {}
-  {\enquote {\bibinfo {title} {Scipy},}\ }\bibinfo {howpublished} {website}
-  (\bibinfo {year} {2001})\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {N.N.}(2017{\natexlab{a}})}]{Psi4}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Virtanen}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Gommers}},
+  \bibinfo {author} {\bibfnamefont {T.~E.}\ \bibnamefont {Oliphant}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Haberland}}, \bibinfo {author}
+  {\bibfnamefont {T.}~\bibnamefont {Reddy}}, \bibinfo {author} {\bibfnamefont
+  {D.}~\bibnamefont {Cournapeau}}, \bibinfo {author} {\bibfnamefont
+  {E.}~\bibnamefont {Burovski}}, \bibinfo {author} {\bibfnamefont
+  {P.}~\bibnamefont {Peterson}}, \bibinfo {author} {\bibfnamefont
+  {W.}~\bibnamefont {Weckesser}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Bright}}, \bibinfo {author} {\bibfnamefont {S.~J.}\
+  \bibnamefont {van~der Walt}}, \bibinfo {author} {\bibfnamefont
+  {M.}~\bibnamefont {Brett}}, \bibinfo {author} {\bibfnamefont
+  {J.}~\bibnamefont {Wilson}}, \bibinfo {author} {\bibfnamefont {K.~J.}\
+  \bibnamefont {Millman}}, \bibinfo {author} {\bibfnamefont {N.}~\bibnamefont
+  {Mayorov}}, \bibinfo {author} {\bibfnamefont {A.~R.~J.}\ \bibnamefont
+  {Nelson}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Jones}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Kern}}, \bibinfo {author}
+  {\bibfnamefont {E.}~\bibnamefont {Larson}}, \bibinfo {author} {\bibfnamefont
+  {C.~J.}\ \bibnamefont {Carey}}, \bibinfo {author} {\bibfnamefont
+  {I.}~\bibnamefont {Polat}}, \bibinfo {author} {\bibfnamefont
+  {Y.}~\bibnamefont {Feng}}, \bibinfo {author} {\bibfnamefont {E.~W.}\
+  \bibnamefont {Moore}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {VanderPlas}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Laxalde}},
+  \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Perktold}}, \bibinfo
+  {author} {\bibfnamefont {R.}~\bibnamefont {Cimrman}}, \bibinfo {author}
+  {\bibfnamefont {I.}~\bibnamefont {Henriksen}}, \bibinfo {author}
+  {\bibfnamefont {E.~A.~Q.}\ \bibnamefont {an~C.~R.~Harris}}, \bibinfo {author}
+  {\bibfnamefont {A.~M.}\ \bibnamefont {Archibald}}, \bibinfo {author}
+  {\bibfnamefont {A.~H.}\ \bibnamefont {Ribeiro}}, \bibinfo {author}
+  {\bibfnamefont {F.}~\bibnamefont {Pedregosa}}, \ and\ \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {van Mulbregt}},\ }\href@noop {} {\bibfield
+  {journal} {\bibinfo  {journal} {nature methods}\ }\textbf {\bibinfo {volume}
+  {17}},\ \bibinfo {pages} {261} (\bibinfo {year} {2020})}\BibitemShut
+  {NoStop}%
+\bibitem [{\citenamefont {Smith}\ \emph {et~al.}(2020)\citenamefont {Smith},
+  \citenamefont {Burns}, \citenamefont {Simmonett}, \citenamefont {Parrish},
+  \citenamefont {Schieber}, \citenamefont {Galvelis}, \citenamefont {Kraus},
+  \citenamefont {Kruse}, \citenamefont {Remigio}, \citenamefont {Alenaizan},
+  \citenamefont {James}, \citenamefont {Lehtola}, \citenamefont {Misiewicz},
+  \citenamefont {Scheurer}, \citenamefont {Shaw}, \citenamefont {Schriber},
+  \citenamefont {Xie}, \citenamefont {Glick}, \citenamefont {Sirianni},
+  \citenamefont {O’Brien}, \citenamefont {Waldrop}, \citenamefont {Kumar},
+  \citenamefont {Hohenstein}, \citenamefont {Pritchard}, \citenamefont
+  {Brooks}, \citenamefont {Schaefer}, \citenamefont {Sokolov}, \citenamefont
+  {Patkowski}, \citenamefont {DePrince}, \citenamefont {Bozkaya}, \citenamefont
+  {King}, \citenamefont {Evangelista}, \citenamefont {Turney}, \citenamefont
+  {Crawford},\ and\ \citenamefont {Sherrill}}]{Psi4}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibnamefont {N.N.}},\ }\href@noop {}
-  {\enquote {\bibinfo {title} {Psi4},}\ }\bibinfo {howpublished} {website}
-  (\bibinfo {year} {2017}{\natexlab{a}})\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {N.N.}(2017{\natexlab{b}})}]{GQCP}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.~G.~A.}\
+  \bibnamefont {Smith}}, \bibinfo {author} {\bibfnamefont {L.~A.}\ \bibnamefont
+  {Burns}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Simmonett}},
+  \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Parrish}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Schieber}}, \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Galvelis}}, \bibinfo {author}
+  {\bibfnamefont {P.}~\bibnamefont {Kraus}}, \bibinfo {author} {\bibfnamefont
+  {H.}~\bibnamefont {Kruse}}, \bibinfo {author} {\bibfnamefont {R.~D.}\
+  \bibnamefont {Remigio}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Alenaizan}}, \bibinfo {author} {\bibfnamefont {A.~M.}\ \bibnamefont
+  {James}}, \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont {Lehtola}},
+  \bibinfo {author} {\bibfnamefont {J.~P.}\ \bibnamefont {Misiewicz}}, \bibinfo
+  {author} {\bibfnamefont {M.}~\bibnamefont {Scheurer}}, \bibinfo {author}
+  {\bibfnamefont {R.~A.}\ \bibnamefont {Shaw}}, \bibinfo {author}
+  {\bibfnamefont {J.~B.}\ \bibnamefont {Schriber}}, \bibinfo {author}
+  {\bibfnamefont {Y.}~\bibnamefont {Xie}}, \bibinfo {author} {\bibfnamefont
+  {Z.~L.}\ \bibnamefont {Glick}}, \bibinfo {author} {\bibfnamefont {D.~A.}\
+  \bibnamefont {Sirianni}}, \bibinfo {author} {\bibfnamefont {J.~S.}\
+  \bibnamefont {O’Brien}}, \bibinfo {author} {\bibfnamefont {J.~M.}\
+  \bibnamefont {Waldrop}}, \bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
+  {Kumar}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Hohenstein}},
+  \bibinfo {author} {\bibfnamefont {B.~P.}\ \bibnamefont {Pritchard}}, \bibinfo
+  {author} {\bibfnamefont {B.~R.}\ \bibnamefont {Brooks}}, \bibinfo {author}
+  {\bibfnamefont {H.}~\bibnamefont {Schaefer}}, \bibinfo {author}
+  {\bibfnamefont {A.~Y.}\ \bibnamefont {Sokolov}}, \bibinfo {author}
+  {\bibfnamefont {K.}~\bibnamefont {Patkowski}}, \bibinfo {author}
+  {\bibfnamefont {A.~E.}\ \bibnamefont {DePrince}}, \bibinfo {author}
+  {\bibfnamefont {U.}~\bibnamefont {Bozkaya}}, \bibinfo {author} {\bibfnamefont
+  {R.~A.}\ \bibnamefont {King}}, \bibinfo {author} {\bibfnamefont {F.~A.}\
+  \bibnamefont {Evangelista}}, \bibinfo {author} {\bibfnamefont {J.~M.}\
+  \bibnamefont {Turney}}, \bibinfo {author} {\bibfnamefont {D.~T.}\
+  \bibnamefont {Crawford}}, \ and\ \bibinfo {author} {\bibfnamefont {C.~D.}\
+  \bibnamefont {Sherrill}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+  {journal} {The Journal of Chemical Physics}\ }\textbf {\bibinfo {volume}
+  {152}} (\bibinfo {year} {2020})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Lemmens}\ \emph {et~al.}(2017)\citenamefont
+  {Lemmens}, \citenamefont {Vriendt}, \citenamefont {Tolstykh}, \citenamefont
+  {Huysentruyt},\ and\ \citenamefont {Acke}}]{GQCP}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibnamefont {N.N.}},\ }\href@noop {}
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Lemmens}}, \bibinfo {author} {\bibfnamefont {X.~D.}\ \bibnamefont
+  {Vriendt}}, \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont {Tolstykh}},
+  \bibinfo {author} {\bibfnamefont {T.}~\bibnamefont {Huysentruyt}}, \ and\
+  \bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Acke}},\ }\href@noop {}
   {\enquote {\bibinfo {title} {The ghent quantum chemistry package},}\
-  }\bibinfo {howpublished} {website} (\bibinfo {year}
-  {2017}{\natexlab{b}})\BibitemShut {NoStop}%
+  }\bibinfo {howpublished} {website} (\bibinfo {year} {2017})\BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Gilbert}()}]{IQmol}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
