@@ -18,10 +18,19 @@ jobs:
         root_file: presentation.tex
         working directory: theory/presentation/
         latexmk_use_xelatex: true
-    - name: Archive presentation.pdf
+    
+    - name: Archive outline for main
       uses: actions/upload-artifact@v2
       with:
-        name: presentation.pdf
+        name: outline.pdf
         path: theory/presentation/presentation.pdf
-        retention-days: 7
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+
+    - name: Archive outline for PR
+      uses: actions/upload-artifact@v2
+      with:
+        name: outline.pdf
+        path: theory/presentation/presentation.pdf
+        retention-days: 5
+      if: ${{ github.event_name == 'pull_request'}}
         
