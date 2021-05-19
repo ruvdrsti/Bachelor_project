@@ -48,66 +48,82 @@
 % I guess you always want a titleframe
 \titleframe
 
-% Have this if you'd like a frame containing the 
-% table of content
-\begin{frame}{Overview}
-    \tableofcontents[hideallsubsections]
-\end{frame}
-
 % Start of the first section
 \section{Introduction}
 
 \begin{frame}
     \frametitle{The Hartree-Fock approximation}
+The Schrödinger equation
     \begin{equation}
         \hat{H}\Psi = E\Psi
     \end{equation}
+The Fock operator    
     \begin{equation}
         \hat{f} = \hat{h}(1) + \sum_j^N\hat{J}_j - \hat{K}_j
     \end{equation}
+The Roothaan-Hall equation
+\begin{equation}
+    \mathbf{FC} = \epsilon \mathbf{SC}
+\end{equation}
+One constraint $\Longrightarrow$ energy minimum
     \begin{equation}
-        \langle \psi + \delta\psi | \hat{H} | \psi + \delta\psi \rangle = E + \delta E^* + \delta E + \delta E^2
+        \langle \psi + \delta\psi | \hat{H} | \psi + \delta\psi \rangle = E + \delta E^* + \delta E + \delta E^2 = E
     \end{equation}
+
 \end{frame}
 
 \begin{frame}
-    \frametitle{Löwdin's symmetry dilema}
+    \frametitle{Restricted Hartree-Fock}
     \begin{itemize}
-        \item Restricted Hartree-Fock
-        \begin{itemize}
-            \item Higher energy
-            \item Symmetry intact
-        \end{itemize}
-        \item Unrestricted Hartree-Fock
-        \begin{itemize}
-            \item Lower energy
-            \item Spin quantum numbers lost
-        \end{itemize}
+        \item Electrons forced into pairs
+        \item Higher energy
+        \item Symmetry intact
     \end{itemize}
-
-\end{frame}
-
-
-
-
-\begin{frame}
-    \frametitle{Spin contamination}
-    \begin{equation}
-        \langle \hat{S}^2 \rangle = S_z^2 + S_z + q - \sum_{ij}^{pq}S_{ij}^2
-    \end{equation}
-
-    \begin{equation}
-        \delta s = \langle \hat{S}^2 \rangle - S_z(S_z + 1)
-    \end{equation}
-    
-\begin{figure}
-    \begin{minipage}[b]{0.45\linewidth}
+    \begin{minipage}[b]{0.6\linewidth}
         \includegraphics[width=\linewidth]{./figures/rhf.png}
     \end{minipage}
-    \begin{minipage}[b]{0.45\linewidth}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Unrestricted Hartree-Fock}
+    \begin{itemize}
+        \item No electron pairs
+        \item Lower energy
+        \item $\langle\hat{S}^2\rangle$ lost as quantum number
+    \end{itemize}
+    \begin{minipage}[b]{0.6\linewidth}
         \includegraphics[width=\linewidth]{./figures/uhf.png}
     \end{minipage}
-\end{figure}
+    \begin{minipage}[b]{0.35\linewidth}
+        \begin{equation}
+            \langle \hat{S}^2 \rangle = S_z^2 + S_z + q - \sum_{ij}^{pq}S_{ij}^2
+        \end{equation}
+    
+        \begin{equation}
+            \delta s = \langle \hat{S}^2 \rangle - S_z(S_z + 1)
+        \end{equation}
+    \end{minipage}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Löwdin's symetry dillema}
+    \begin{itemize}
+        \item Low energy $\Longrightarrow$ loss of symmetry
+        \item Keeping symmetry $\Longrightarrow$ high symmetry
+        \item Do we always lose?
+    \end{itemize}
+
+
+\begin{itemize}
+    \item Can we keep both symmetry and lower energies?
+    \begin{itemize}
+        \item ROHF
+        \item CUHF
+    \end{itemize}
+\end{itemize}
 
 \end{frame}
 
@@ -155,6 +171,23 @@
 \section{results}
 
 \begin{frame}
+    \frametitle{Goals}
+    \begin{enumerate}
+        \item Excitation energy levels
+        \item Differences/similarities between methods
+        \begin{itemize}
+            \item UHF
+            \item CUHF
+            \item ROHF
+        \end{itemize}
+        \item Spin contamination in the excited states
+    \end{enumerate}
+
+    
+
+\end{frame}
+
+\begin{frame}
     \frametitle{\ce{H3}}
     \begin{figure}
         \begin{minipage}[b]{0.45\linewidth}
@@ -171,7 +204,7 @@
 \begin{frame}
     \frametitle{CUHF and UHF}
     \begin{minipage}[b]{0.6\linewidth}
-        \includegraphics[width=\linewidth]{./figures/h3_cis.png}
+        \includegraphics[width=\linewidth]{./figures/h3_cis_copy.png}
     \end{minipage}
     \begin{minipage}[b]{0.3\linewidth}
         \begin{table}[h]
@@ -180,8 +213,8 @@
                  & UHF       & CUHF      \\
               \hline
               1  & -2.938139 & -2.922658 \\
-              2  & -2.923512 & -2.915707 \\
-              3  & -2.896022 & -2.915707 \\
+              2  &  {\color{ugent-re}   \textbf{-2.923512}} & {\color{ugent-re}   \textbf{-2.915707}} \\
+              3  & -2.896022 & {\color{ugent-re}   \textbf{-2.915707}} \\
               4  & -2.840079 & -2.895707 \\
               5  & -2.560947 & -2.560947 \\
               6  & -2.428072 & -2.436524 \\
@@ -192,6 +225,10 @@
             \end{tabular}
           \end{table}
     \end{minipage}
+    \begin{itemize}
+        \item degeneracies
+        \item lower energy states
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -214,12 +251,13 @@
           \end{tikzpicture}
         \end{center}
       \end{figure}
+      $\Longrightarrow$ The ground state is degenerate
     \begin{table}[h]
         \label{tab:excits_no_triplets}
         \begin{tabular}{l|l|l}
             & UHF       & CUHF      \\
           \hline
-          1 & -2.923515 & -2.915707 \\
+          1 & {\color{ugent-re}   \textbf{-2.923512}} & {\color{ugent-re}   \textbf{-2.915707}} \\
           2 & -2.840101 & -2.895707 \\
           3 & -2.428086 & -2.436524 \\
           4 & -2.160319 & -2.176620 \\
@@ -266,7 +304,7 @@
 \section{Conclusions and prospects}
 \begin{frame}
     \begin{itemize}
-        \item Things to look out for:
+        \item Things to look out for
         \begin{itemize}
             \item triplet excitations with lower energy
             \item spin contamination
@@ -274,7 +312,8 @@
         \item Prospects
         \begin{itemize}
             \item triplet systems
-            \item Full CI $\Longrightarrow$ other constraints?
+            \item Higher order CI
+            \item Other constraints $\Longrightarrow$ excited states?
         \end{itemize}
     \end{itemize}
     
