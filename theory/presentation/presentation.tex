@@ -1,0 +1,286 @@
+% Aspectratio 16:9 should be used
+% The theme is not suited for 4:3 aspectratio
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage{mhchem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+% Metadata of the presentation
+\title{\ce{H3} as a model for open shell systems}
+\subtitle{CIS with CUHF and UHF references}
+\date[ISBT 2018]{Bachelor project}
+\author[DB]{Ruben Van der Stichelen}
+
+% Macro aimed at loading themes in different directories
+\makeatletter
+  \def\beamer@calltheme#1#2#3{%
+    \def\beamer@themelist{#2}
+    \@for\beamer@themename:=\beamer@themelist\do
+    {\usepackage[{#1}]{\beamer@themelocation/#3\beamer@themename}}}
+
+  \def\usefolder#1{
+    \def\beamer@themelocation{#1}
+  }
+  \def\beamer@themelocation{}
+
+% Load the UGent theme
+\usefolder{theme}
+\usetheme[language=en,faculty=we,usecolors]{ugent}
+\useinnertheme{ugent}
+\useoutertheme{ugent}
+\usecolortheme{ugent}
+\usefonttheme{ugent}
+
+% Path to images
+\graphicspath{{figures/}}
+
+% Have this if you'd like section slides 
+\AtBeginSection[]{
+    \sectionframe
+}
+
+\begin{document}
+
+% Have this if you'd like the presentation to start 
+% with a large UGent logo
+\logoframe
+
+% I guess you always want a titleframe
+\titleframe
+
+% Have this if you'd like a frame containing the 
+% table of content
+\begin{frame}{Overview}
+    \tableofcontents[hideallsubsections]
+\end{frame}
+
+% Start of the first section
+\section{Introduction}
+
+\begin{frame}
+    \frametitle{The Hartree-Fock approximation}
+    \begin{equation}
+        \hat{H}\Psi = E\Psi
+    \end{equation}
+    \begin{equation}
+        \hat{f} = \hat{h}(1) + \sum_j^N\hat{J}_j - \hat{K}_j
+    \end{equation}
+    \begin{equation}
+        \langle \psi + \delta\psi | \hat{H} | \psi + \delta\psi \rangle = E + \delta E^* + \delta E + \delta E^2
+    \end{equation}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Löwdin's symmetry dilema}
+    \begin{itemize}
+        \item Restricted Hartree-Fock
+        \begin{itemize}
+            \item Higher energy
+            \item Symmetry intact
+        \end{itemize}
+        \item Unrestricted Hartree-Fock
+        \begin{itemize}
+            \item Lower energy
+            \item Spin quantum numbers lost
+        \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Spin contamination}
+    \begin{equation}
+        \langle \hat{S}^2 \rangle = S_z^2 + S_z + q - \sum_{ij}^{pq}S_{ij}^2
+    \end{equation}
+
+    \begin{equation}
+        \delta s = \langle \hat{S}^2 \rangle - S_z(S_z + 1)
+    \end{equation}
+    
+\begin{figure}
+    \begin{minipage}[b]{0.45\linewidth}
+        \includegraphics[width=\linewidth]{./figures/rhf.png}
+    \end{minipage}
+    \begin{minipage}[b]{0.45\linewidth}
+        \includegraphics[width=\linewidth]{./figures/uhf.png}
+    \end{minipage}
+\end{figure}
+
+\end{frame}
+
+\section{Theory}
+
+\begin{frame}
+    \frametitle{Constrained unrestricted Hartree-Fock theory}
+    \begin{equation}\label{eq:spincontfinal}
+        \delta_s = 4\sum^{N_{cp}}_i n_i^2 - n_i
+      \end{equation}
+    \begin{equation}
+        \tilde{F}^{\sigma} = F_{cs} \pm \Delta^{CUHF}
+    \end{equation}
+    where
+    \begin{equation}
+        \Delta^{CUHF} = \begin{cases}
+            0, & \mbox{in the vc blocks} \\
+            \Delta^{UHF}, & \mbox{anywhere else}
+        \end{cases}
+    \end{equation}
+    $\Longrightarrow$ transformations needed
+\end{frame}
+
+\begin{frame}
+    \begin{figure}
+        \includegraphics[width=0.6\linewidth]{./figures/cuhf_mix.png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Configuration interaction} 
+    \begin{equation}\label{eq:lincomb}
+        |\Psi_0\rangle = c_0|\Phi_0\rangle + \sum_{ar}c_{r}^{a}|\Phi_r^a\rangle + \sum_{a<b,r<s}c_{rs}^{ab}|\Phi^{ab}_{rs} \rangle + \cdots
+      \end{equation}
+      Brillouin's theorem:
+      \begin{equation}\label{eq:overlapsingle}
+        \langle\Phi_0 |\hat{H}|\Phi_r^a\rangle = \langle a|h|r \rangle + \sum_b \langle ab||rb \rangle = \langle \chi_a |\hat{f}| \chi_r \rangle = F_{ra} = 0
+      \end{equation}
+      \begin{equation}\label{eq:matrixelement}
+        \langle \Phi_r^a|\hat{H}|\Phi_s^b \rangle = E_0\delta_{rs}\delta_{ab} + F_{ab}\delta_{rs} - F_{rs}\delta_{ab} + \langle as || jb \rangle
+      \end{equation}
+\end{frame}
+
+
+\section{results}
+
+\begin{frame}
+    \frametitle{\ce{H3}}
+    \begin{figure}
+        \begin{minipage}[b]{0.45\linewidth}
+            \includegraphics[width=\linewidth]{./figures/h3_uhf_sto-3g.png}
+        \end{minipage}
+        \begin{minipage}[b]{0.45\linewidth}
+            \includegraphics[width=\linewidth]{./figures/h3_cuhf.png}
+        \end{minipage}
+    \end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{CUHF and UHF}
+    \begin{minipage}[b]{0.6\linewidth}
+        \includegraphics[width=\linewidth]{./figures/h3_cis.png}
+    \end{minipage}
+    \begin{minipage}[b]{0.3\linewidth}
+        \begin{table}[h]
+            \label{tab:excits}
+            \begin{tabular}{l|l|l}
+                 & UHF       & CUHF      \\
+              \hline
+              1  & -2.938139 & -2.922658 \\
+              2  & -2.923512 & -2.915707 \\
+              3  & -2.896022 & -2.915707 \\
+              4  & -2.840079 & -2.895707 \\
+              5  & -2.560947 & -2.560947 \\
+              6  & -2.428072 & -2.436524 \\
+              7  & -2.309793 & -2.323014 \\
+              8  & -2.179570 & -2.176621 \\
+              9  & -2.160308 & -2.176621 \\
+              10 & -2.137036 & -2.139049
+            \end{tabular}
+          \end{table}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}[h]
+        \begin{center}
+          \begin{tikzpicture}
+            \draw (-1.25, 0.5) -- (-0.75, 0.5);
+            \draw (-1.25, 0) -- (-0.75, 0);
+            \draw (-1.25, -0.5) -- (-0.75, -0.5);
+            \draw [-{Straight Barb[left]}] (-1.1, -0.60) -- (-1.1, -0.20);
+            \draw [-{Straight Barb[left]}] (-1.1, -0.10) -- (-1.1, 0.30);
+            \draw [-{Straight Barb[left]}] (-0.9, -0.20) -- (-0.9, -0.60);
+      
+            \draw (1.25, 0.5) -- (0.75, 0.5);
+            \draw (1.25, 0) -- (0.75, 0);
+            \draw (1.25, -0.5) -- (0.75, -0.5);
+            \draw [-{Straight Barb[left]}] (0.9, -0.60) -- (0.9, -0.20);
+            \draw [-{Straight Barb[left]}] (1.1, 0.30) -- (1.1, -0.10);
+            \draw [-{Straight Barb[left]}] (1.1, -0.20) -- (1.1, -0.60);
+          \end{tikzpicture}
+        \end{center}
+      \end{figure}
+    \begin{table}[h]
+        \label{tab:excits_no_triplets}
+        \begin{tabular}{l|l|l}
+            & UHF       & CUHF      \\
+          \hline
+          1 & -2.923515 & -2.915707 \\
+          2 & -2.840101 & -2.895707 \\
+          3 & -2.428086 & -2.436524 \\
+          4 & -2.160319 & -2.176620 \\
+          5 & -2.137039 & -2.139049
+        \end{tabular}
+      \end{table}
+\end{frame}
+\begin{frame}
+    \frametitle{CUHF and ROHF}
+
+\begin{minipage}[b]{0.35\linewidth}
+    \begin{table}
+        \label{tab:ROHF}
+        \begin{tabular}{l|l}
+            & energy    \\
+          \hline
+          1 & -2.915707 \\
+          2 & -2.176621
+        \end{tabular}
+      \end{table}
+\end{minipage}
+\begin{minipage}[b]{0.6\linewidth}
+    \begin{center}
+    \includegraphics[width=0.8\linewidth]{./figures/H3_1_b_rohf.png}
+    \includegraphics[width=0.8\linewidth]{./figures/H3_2_b_rohf.png}
+    \end{center}
+\end{minipage}
+\end{frame}
+\begin{frame}
+    \frametitle{$\hat{S}^2$ expectation values}
+    \begin{table}[h]
+        \label{tab:spincon}
+        \begin{tabular}{l|l|l}
+            & UHF      & CUHF     \\
+          \hline
+          1 & 0.75     & 0.75     \\
+          2 & 0.759614 & 0.752480 \\
+          3 & 1.098750 & 1.148304 \\
+          4 & 1.739963 & 1.750000 \\
+          5 & 1.401673 & -1.34921
+        \end{tabular}
+      \end{table}
+\end{frame}
+\section{Conclusions and prospects}
+\begin{frame}
+    \begin{itemize}
+        \item Things to look out for:
+        \begin{itemize}
+            \item triplet excitations with lower energy
+            \item spin contamination
+        \end{itemize}
+        \item Prospects
+        \begin{itemize}
+            \item triplet systems
+            \item Full CI $\Longrightarrow$ other constraints?
+        \end{itemize}
+    \end{itemize}
+    
+\end{frame}
+
+% End presentation with titleframe
+\titleframe
+
+\end{document}
