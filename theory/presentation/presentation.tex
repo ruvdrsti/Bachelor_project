@@ -57,10 +57,6 @@ The Schrödinger equation
     \begin{equation}
         \hat{H}\Psi = E\Psi
     \end{equation}
-The Fock operator    
-    \begin{equation}
-        \hat{f} = \hat{h}(1) + \sum_j^N\hat{J}_j - \hat{K}_j
-    \end{equation}
 The Roothaan-Hall equation
 \begin{equation}
     \mathbf{FC} = \epsilon \mathbf{SC}
@@ -80,7 +76,7 @@ One constraint $\Longrightarrow$ energy minimum
         \item Symmetry intact
     \end{itemize}
     \begin{minipage}[b]{0.6\linewidth}
-        \includegraphics[width=\linewidth]{./figures/rhf.png}
+        \includegraphics[width=\linewidth]{./figures/rhf.pdf}
     \end{minipage}
 
 \end{frame}
@@ -94,13 +90,9 @@ One constraint $\Longrightarrow$ energy minimum
         \item $\langle\hat{S}^2\rangle$ lost as quantum number
     \end{itemize}
     \begin{minipage}[b]{0.6\linewidth}
-        \includegraphics[width=\linewidth]{./figures/uhf.png}
+        \includegraphics[width=\linewidth]{./figures/uhf.pdf}
     \end{minipage}
     \begin{minipage}[b]{0.35\linewidth}
-        \begin{equation}
-            \langle \hat{S}^2 \rangle = S_z^2 + S_z + q - \sum_{ij}^{pq}S_{ij}^2
-        \end{equation}
-    
         \begin{equation}
             \delta s = \langle \hat{S}^2 \rangle - S_z(S_z + 1)
         \end{equation}
@@ -149,7 +141,7 @@ One constraint $\Longrightarrow$ energy minimum
 
 \begin{frame}
     \begin{figure}
-        \includegraphics[width=0.6\linewidth]{./figures/cuhf_mix.png}
+        \includegraphics[width=0.6\linewidth]{./figures/cuhf_mix.pdf}
     \end{figure}
 \end{frame}
 
@@ -191,10 +183,10 @@ One constraint $\Longrightarrow$ energy minimum
     \frametitle{\ce{H3}}
     \begin{figure}
         \begin{minipage}[b]{0.45\linewidth}
-            \includegraphics[width=\linewidth]{./figures/h3_uhf_sto-3g.png}
+            \includegraphics[width=\linewidth]{./figures/h3_uhf_sto-3g.pdf}
         \end{minipage}
         \begin{minipage}[b]{0.45\linewidth}
-            \includegraphics[width=\linewidth]{./figures/h3_cuhf.png}
+            \includegraphics[width=\linewidth]{./figures/h3_cuhf.pdf}
         \end{minipage}
     \end{figure}
 
@@ -204,7 +196,7 @@ One constraint $\Longrightarrow$ energy minimum
 \begin{frame}
     \frametitle{CUHF and UHF}
     \begin{minipage}[b]{0.6\linewidth}
-        \includegraphics[width=\linewidth]{./figures/h3_cis_copy.png}
+        \includegraphics[width=\linewidth]{./figures/h3_cis.pdf}
     \end{minipage}
     \begin{minipage}[b]{0.3\linewidth}
         \begin{table}[h]
@@ -231,40 +223,6 @@ One constraint $\Longrightarrow$ energy minimum
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-    \begin{figure}[h]
-        \begin{center}
-          \begin{tikzpicture}
-            \draw (-1.25, 0.5) -- (-0.75, 0.5);
-            \draw (-1.25, 0) -- (-0.75, 0);
-            \draw (-1.25, -0.5) -- (-0.75, -0.5);
-            \draw [-{Straight Barb[left]}] (-1.1, -0.60) -- (-1.1, -0.20);
-            \draw [-{Straight Barb[left]}] (-1.1, -0.10) -- (-1.1, 0.30);
-            \draw [-{Straight Barb[left]}] (-0.9, -0.20) -- (-0.9, -0.60);
-      
-            \draw (1.25, 0.5) -- (0.75, 0.5);
-            \draw (1.25, 0) -- (0.75, 0);
-            \draw (1.25, -0.5) -- (0.75, -0.5);
-            \draw [-{Straight Barb[left]}] (0.9, -0.60) -- (0.9, -0.20);
-            \draw [-{Straight Barb[left]}] (1.1, 0.30) -- (1.1, -0.10);
-            \draw [-{Straight Barb[left]}] (1.1, -0.20) -- (1.1, -0.60);
-          \end{tikzpicture}
-        \end{center}
-      \end{figure}
-      $\Longrightarrow$ The ground state is degenerate
-    \begin{table}[h]
-        \label{tab:excits_no_triplets}
-        \begin{tabular}{l|l|l}
-            & UHF       & CUHF      \\
-          \hline
-          1 & {\color{ugent-re}   \textbf{-2.923512}} & {\color{ugent-re}   \textbf{-2.915707}} \\
-          2 & -2.840101 & -2.895707 \\
-          3 & -2.428086 & -2.436524 \\
-          4 & -2.160319 & -2.176620 \\
-          5 & -2.137039 & -2.139049
-        \end{tabular}
-      \end{table}
-\end{frame}
 \begin{frame}
     \frametitle{CUHF and ROHF}
 
@@ -323,5 +281,40 @@ One constraint $\Longrightarrow$ energy minimum
 
 % End presentation with titleframe
 \titleframe
+
+\begin{frame}
+    \begin{figure}[h]
+        \begin{center}
+          \begin{tikzpicture}
+            \draw (-1.25, 0.5) -- (-0.75, 0.5);
+            \draw (-1.25, 0) -- (-0.75, 0);
+            \draw (-1.25, -0.5) -- (-0.75, -0.5);
+            \draw [-{Straight Barb[left]}] (-1.1, -0.60) -- (-1.1, -0.20);
+            \draw [-{Straight Barb[left]}] (-1.1, -0.10) -- (-1.1, 0.30);
+            \draw [-{Straight Barb[left]}] (-0.9, -0.20) -- (-0.9, -0.60);
+      
+            \draw (1.25, 0.5) -- (0.75, 0.5);
+            \draw (1.25, 0) -- (0.75, 0);
+            \draw (1.25, -0.5) -- (0.75, -0.5);
+            \draw [-{Straight Barb[left]}] (0.9, -0.60) -- (0.9, -0.20);
+            \draw [-{Straight Barb[left]}] (1.1, 0.30) -- (1.1, -0.10);
+            \draw [-{Straight Barb[left]}] (1.1, -0.20) -- (1.1, -0.60);
+          \end{tikzpicture}
+        \end{center}
+      \end{figure}
+      $\Longrightarrow$ The ground state is degenerate
+    \begin{table}[h]
+        \label{tab:excits_no_triplets}
+        \begin{tabular}{l|l|l}
+            & UHF       & CUHF      \\
+          \hline
+          1 & {\color{ugent-re}   \textbf{-2.923512}} & {\color{ugent-re}   \textbf{-2.915707}} \\
+          2 & -2.840101 & -2.895707 \\
+          3 & -2.428086 & -2.436524 \\
+          4 & -2.160319 & -2.176620 \\
+          5 & -2.137039 & -2.139049
+        \end{tabular}
+      \end{table}
+\end{frame}
 
 \end{document}
